@@ -17,5 +17,6 @@
         'data/sequence.xml',
         'views/menu.xml',
         'views/Patients.xml',
+        'views/doctor.xml',
     ]
 }
