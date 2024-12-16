@@ -6,10 +6,13 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger"
+                            attrs="{'invisible': [('active', '!=', False)]}"/>
                     <group>
                         <field name="name"/>
                         <field name="ref"/>
                         <field name="gender"/>
+                        <field name="active" invisible="1"/>
                     </group>
                 </sheet>
                 <div class="oe_chatter">
@@ -28,6 +31,7 @@
                 <field name="name"/>
                 <field name="ref"/>
                 <field name="gender"/>
+                <field name="active"/>
             </tree>
         </field>
     </record>
@@ -40,6 +44,8 @@
                 <field name="name"/>
                 <field name="ref"/>
                 <field name="gender"/>
+                <separator/>
+                <filter name="archived" string="Archive" domain="[('active', '=', False)]"/>
             </search>
         </field>
     </record>

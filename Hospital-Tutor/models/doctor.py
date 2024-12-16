@@ -14,6 +14,7 @@ class HospitalDoctor(models.Model):
         ('other', 'Other'),
     ], string='Gender', tracking=True)
     ref = fields.Char(string="Reference", required=True)
+    active = fields.Boolean(default=True)
 
     def name_get(self):
         res = []
