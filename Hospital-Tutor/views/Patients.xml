@@ -16,7 +16,7 @@
                         <field name="is_child"/>
                         <field name="age"/>
                         <field name="gender"/>
-                        <field name="doctor_id"/>
+                        <field name="doctor_id" options="{'no_open': True, 'no_create': True}"/>
                         <field name="capitalized_name"/>
                         <field name="blood_type"/>
                     </group>
