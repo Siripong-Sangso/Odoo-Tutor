@@ -19,6 +19,7 @@
                         <field name="doctor_id" options="{'no_open': True, 'no_create': True}"/>
                         <field name="capitalized_name"/>
                         <field name="blood_type"/>
+                        <field name="tag_id" widget="many2many_tags"/>
                     </group>
                 </sheet>
                 <div class="oe_chatter">
