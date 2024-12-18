@@ -3,7 +3,7 @@
     <record id="action_empty" model="ir.actions.act_window">
         <field name="name">empty</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">Empty</field>
+        <field name="res_model">empty</field>
         <field name="view_mode">tree,form</field>
     </record>
 
