@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_empty_module_root"
-              name="Empty Module"
+
+    <menuitem id="menu_empty_root"
+              name="Empty"
               sequence="10"/>
 
     <menuitem id="menu_empty_operations"
               name="Operations"
-              parent="menu_empty_module_root"
+              parent="menu_empty_root"
               sequence="10"/>
 
 </odoo>

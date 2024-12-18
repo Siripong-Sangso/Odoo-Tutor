@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_empty" model="ir.actions.act_window">
+        <field name="name">empty</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">Empty</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+     <menuitem id="menu_empty1"
+              name="Empty1"
+              parent="menu_empty_operations"
+              action = "action_empty"
+              sequence="10"/>
+</odoo>
