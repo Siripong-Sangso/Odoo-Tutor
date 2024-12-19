@@ -20,5 +20,7 @@
         'views/menu.xml',
         'views/Patients.xml',
         'views/doctor.xml',
+        'reports/report.xml',
+        'reports/patient_card.xml'
     ]
 }
