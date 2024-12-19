@@ -9,12 +9,14 @@
     'version': '16.0.1.0.0',
     'depends': ['base', 'sale'],
     'data': [
+        'security/ir.model.access.csv',
         'views/sale.xml',
+        'reports/sale_order_report.xml',
     ],
-    'demo':[
+    'demo': [
 
     ],
     'installable': True,
     'application': True,
-    'auto_install':False,
+    'auto_install': False,
 }
