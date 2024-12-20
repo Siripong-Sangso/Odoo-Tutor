@@ -53,13 +53,13 @@
                 <field name="name" filter_domain="['|' ('name', 'like', self), ('ref', 'ilike', self)]"/>
                 <field name="age"/>
                 <field name="gender"/>
-                 <filter name="filter_male" string="Male" domain="[('gender', '=', 'male')]"/>
+                <filter name="filter_male" string="Male" domain="[('gender', '=', 'male')]"/>
                 <filter name="filter_female" string="Female" domain="[('gender', '=', 'female')]"/>
                 <filter name="filter_others" string="Others" domain="[('gender', '=', 'others')]"/>
                 <separator/>
                 <filter name="filter_childs" string="Childs" domain="[('is_child', '=', True)]"/>
                 <group expand="0" string="Group By...">
-                        <filter string="Gender" name="group_by_gender" context="{'group_by': 'gender'}"/>
+                    <filter string="Gender" name="group_by_gender" context="{'group_by': 'gender'}"/>
                 </group>
             </search>
 
@@ -81,4 +81,12 @@
               action="action_hospital_patient"
               sequence="10"/>
 
+    <record id="action_report_patient_card" model="ir.actions.report">
+        <field name="name">Patient Card</field>
+        <field name="model">hospital.patient</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">Hospital-Tutor.report_patient_card_template</field>
+        <field name="binding_model_id" ref="model_hospital_patient"/>
+        <field name="binding_type">action</field>
+    </record>
 </odoo>

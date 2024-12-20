@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <template id="report_patient">
+    <template id="report_patient_card_template">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
-                <h2>Test Print</h2>
-                <t t-esc="doc.name"/>
+                <div class="page">
+                    <h2>Patient Card</h2>
+                    <p><strong>Reference:</strong> <t t-esc="doc.ref"/></p>
+                    <p><strong>Name:</strong> <t t-esc="doc.name"/></p>
+                    <p><strong>Age:</strong> <t t-esc="doc.age"/></p>
+                    <p><strong>Gender:</strong> <t t-esc="doc.gender"/></p>
+                    <p><strong>Doctor:</strong> <t t-esc="doc.doctor_id.name"/></p>
+                </div>
             </t>
         </t>
     </template>
