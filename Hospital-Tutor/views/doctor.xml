@@ -65,4 +65,14 @@
               parent="menu_hospital_operations"
               action="action_hospital_doctor"
               sequence="10"/>
+
+    <record id="action_report_doctor_card" model="ir.actions.report">
+        <field name="name">Doctor Card</field>
+        <field name="model">hospital.doctor</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">Hospital-Tutor.doctor_card_template</field>
+        <field name="binding_model_id" ref="model_hospital_doctor"/>
+        <field name="binding_type">action</field>
+    </record>
+
 </odoo>

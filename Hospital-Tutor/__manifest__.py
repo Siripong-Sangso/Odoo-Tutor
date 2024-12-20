@@ -21,6 +21,8 @@
         'views/Patients.xml',
         'views/doctor.xml',
         'reports/report.xml',
-        'reports/patient_card.xml'
+        'reports/patient_card.xml',
+        'reports/report_doctor.xml',
+        'reports/doctor_card.xml',
     ]
 }

@@ -89,4 +89,5 @@
         <field name="binding_model_id" ref="model_hospital_patient"/>
         <field name="binding_type">action</field>
     </record>
+
 </odoo>
