@@ -20,6 +20,7 @@
                         <field name="capitalized_name"/>
                         <field name="blood_type"/>
                         <field name="tag_id" widget="many2many_tags"/>
+                        <field name="image" widget="image" class="oe_avatar"/>
                     </group>
                 </sheet>
                 <div class="oe_chatter">

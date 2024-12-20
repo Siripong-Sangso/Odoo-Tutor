@@ -20,6 +20,7 @@ class HospitalPatient(models.Model):
     doctor_id = fields.Many2one('hospital.doctor', string="Doctor")
     tag_id = fields.Many2many('res.partner.category', 'hospital_patient_tag_rel',
                               'patient_id', 'tag_id', string="Tags")
+    image = fields.Binary(string='Image')
 
 
     @api.model_create_multi

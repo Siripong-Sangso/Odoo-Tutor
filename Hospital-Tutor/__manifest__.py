@@ -8,7 +8,7 @@
     'description': "Module Hospital Management",
     'website': 'https://rbs.co.th/',
     'summary': 'Odoo16 Development',
-    'depends': ['mail', 'base'],
+    'depends': ['mail', 'base', 'web'],
     'installable': True,
     'application': True,
     'demo': [
