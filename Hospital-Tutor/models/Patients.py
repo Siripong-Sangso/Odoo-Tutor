@@ -21,7 +21,26 @@ class HospitalPatient(models.Model):
     tag_id = fields.Many2many('res.partner.category', 'hospital_patient_tag_rel',
                               'patient_id', 'tag_id', string="Tags")
     image = fields.Binary(string='Image')
+    company_id = fields.Many2one(
+        'res.company',
+        string="Company",
+        default=lambda self: self.env.company,
+        required=True
+    )
+    user_id = fields.Many2one(
+        'res.users',
+        string="Assigned User",
+        help="The user responsible for this patient record"
+    )
 
+    @api.model
+    def _get_report_values(self, docids, data=None):
+        docs = self.env['hospital.patient'].browse(docids)
+        return {
+            'doc_ids': docids,
+            'doc_model': 'hospital.patient',
+            'docs': docs,
+        }
 
     @api.model_create_multi
     def create(self, vals_list):

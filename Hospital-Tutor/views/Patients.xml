@@ -21,6 +21,8 @@
                         <field name="blood_type"/>
                         <field name="tag_id" widget="many2many_tags"/>
                         <field name="image" widget="image" class="oe_avatar"/>
+                        <field name="company_id"/>
+                        <field name="user_id"/>
                     </group>
                 </sheet>
                 <div class="oe_chatter">
@@ -41,6 +43,8 @@
                 <field name="age"/>
                 <field name="gender"/>
                 <field name="capitalized_name"/>
+                <field name="company_id"/>
+                <field name="user_id"/>
             </tree>
 
         </field>
