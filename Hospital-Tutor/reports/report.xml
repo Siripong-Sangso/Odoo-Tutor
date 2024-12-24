@@ -5,8 +5,8 @@
             string="Patient Card"
             model="hospital.patient"
             report_type="qweb-pdf"
-            name="Hospital-Tutor.report_patient_card_template"
-            file="Hospital-Tutor.report_patient_card_template"
+            name="Hospital-Tutor.report_patient_details"
+            file="Hospital-Tutor.report_patient_details"
             print_report_name="'Patient Card - %s' % (object.name)"/>
 
 </odoo>

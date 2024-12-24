@@ -64,7 +64,7 @@
                             </td>
                             <td height="18px" valign="top" style="text-align:left; padding: 3px; line-height: 8px; ">
                                 <font style="font-size: 18px;">
-                                    เลขประจำตัวผู้เสียภาษีอาการ/TAX ID No.&amp;nbsp;
+                                    เลขประจำตัวผู้เสียภาษีอากร/TAX ID No.&amp;nbsp;
                                     <span class="custom-span" t-field="o.company_id.vat"/>&amp;nbsp;&amp;nbsp;
                                     <span class="custom-span" t-field="o.company_id.branch_name"/>
                                 </font>
