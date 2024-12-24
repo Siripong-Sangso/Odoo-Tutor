@@ -3,15 +3,69 @@
     <template id="report_patient_header_template">
         <div class="header" style="font-family:TH Krub;margin-bottom:-5px;padding-bottom:Opx;width:100%;
                                font-family:TH Krub;position:relative;">
-
+            <style>
+                .custom-span {
+                font-size: 18px;
+                margin: 0px;
+                padding: 0px:
+                line-height: 22px;
+                }
+                table.table_hd{
+                border: 0px solid white;
+                border-collapse: collapse;
+                width: 100%
+                cellpadding : 0;
+                }
+            </style>
         </div>
 
     </template>
     <template id="report_patient_footer_template">
-        <div class="show_only_last_page" style="display: none;">
+        <div class="footer" style="font-family: TH Krub;">
+            <div class="show_only_last_page" style="display: none;">
+                <p>Thank you for your Go to Hospital</p>
+            </div>
 
+            <div>
+                <style>
+                    table.table{
+                    border-collapse: collapse;
+                    width: 100%;
+                    cellpadding : 0:
+                    }
+                    table.table > tr > td{
+                    border-collapse: collapse;
+                    }
+                </style>
+            </div>
+            <script>
+                function show_last_page(){
+                var vars = {};
+                // Query string
+                var x =document.location.search.substring(1).split('&');
+                for (var i in x) {
+                var z = x[i].split('=', 2);
+                vars[z[0]] = unescape(z[1])
+                }
+                //document.getElementById('debug').innerHTML += vars['sitepages'] + ", " + vars['sitepage'];
+                //current_page to_page
+                if(vars['sitepage'] == vars['sitepage']){
+                var items = document.getElementsByClassName('show_only_last_page');
+                for(var i=0;i < items.length;i++){
+                // document.getElementById('debug').innerHTML += ", " + i;
+                items[i].style.display = 'block';
+                }
+                }else{
+                var items = document.getElementsByClassName('show_only_last_page');
+                for(var i=0;i < items.length;i++){
+                // document.getElementById('debug').innerHTML += ", "+ i;
+                item[i].style.display = 'none';
+                }
+                }
+                }
+                show_last_page();
+            </script>
         </div>
-
     </template>
     <template id="report_patient_body_template">
         <t t-call="web.html_container">
@@ -20,7 +74,12 @@
                 </t>
                 <div class="article" style="font-family: TH Krub; width:100%">
                     <style>
-
+                        table.table2{
+                        border:Opx solid white;
+                        border-collapse: collapse;
+                        width: 100%
+                        cellpadding : 0;
+                        }
                     </style>
                 </div>
             </t>
