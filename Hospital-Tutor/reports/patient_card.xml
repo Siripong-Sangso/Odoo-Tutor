@@ -22,10 +22,6 @@
     </template>
     <template id="report_patient_footer_template">
         <div class="footer" style="font-family: TH Krub;">
-            <div class="show_only_last_page" style="display: none;">
-                <p>Thank you for your Go to Hospital</p>
-            </div>
-
             <div>
                 <style>
                     table.table{
@@ -38,33 +34,6 @@
                     }
                 </style>
             </div>
-            <script>
-                function show_last_page(){
-                var vars = {};
-                // Query string
-                var x =document.location.search.substring(1).split('&');
-                for (var i in x) {
-                var z = x[i].split('=', 2);
-                vars[z[0]] = unescape(z[1])
-                }
-                //document.getElementById('debug').innerHTML += vars['sitepages'] + ", " + vars['sitepage'];
-                //current_page to_page
-                if(vars['sitepage'] == vars['sitepage']){
-                var items = document.getElementsByClassName('show_only_last_page');
-                for(var i=0;i < items.length;i++){
-                // document.getElementById('debug').innerHTML += ", " + i;
-                items[i].style.display = 'block';
-                }
-                }else{
-                var items = document.getElementsByClassName('show_only_last_page');
-                for(var i=0;i < items.length;i++){
-                // document.getElementById('debug').innerHTML += ", "+ i;
-                item[i].style.display = 'none';
-                }
-                }
-                }
-                show_last_page();
-            </script>
         </div>
     </template>
     <template id="report_patient_body_template">
