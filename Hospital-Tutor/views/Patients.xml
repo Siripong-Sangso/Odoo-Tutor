@@ -67,7 +67,6 @@
                     <filter string="Gender" name="group_by_gender" context="{'group_by': 'gender'}"/>
                 </group>
             </search>
-
         </field>
     </record>
 
@@ -90,7 +89,7 @@
         <field name="name">Patient Card</field>
         <field name="model">hospital.patient</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">Hospital-Tutor.report_patient_card_template</field>
+        <field name="report_name">Hospital-Tutor.report_sale_order_custom_template</field>
         <field name="binding_model_id" ref="model_hospital_patient"/>
         <field name="binding_type">action</field>
     </record>

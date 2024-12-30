@@ -2,9 +2,7 @@
 <odoo>
     <data>
         <template id="report_sale_template_header">
-            <div class="header" style="font-family: TH Krub; margin-bottom: -5px; padding-bottom: 0px; width:100%;
-                                    font-family: TH Krub;
-                                    position: relative;">
+            <div class="header" style="font-family: TH Krub; margin-top: 20px; padding-bottom: 0px; width:100%; position: absolute;">
                 <style>
                     .custom-span {
                     font-size: 18px;
@@ -38,18 +36,20 @@
 <!--                                      style="margin: 0px; padding: 0px; line-height: 20px;"/>-->
 <!--                            </font>-->
 <!--                        </td>-->
-<!--                        <td rowspan="2" valign="top" style="text-align: center; line-height: 30px;">-->
-<!--                            <font style="font-size: 28px;">-->
-<!--                                <b>ใบลกหนี้/ใบกำกับภาษี</b>-->
-<!--                            </font>-->
-<!--                        </td>-->
+                        <td rowspan="3" valign="top" style="text-align: center; line-height: 30px;">
+                            <font style="font-size: 28px;">
+                                <b>ใบลูกหนี้/ใบกำกับภาษี</b>
+                                <b>รับคืนสินค้า</b>
+                                <b>ต้นฉบับ</b>
+                            </font>
+                        </td>
                     </tr>
                 </table>
             </div>
         </template>
         <template id="report_sale_template_footer">
             <!-- Footer -->
-            <div class="footer" style="font-family: TH Krub;  margin_bottom= 10px;  margin_top= 10px;";">
+            <div class="footer" style="font-family: TH Krub;">
                 <style>
                     .footer {
                     margin-top: 0px;
@@ -75,7 +75,7 @@
                 <t t-raw="0"/>
                 <table class="table">
                     <tr valign="middle">
-                        <td class="signature-line" style="text-align: right;.">
+                        <td class="signature-line" style="text-align: right; margin_bottom= 10px;  margin_top= 10px;">
                             ผู้มีอำนาจลงนาม
                         </td>
                     </tr>
@@ -87,7 +87,7 @@
                 <t t-foreach="docs" t-as="o">
                     <t t-call="Test_module_sale.report_sale_template_header">
                     </t>
-                    <div class="article" style="font-family: TH Krub; width:100%; padding-bottom: 5px;">
+                    <div class="article" style="font-family: TH Krub; width:100%; padding-bottom: 5px;  margin-top: 200px">
                         <style>
                             table.table2{
                             border: 0px solid white;
@@ -107,7 +107,7 @@
                             }
                         </style>
                         <t t-raw="0"/>
-                        <table class="table2" height="740" cellspacing="0" border-collapse="collapse"
+                        <table class="table2" height="800" cellspacing="0" border-collapse="collapse"
                                style="width:100%;">
                             <col width="15%"/>
                             <col width="35%"/>

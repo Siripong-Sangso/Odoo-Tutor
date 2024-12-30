@@ -11,7 +11,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/sale.xml',
-        'reports/sale_order_report.xml',
+        'reports/report.xml',
+        'reports/sale_report_template.xml',
     ],
     'demo': [
 
