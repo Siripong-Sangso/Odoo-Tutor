@@ -1,7 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_sale_order_partner_mobile,sale.order.partner_mobile,model_sale_order,base.group_user,1,1,1,0
 access_sale_order_project_number,sale.order.project_number,model_sale_order,base.group_user,1,1,1,0
-access_res_company_custom_fields,res.company.custom.fields,base.model_res_company,base.group_user,1,1,1,0
-access_res_company_user,res.company.user,base.model_res_company,base.group_user,1,1,0,0
-access_res_company_manager,res.company.manager,base.model_res_company,base.group_system,1,1,1,1
-access_res_company_inherit_user,res.company.inherit.user,base.model_res_company,base.group_user,1,1,0,0
+access_res_company_company_name_th,res.company.company_name_th,base.model_res_company,base.group_user,1,1,1,0
+access_res_company_company_name_eng,res.company.company_name_eng,base.model_res_company,base.group_user,1,1,1,0
+access_res_company_address_th,res.company.address_th,base.model_res_company,base.group_user,1,1,1,0
+access_res_company_address_eng,res.company.address_eng,base.model_res_company,base.group_user,1,1,1,0

@@ -5,20 +5,24 @@
         <field name="model">res.company</field>
         <field name="inherit_id" ref="base.view_company_form"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='name']" position="attributes">
-                <attribute name="string">Company Name (TH)</attribute>
-            </xpath>
-        </field>
-    </record>
-
-    <record id="view_company_tree_inherit" model="ir.ui.view">
-        <field name="name">res.company.tree.inherit</field>
-        <field name="model">res.company</field>
-        <field name="inherit_id" ref="base.view_company_tree"/>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='name']" position="attributes">
-                <attribute name="string">Company Name (TH)</attribute>
-            </xpath>
+            <field name="partner_id" position="after">
+                <field name="company_name_th" placeholder="e.g. My Company" widget="field_partner_autocomplete"
+                       modifiers="{&quot;required&quot;: true}"/>
+            </field>
+            <field name="currency_id" position="after">
+                <label for="street_th" string="Address (TH)"/>
+                <div class="o_address_format">
+                    <field name="street_th" placeholder="Street (TH)..." class="o_address_street"/>
+                    <field name="street2_th" placeholder="Street 2 (TH)..." class="o_address_street"/>
+                    <field name="city_th" placeholder="City (TH)..." class="o_address_city"/>
+                    <field name="state_id_th" placeholder="State (TH)..." class="o_address_state"
+                           options="{&quot;no_open&quot;: True}" on_change="1" can_create="true" can_write="true"/>
+                    <field name="zip_th" placeholder="ZIP (TH)..." class="o_address_zip"/>
+                    <field name="country_id_th" placeholder="Country (TH)..." class="o_address_country"
+                           options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}" on_change="1"
+                           can_create="true" can_write="true"/>
+                </div>
+            </field>
         </field>
     </record>
 </odoo>
