@@ -8,7 +8,7 @@
         <field name="margin_top">100</field> <!-- ระยะขอบด้านบน (มม.) -->
         <field name="margin_bottom">10</field> <!-- ระยะขอบด้านล่าง (มม.) -->
         <field name="margin_left">15</field> <!-- ระยะขอบด้านซ้าย (มม.) -->
-        <field name="margin_right">5</field> <!-- ระยะขอบด้านขวา (มม.) -->
+        <field name="margin_right">15</field> <!-- ระยะขอบด้านขวา (มม.) -->
         <field name="header_spacing">100</field> <!-- ระยะระหว่างหัวกระดาษกับเนื้อหา (มม.) -->
         <field name="dpi">90</field> <!-- ความละเอียด DPI (Default: 90) -->
     </record>
