@@ -2,14 +2,14 @@
 <odoo>
     <record id="paperformat_a4_custom" model="report.paperformat">
         <field name="name">A4 Custom Format</field>
-        <field name="default" eval="False"/> <!-- กำหนด True ถ้าให้เป็นค่าเริ่มต้น -->
+        <field name="default" eval="True"/> <!-- กำหนด True ถ้าให้เป็นค่าเริ่มต้น -->
         <field name="format">A4</field> <!-- ชื่อฟอร์แมต -->
         <field name="orientation">Portrait</field> <!-- แนวกระดาษ: Portrait หรือ Landscape -->
-        <field name="margin_top">100</field> <!-- ระยะขอบด้านบน (มม.) -->
-        <field name="margin_bottom">10</field> <!-- ระยะขอบด้านล่าง (มม.) -->
+        <field name="margin_top">75</field> <!-- ระยะขอบด้านบน (มม.) -->
+        <field name="margin_bottom">20</field> <!-- ระยะขอบด้านล่าง (มม.) -->
         <field name="margin_left">15</field> <!-- ระยะขอบด้านซ้าย (มม.) -->
         <field name="margin_right">15</field> <!-- ระยะขอบด้านขวา (มม.) -->
-        <field name="header_spacing">100</field> <!-- ระยะระหว่างหัวกระดาษกับเนื้อหา (มม.) -->
+        <field name="header_spacing">66</field> <!-- ระยะระหว่างหัวกระดาษกับเนื้อหา (มม.) -->
         <field name="dpi">90</field> <!-- ความละเอียด DPI (Default: 90) -->
     </record>
 
