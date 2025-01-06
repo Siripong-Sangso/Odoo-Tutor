@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Test module sale',
-    'autor': 'Tutor',
+    'author': 'Tutor',
     'website': 'https://rbs.co.th/',
     'summary': 'Odoo 16 Development',
     'sequence': 1,

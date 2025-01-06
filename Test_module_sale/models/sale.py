@@ -5,9 +5,7 @@ from odoo.exceptions import ValidationError
 class ResCompanyInherit(models.Model):
     _inherit = 'res.company'
 
-    address_eng = fields.Text(string="Address (EN)", search=True)
     company_name_th = fields.Char(string="Company Name (TH)")
-    company_name_eng = fields.Char(string="Company Name (EN)")
     street_th = fields.Char(string="Street (TH)")
     street2_th = fields.Char(string="Street 2 (TH)")
     city_th = fields.Char(string="City (TH)")
@@ -34,13 +32,6 @@ class ResCompanyInherit(models.Model):
         for record in self:
             if record.company_name_th and any(char.isdigit() for char in record.company_name_th):
                 raise ValidationError("The Thai company name should not contain any digits.")
-
-    @api.constrains('company_name_eng')
-    def _check_company_name_eng(self):
-        for record in self:
-            if record.company_name_eng and not record.company_name_eng.isalpha():
-                raise ValidationError("The English company name should contain only alphabetic characters.")
-
 
 class SaleOrderInherit(models.Model):
     _inherit = 'sale.order'
