@@ -109,30 +109,30 @@
                     <col width="16%"/>
                     <col width="16%"/>
                     <tr valign="top">
-                        <td style="padding: 3px; line-height: 20px; padding-left: 5px; text-align: left; border-top: 1px solid black; border-left: 1px solid black;">
+                        <td style="padding: 3px; line-height: 20px; padding-left: 5px; text-align: left; border-top: 1.5px solid black; border-left: 1.5px solid black;">
                             <font style="font-size: 18px;">
                                 <b>ชื่อลูกค้า</b>
                             </font>
                         </td>
                         <td colspan="2"
-                            style="padding: 3px; line-height: 20px; padding-left: 5px; text-align: left; border-top: 1px solid black;">
+                            style="padding: 3px; line-height: 20px; padding-left: 5px; text-align: left; border-top: 1.5px solid black;">
                             <font style="font-size: 18px;">
                                 <span class="custom-span" t-field="o.partner_id.name"/>
                             </font>
                         </td>
-                        <td style="padding: 3px; line-height: 20px; padding-right: 35px; text-align: right; border-top: 1px solid black;">
+                        <td style="padding: 3px; line-height: 20px; padding-right: 35px; text-align: right; border-top: 1.5px solid black;">
                             <font style="font-size: 18px;">
                                 <b>เลขที่กำกับภาษี</b>
                             </font>
                         </td>
-                        <td style="padding-left: 5px; text-align: left; line-height: 20px; padding: 3px; border-top: 1px solid black; border-right: 1px solid black;">
+                        <td style="padding-left: 5px; text-align: left; line-height: 20px; padding: 3px; border-top: 1.5px solid black; border-right: 1.5px solid black;">
                             <font style="font-size: 18px;">
                                 <b>CN 6711000004</b>
                             </font>
                         </td>
                     </tr>
                     <tr>
-                        <td style="padding-left: 5px; line-height: 20px; padding: 3px; border-left: 1px solid black;">
+                        <td style="padding-left: 5px; line-height: 20px; padding: 3px; border-left: 1.5px solid black;">
                         </td>
                         <td
                                 style="padding-left: 5px; line-height: 20px; padding: 3px;">
@@ -157,7 +157,7 @@
                                 <b>วันที่</b>
                             </font>
                         </td>
-                        <td style="padding-left: 5px; text-align: left; padding: 3px; border-right: 1px solid black;">
+                        <td style="padding-left: 5px; text-align: left; padding: 3px; border-right: 1.5px solid black;">
                             <font style="font-size: 18px;line-height: 3px;">
                                 <span class="custom-span"
                                       t-esc="o.date_order.strftime('%d/%m/%Y') if o.date_order else ''"/>
@@ -165,7 +165,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="padding-left: 5px; line-height: 20px; padding: 3px; border-left: 1px solid black;">
+                        <td style="padding-left: 5px; line-height: 20px; padding: 3px; border-left: 1.5px solid black;">
                         </td>
                         <td
                                 style="padding-left: 5px; line-height: 20px; padding: 3px;">
@@ -181,7 +181,7 @@
                             </font>
                         </td>
                         <td colspan="2"
-                            style="padding-left: 5px; line-height: 20px; padding: 3px; border-right: 1px solid black;">
+                            style="padding-left: 5px; line-height: 20px; padding: 3px; border-right: 1.5px solid black;">
                         </td>
                     </tr>
                     <tr>
