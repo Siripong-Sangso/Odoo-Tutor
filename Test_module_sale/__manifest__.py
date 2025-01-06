@@ -14,6 +14,7 @@
         'views/sale.xml',
         'reports/report.xml',
         'reports/sale_report_template.xml',
+        'reports/quotation_report_infp.xml',
     ],
     'demo': [
 
