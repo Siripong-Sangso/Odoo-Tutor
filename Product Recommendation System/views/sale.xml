@@ -1,0 +1,13 @@
+<odoo>
+    <record id="view_order_form_recommendation" model="ir.ui.view">
+        <field name="name">sale.order.form.recommendation</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <sheet>
+                <button name="action_recommend_products" type="object" string="แนะนำสินค้า" class="oe_highlight"/>
+                <field name="recommended_products" widget="many2many_tags" readonly="1"/>
+            </sheet>
+        </field>
+    </record>
+</odoo>
