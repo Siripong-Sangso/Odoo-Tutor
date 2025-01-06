@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="paperformat_A4_sale_order" model="report.paperformat">
+            <field name="name">A4 Sale order</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">85</field>
+            <field name="margin_bottom">55</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">80</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="paperformat_A4_sale_order_2" model="report.paperformat">
+            <field name="name">A4 Sale order 2</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">89</field>
+            <field name="margin_bottom">40</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">79</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="paperformat_A4_sale_2" model="report.paperformat">
+            <field name="name">A4 Sale order V2</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">93</field>
+            <field name="margin_bottom">40</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">90</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="paperformat_A4_summary_sale" model="report.paperformat">
+            <field name="name">A4 Sales Summary</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">55</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">50</field>
+            <field name="dpi">90</field>
+        </record>
+
+
+        <report
+                id="action_quotation_report_id_ill_pdf"
+                model="sale.order"
+                report_type="qweb-pdf"
+                string="Quotation"
+                paperformat="paperformat_A4_sale_order_2"
+                name="aaa_sales.quotation_report_id_ill"
+                file="aaa_sales.quotation_report_id_ill"
+                menu="False"/>
+
+        <report
+                id="action_sale_order_th_report_pdf"
+                model="sale.order"
+                report_type="qweb-pdf"
+                string="Sale order V.TH"
+                paperformat="paperformat_A4_sale_order"
+                name="aaa_sales.sale_order_th_report_id"
+                file="aaa_sales.sale_order_th_report_id"
+                menu="True"/>
+
+        <report
+                id="action_sale_order_eng_report_pdf"
+                model="sale.order"
+                report_type="qweb-pdf"
+                string="Sale order V.ENG"
+                paperformat="paperformat_A4_sale_order"
+                name="aaa_sales.sale_order_eng_report_id"
+                file="aaa_sales.sale_order_eng_report_id"
+                menu="True"/>
+
+        <report
+                id="action_sales_summary_detailed_pdf"
+                model="sales.summary.report"
+                report_type="qweb-pdf"
+                string="Sales Summary and Detailed Report"
+                paperformat="paperformat_A4_summary_sale"
+                name="aaa_sales.report_sales_detailed_summary"
+                file="aaa_sales.report_sales_detailed_summary"/>
+
+        <report
+                id="action_sales_summary_pdf"
+                model="sales.summary.report"
+                report_type="qweb-pdf"
+                string="Sales Summary Report"
+                paperformat="paperformat_A4_summary_sale"
+                name="aaa_sales.report_sales_summary"
+                file="aaa_sales.report_sales_summary"/>
+
+    </data>
+</odoo>

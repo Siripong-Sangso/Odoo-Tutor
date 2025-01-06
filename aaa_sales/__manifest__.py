@@ -1,0 +1,32 @@
+# -*- coding: utf-8 -*-
+
+{
+    'name': 'AAA Sale order V16',
+    'version': '1.0.0',
+    'category': 'Sale',
+    'summary': '',
+    'description': 'Odoo 16 Purchase',
+    'sequence': '1',
+    'website': 'https://www.anyworkanywhereanytime.com',
+    'author': 'AAA',
+    'maintainer': 'AAA',
+    'license': 'LGPL-3',
+    'support': 'info@rbs-center.info',
+    'depends': ['base', 'sale'],
+    'demo': [],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/sale_order_view.xml',
+        'wizard/sales_summary_wizard.xml',
+        'reports/report_reg.xml',
+        'reports/sale_order_th_report.xml',
+        'reports/sale_order_eng_report.xml',
+        'reports/quotation_report_ill.xml',
+        'reports/sales_summary_report.xml',
+        'reports/sales_summary_detailed_report.xml',
+    ],
+    'installable': True,
+    'application': True,
+    'auto_install': False,
+    'images': ['static/description/icon.png'],
+}

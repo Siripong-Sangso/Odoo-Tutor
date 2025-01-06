@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="quotation_header_template_ill">
+            <div class="header" style="font-family: TH Krub; margin-bottom: -5px; padding-bottom: 0px; width:100%;
+                                    font-family: TH Krub;
+                                    position: relative;">
+                <style>
+                    .custom-span {
+                    font-size: 18px;
+                    margin: 0px;
+                    padding: 0px;
+                    line-height: 22px;
+                    }
+                    table.table_hd{
+                    border: 0px solid white;
+                    border-collapse: collapse;
+                    width: 100%;
+                    cellpadding : 0;
+                    }
+                </style>
+                <t t-raw="0"/>
+                <table class="table_hd" style="width:100%; margin-bottom: -5px;">
+                    <tr valign="middle">
+                        <td rowspan="2" valign="middle" style="text-align:left; padding: 3px; line-height: 20px;">
+                            <font style="font-size: 24px;">
+                                <br/>
+                                <img t-att-src="image_data_uri(o.company_id.logo)" width="140" height="80"/>
+                            </font>
+                        </td>
+                        <td valign="top" style="text-align:left;">
+                            <font style="font-size: 24px;">
+                                <span t-field="o.company_id.company_name_th"
+                                      style="margin: 0px; padding: 0px; line-height: 20px;"/>
+                                <br/>
+                            </font>
+                            <font style="font-size: 22px;">
+                                <span t-field="o.company_id.company_name_eng"
+                                      style="margin: 0px; padding: 0px; line-height: 20px;"/>
+                            </font>
+                        </td>
+                        <td rowspan="2" valign="top" style="text-align: center; line-height: 30px;">
+                            <font style="font-size: 28px;">
+                                <b>ใบเสนอราคา</b>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" style="text-align:left; padding: 3px; line-height: 8px; ">
+                            <font style="font-size: 18px;">
+                                <span class="custom-span" t-field="o.company_id.address_th"/>
+                                <br/>
+                                <span class="custom-span" t-field="o.company_id.address_eng"/>
+                                <br/>
+                                Tel.<span class="custom-span" t-field="o.company_id.phone"/>&amp;nbsp;&amp;nbsp;
+                                <t t-if="o.company_id.phone">
+                                    Email :
+                                    <span class="custom-span" t-field="o.company_id.email"/>
+                                </t>
+                            </font>
+                        </td>
+                        <tr>
+                            <td height="18px" valign="top" style="text-align:left; padding: 3px; line-height: 8px; ">
+                            </td>
+                            <td height="18px" valign="top" style="text-align:left; padding: 3px; line-height: 8px; ">
+                                <font style="font-size: 18px;">
+                                    เลขประจำตัวผู้เสียภาษีอาการ/TAX ID No.&amp;nbsp;
+                                    <span class="custom-span" t-field="o.company_id.vat"/>&amp;nbsp;&amp;nbsp;
+                                    <span class="custom-span" t-field="o.company_id.branch_name"/>
+                                </font>
+                            </td>
+                            <td height="18px" valign="bottom"
+                                style="text-align: right; padding: 3px; line-height: 8px;">
+                                <font style="font-size: 13px;">
+                                    <span class="custom-span">หน้า</span>
+                                    <span class="page"/> <!-- แสดงเลขหน้าปัจจุบัน -->
+                                    <span class="custom-span">จาก</span>
+                                    <span class="topage"/> <!-- แสดงจำนวนหน้าทั้งหมด -->
+                                </font>
+                            </td>
+                        </tr>
+                    </tr>
+                </table>
+                <table height="188px" class="table_hd" cellspacing="0" border-collapse="collapse"
+                       style="width:100%; margin-top: 15px;">
+                    <col width="8%"/>
+                    <col width="21%"/>
+                    <col width="20%"/>
+                    <col width="24%"/>
+                    <col width="12%"/>
+                    <col width="15%"/>
+                    <tr>
+                        <td style="padding-left: 5px; text-align: left; border-top: 1px solid blue; border-left: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <b>ลูกค้า</b>
+                            </font>
+                        </td>
+                        <td colspan="3"
+                            style="padding-left: 5px; text-align: left; border-top: 1px solid blue; border-right: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <span t-field="o.partner_id.sequence_number"/>
+                            </font>
+                        </td>
+                        <td style="padding-left: 5px; text-align: left; border-top: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <b>เลขที่เอกสาร</b>
+                            </font>
+                        </td>
+                        <td style="padding-left: 5px; text-align: left; border-top: 1px solid blue; border-right: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <span class="custom-span" t-field="o.name"/>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-left: 5px; text-align: left; border-left: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <b>ชื่อลูกค้า</b>
+                            </font>
+                        </td>
+                        <td colspan="3" style="padding-left: 5px; text-align: left;">
+                            <font style="font-size: 18px;">
+                                <span class="custom-span" t-field="o.partner_id.name"/>
+                            </font>
+                        </td>
+                        <td style="padding-left: 5px; text-align: left; border-left: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <b>วันที่เอกสาร</b>
+                            </font>
+                        </td>
+                        <td style="padding-left: 5px; text-align: left; border-right: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <span class="custom-span"
+                                      t-esc="o.date_order.strftime('%d/%m/%Y') if o.date_order else ''"/>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="3"
+                            style="padding-left: 5px; text-align: left; line-height: 12px; border-left: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <b>ที่อยู่</b>
+                            </font>
+                        </td>
+                        <td colspan="3" style="padding-left: 5px; text-align: left; line-height: 12px;">
+                            <font style="font-size: 18px;">
+                                <span class="custom-span" t-field="o.partner_id.street"/>
+                            </font>
+                        </td>
+                        <td style="padding-left: 5px; text-align: left; line-height: 12px; border-left: 1px solid blue;">
+                            <font class="custom-span" style="font-size: 18px;">
+                                <b>ยืนราคาภายใน</b>
+                            </font>
+                        </td>
+                        <td style="padding-left: 5px; text-align: left; line-height: 12px; border-right: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <span t-esc="'{0:,.0f}'.format(float(o.validity_days))"/>&amp;nbsp;&amp;nbsp;วัน
+                                <!--                                <t t-if="o.date_order and o.validity_date">-->
+                                <!--                                    <t t-set="days_diff" t-value="(o.validity_days - o.date_order).days"/>-->
+                                <!--                                    <span>Valid for:-->
+                                <!--                                        <t class="custom-span" t-esc="days_diff"/>-->
+                                <!--                                    </span>-->
+                                <!--                                </t>-->
+                                <!--                                <t t-else="">-->
+                                <!--                                    <span class="custom-span">Invalid date</span>-->
+                                <!--                                </t>-->
+                            </font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: left; line-height: 12px; padding-left: 5px;">
+                            <font style="font-size: 18px;">
+                                <span class="custom-span" t-field="o.partner_id.street2"/>
+                            </font>
+                        </td>
+                        <td style="text-align: left; line-height: 12px; padding-left: 5px; border-left: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <b>วันที่หมดอายุ</b>
+                            </font>
+                        </td>
+                        <td style="text-align: left; line-height: 12px; padding-left: 5px; border-right: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <span class="custom-span"
+                                      t-esc="o.expiration_date.strftime('%d/%m/%Y') if o.expiration_date else ''"/>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="text-align: left; line-height: 12px; padding-left: 5px;">
+                            <font style="font-size: 18px;">
+                                <span class="custom-span" t-field="o.partner_id.city"/>
+                                <span class="custom-span" t-field="o.partner_id.state_id.name"/>
+                                <span class="custom-span" t-field="o.partner_id.zip"/>
+                            </font>
+                        </td>
+                        <td style="text-align: left; line-height: 12px; padding-left: 5px; border-left: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <b>ส่งของภายใน</b>
+                            </font>
+                        </td>
+                        <td style="text-align: left; line-height: 12px; padding-left: 5px; border-right: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <t t-if="o.date_order and o.commitment_date">
+                                    <t t-set="days_diff" t-value="(o.commitment_date - o.date_order).days"/>
+                                    <span class="custom-span" t-esc="days_diff"/>&amp;nbsp;&amp;nbsp;วัน
+                                </t>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; line-height: 12px; padding-left: 5px; border-left: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <b>โทรศัพท์</b>
+                            </font>
+                        </td>
+                        <td colspan="2" style="text-align: left; line-height: 12px; padding-left: 5px;">
+                            <font style="font-size: 18px;">
+                                <span class="custom-span" t-field="o.partner_id.phone"/>
+                            </font>
+                        </td>
+                        <td style="text-align: left; line-height: 12px; padding-left: 5px;">
+                            <font style="font-size: 18px;">
+                                <b>โทรสาร</b>&amp;nbsp;&amp;nbsp;
+                                <span class="custom-span" t-field="o.partner_id.fax"/>
+                            </font>
+                        </td>
+                        <td style="text-align: left; line-height: 12px; padding-left: 5px; border-left: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <b>เครดิต</b>
+                            </font>
+                        </td>
+                        <td style="text-align: left; line-height: 12px; padding-left: 5px; border-right: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <t t-if="o.payment_term_id"><span class="custom-span" t-field="o.payment_term_id.name"/>&amp;nbsp;&amp;nbsp;วัน</t>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; line-height: 12px; padding-left: 5px; border-left: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <b>ผู้ติดต่อ</b>
+                            </font>
+                        </td>
+                        <td style="text-align: left; line-height: 12px; padding-left: 5px;">
+                            <font style="font-size: 18px;">
+                                <span class="custom-span" t-field="o.contact_person.name"/>&amp;nbsp;&amp;nbsp;
+                            </font>
+                        </td>
+                        <td style="text-align: left; line-height: 12px; padding-left: 5px;">
+                            <font style="font-size: 18px;">
+                                <b>โทรศัพท์</b>&amp;nbsp;&amp;nbsp;
+                                <span class="custom-span" t-field="o.contact_person.phone"/>
+                            </font>
+                        </td>
+                        <td style="text-align: left; line-height: 12px; padding-left: 5px;">
+                            <font style="font-size: 18px;">
+                                <b>อีเมล์</b>&amp;nbsp;&amp;nbsp;
+                                <span class="custom-span" t-field="o.contact_person.email"/>
+                            </font>
+                        </td>
+                        <td style="text-align: left; line-height: 12px; padding-left: 5px; border-left: 1px solid blue; ">
+                            <font style="font-size: 18px;">
+                                <b>เลขอ้างอิง</b>
+                            </font>
+                        </td>
+                        <td style="text-align: left; line-height: 12px; padding-left: 5px; border-right: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <span class="custom-span" t-field="o.origin"/>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; line-height: 18px; padding-left: 5px; border-left: 1px solid blue; border-bottom: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <b>โครงการ</b>
+                            </font>
+                        </td>
+                        <td colspan="3" style="text-align: left; line-height: 12px; padding-left: 5px; border-bottom: 1px solid blue;">
+                            <font style="font-size: 18px;">
+                                <t t-if="o.project_name">
+                                    <span class="custom-span" t-field="o.project_name"/>
+                                </t>
+                                <t t-else="">
+                                    <span class="custom-span"></span>
+                                </t>
+                            </font>
+                        </td>
+                        <td colspan="2"
+                            style="text-align: left; line-height: 12px; padding-left: 5px; border-bottom: 1px solid blue; border-left: 1px solid blue; border-right: 1px solid blue;">
+                            <font style="font-size: 18px;">
+
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </template>
+
+        <template id="quotation_footer_template_ill">
+            <div class="footer" style="font-family: TH Krub ;">
+                <div class="show_only_last_page" style="display: none;">
+
+                </div>
+
+                <div>
+                    <style>
+                        table.table{
+                        border-collapse: collapse;
+                        width: 100%;
+                        cellpadding : 0;
+                        }
+                        table.table > tr &gt; td{
+                        border-collapse: collapse;
+                        }
+                    </style>
+                    <table style="width:100%; margin-bottom: 5px;">
+                        <col width="33%"/>
+                        <col width="33%"/>
+                        <col width="34%"/>
+                        <tr>
+                            <td style="border: 1px solid blue; text-align: center; padding: 3px;">
+                                <font style="font-size: 18px;">
+                                    <br/>
+                                    <br/>
+                                    .................................................
+                                    <br/>
+                                    พนักงานขาย
+                                    <br/>
+                                    <br/>
+                                    .................................................
+                                </font>
+                            </td>
+                            <td style="border: 1px solid blue; text-align: center; padding: 3px;">
+                                <font style="font-size: 18px;">
+                                    <br/>
+                                    <br/>
+                                    .................................................
+                                    <br/>
+                                    ผู้จัดการฝ่ายขาย
+                                    <br/>
+                                    <br/>
+                                    .................................................
+                                </font>
+                            </td>
+                            <td style="border: 1px solid blue; text-align: center; padding: 3px;">
+                                <font style="font-size: 18px; ">
+                                    <br/>
+                                    <br/>
+                                    .................................................
+                                    <br/>
+                                    ผู้สั่งซื้อ
+                                    <br/>
+                                    <br/>
+                                    .................................................
+                                </font>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="row">
+                    <span style="font-size: 14px; font-style: italic; color: #888888; white-space: nowrap;">
+                        พิมพ์โดย:
+                        <t t-esc="user.name"/>
+                        วันที่พิมพ์:
+                        <t t-esc="time.strftime('%d/%m/%Y %H:%M:%S')"/>
+                    </span>
+                </div>
+
+
+                <!--            <span class="page"/>/-->
+                <!--            <span t-esc="i"/>-->
+                <div id="debug"></div>
+                <script>
+                    function show_last_page(){
+                    var vars = {};
+                    // Query string
+                    var x = document.location.search.substring(1).split('&amp;');
+                    for (var i in x) {
+                    var z = x[i].split('=', 2);
+                    vars[z[0]] = unescape(z[1]);
+                    }
+                    //document.getElementById('debug').innerHTML += vars['sitepages'] + ", " + vars['sitepage'];
+                    // current_page to_page
+                    if(vars['sitepage'] === vars['sitepages']){
+                    var items = document.getElementsByClassName('show_only_last_page');
+                    for(var i=0;i &lt; items.length;i++){
+                    // document.getElementById('debug').innerHTML += ", " + i;
+                    items[i].style.display = 'block';
+                    }
+                    }else{
+                    var items = document.getElementsByClassName('show_only_last_page');
+                    for(var i=0;i &lt; items.length;i++){
+                    // document.getElementById('debug').innerHTML += ", " + i;
+                    items[i].style.display = 'none';
+                    }
+                    }
+                    }
+                    show_last_page();
+                </script>
+            </div>
+        </template>
+
+        <template id="quotation_report_id_ill">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="aaa_sales.quotation_header_template_ill">
+                    </t>
+                    <div class="article" style="font-family: TH Krub; width:100%">
+                        <style>
+                            table.table2{
+                            border: 0px solid white;
+                            border-collapse: collapse;
+                            width: 100%;
+                            cellpadding : 0;
+                            }
+                            table.fixed &gt; thead > tr &gt; th{
+                            border-top: 0.5px solid black;
+                            border-bottom: 0.5px solid black;
+                            border-collapse: collapse;
+                            }
+                            table.fixed &gt; tbody > tr &gt; td{
+                            border-top: 0.5px solid grey;
+                            border-bottom: 0.5px solid grey;
+                            border-collapse: collapse;
+                            }
+                        </style>
+                        <t t-raw="0"/>
+                        <table class="table2" height="740" cellspacing="0" border-collapse="collapse"
+                               style="width:100%;">
+                            <col width="5%"/>
+                            <col width="43%"/>
+                            <col width="12%"/>
+                            <col width="10%"/>
+                            <col width="10%"/>
+                            <col width="8%"/>
+                            <col width="12%"/>
+                            <thead>
+                                <tr valign="center">
+                                    <th style="text-align: center; vertical-align: middle; line-height: 24px; padding: 5px; border-top: 1px solid blue; border-bottom: 1px solid blue;">
+                                        <font style="font-size: 18px; line-height: 24px;">
+                                            <b>ลำดับ</b>
+                                        </font>
+                                    </th>
+
+                                    <th style="text-align: center; vertical-align: middle; line-height: 24px; border-left: 1px solid blue; padding: 5px; border-top: 1px solid blue; border-bottom: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            <b>รายละเอียดสินค้า</b>
+                                        </font>
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle; line-height: 24px; border-left: 1px solid blue; padding: 5px; border-top: 1px solid blue; border-bottom: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            <b>จำนวน</b>
+                                        </font>
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle; line-height: 24px; border-left: 1px solid blue; padding: 5px; border-top: 1px solid blue; border-bottom: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            <b>หน่วย</b>
+                                        </font>
+                                    </th>
+                                    <th style="text-align: right; vertical-align: middle; line-height: 24px; padding: 5px; border-left: 1px solid blue; border-top: 1px solid blue; border-bottom: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            <b>ราคา/หน่อย</b>
+                                        </font>
+                                    </th>
+                                    <th style="text-align: right; vertical-align: middle; line-height: 24px; padding: 5px; border-left: 1px solid blue; border-top: 1px solid blue; border-bottom: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            <b>ส่วนลด</b>
+                                        </font>
+                                    </th>
+                                    <th style="text-align: right; vertical-align: middle; line-height: 24px; padding: 5px; border-left: 1px solid blue; border-top: 1px solid blue; border-bottom: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            <b>จำนวนเงิน</b>
+                                        </font>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="i" t-value="1"/>
+                                <t t-set="line_count" t-value="0"/>
+                                <t t-set="count" t-value="0"/>
+                                <t t-foreach="o.order_line" t-as="l">
+                                    <tr valign="top">
+                                        <td style="text-align: center; line-height: 20px; padding: 3px;">
+                                            <font style="font-size: 18px;">
+                                                <span t-esc="i"/>
+                                            </font>
+                                        </td>
+                                        <t t-set="i" t-value="i+1"/>
+                                        <td style="text-align: left; line-height: 20px; padding: 3px;">
+                                            <font style="font-size: 18px;">
+                                                <div t-field="l.name"
+                                                     style="white-space: normal; overflow-wrap: break-word; width: 300px;"/>
+                                            </font>
+                                        </td>
+                                        <!-- นับจำนวนบรรทัดของข้อความ -->
+                                        <t t-set="line_count" t-value="l.get_line_count()"/>
+                                        <!-- เพิ่มจำนวนบรรทัดลงในตัวแปร count -->
+                                        <t t-set="count" t-value="count + line_count"/>
+
+                                        <td style="text-align: right; line-height: 20px; padding: 3px;">
+                                            <font style="font-size: 18px;">
+                                                <span t-esc="'{0:,.2f}'.format(float(l.product_uom_qty))"/>
+                                            </font>
+                                        </td>
+                                        <td style="text-align: left; line-height: 20px; padding: 3px;">
+                                            <font style="font-size: 18px;">
+                                                &amp;nbsp;&amp;nbsp;
+                                                <span t-esc="l.product_uom.name"/>
+                                            </font>
+                                        </td>
+                                        <td style="text-align: right; line-height: 20px; padding: 3px;">
+                                            <font style="font-size: 18px;">
+                                                <span t-esc="'{0:,.2f}'.format(float(l.price_unit))"/>
+                                            </font>
+                                        </td>
+                                        <td style="text-align: right; line-height: 20px; padding: 3px;">
+                                            <font style="font-size: 18px;">
+                                                <span t-esc="'{0:,.2f}'.format(float(l.discount_fixed))"/>
+                                            </font>
+                                        </td>
+                                        <td style="text-align: right; line-height: 20px; padding: 3px; padding-right: 5px;">
+                                            <font style="font-size: 18px;">
+                                                <span t-esc="'{0:,.2f}'.format(float(l.price_subtotal))"/>
+                                            </font>
+                                        </td>
+                                    </tr>
+                                </t>
+
+                                <!-- Loop สำหรับแสดงช่องว่าง หากไม่ถึงจำนวนบรรทัดที่กำหนด -->
+
+                                <t t-foreach="range(int(count), 16)" t-as="x">
+                                    <tr>
+                                        <td style="text-align: right; line-height: 20px; padding: 3px;">
+                                            <font style="font-size: 18px;">
+                                                <span>&amp;nbsp;</span>
+                                            </font>
+                                        </td>
+                                        <td colspan="6" style="line-height: 20px; padding: 3px;">
+                                            <span>&amp;nbsp;</span>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr valign="top">
+                                    <td colspan="4" rowspan="2"
+                                        style="padding-left: 5px; text-align: left; line-height: 20px; border-left: 1px solid blue; border-top: 1px solid blue; border-right: 1px solid blue; ">
+                                        <font style="font-size: 18px;">
+                                            หมายเหตุ&amp;nbsp;&amp;nbsp;
+                                            <span t-field="o.note"/>
+                                        </font>
+                                    </td>
+                                    <td colspan="2"
+                                        style="padding-left: 5px; line-height: 20px; border-top: 1px solid blue; border-right: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            รวมมูลค่า
+                                        </font>
+                                    </td>
+                                    <td style="padding-right: 5px; text-align: right; line-height: 20px; border-top: 1px solid blue; border-right: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(o.total_before_discount_and_tax))"/>
+                                        </font>
+                                    </td>
+                                </tr>
+                                <tr valign="top">
+                                    <td colspan="2"
+                                        style="padding-left: 5px; solid black; line-height: 20px; border-right: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            ส่วนลด
+                                        </font>
+                                    </td>
+                                    <td style="padding-right: 5px; text-align: right;  line-height: 20px; border-right: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(o.total_discount))"/>
+                                        </font>
+                                    </td>
+                                </tr>
+                                <tr valign="top">
+                                    <td colspan="2"
+                                        style="padding-left: 5px;  line-height: 20px; border-left: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            พนักงานขาย&amp;nbsp;&amp;nbsp;
+                                            <span t-field="o.user_id.name"/>
+                                        </font>
+                                    </td>
+                                    <td colspan="2" style="line-height: 20px;">
+                                        <font style="font-size: 18px;">
+                                            โทรศัพท์&amp;nbsp;&amp;nbsp;
+                                            <span t-field="o.user_id.phone"/>
+                                        </font>
+                                    </td>
+
+                                    <td colspan="2"
+                                        style="padding-left: 5px; line-height: 20px; border-left: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            มูลค่าหลังหักส่วนลด
+                                        </font>
+                                    </td>
+                                    <td style="padding-right: 5px; text-align: right; line-height: 20px; border-left: 1px solid blue; border-right: 1px solid blue; ">
+                                        <font style="font-size: 18px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(o.amount_untaxed))"/>
+                                        </font>
+                                    </td>
+                                </tr>
+                                <tr valign="top">
+                                    <td colspan="4"
+                                        style="padding-left: 5px; line-height: 20px; border-left: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            อีเมล์&amp;nbsp;&amp;nbsp;
+                                            <span t-field="o.user_id.login"/>
+                                        </font>
+                                    </td>
+
+                                    <td colspan="2"
+                                        style="padding-left: 5px; line-height: 20px; border-left: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            ภาษีมูลค่าเพิ่ม 7.00%
+                                        </font>
+                                    </td>
+                                    <td style="padding-right: 5px; text-align: right; line-height: 20px; border-left: 1px solid blue; border-right: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(o.amount_tax))"/>
+                                        </font>
+                                    </td>
+                                </tr>
+                                <tr valign="middle">
+                                    <td valign="middle" colspan="4"
+                                        style="valign=middle; background-color:#cfcfcf; line-height: 20px; text-align: center; border-left: 1px solid blue; border-bottom: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            <b>(<span t-esc="o.baht_text(o.amount_total)"/>)
+                                            </b>
+                                        </font>
+                                    </td>
+                                    <td colspan="2"
+                                        style="padding-left: 5px; line-height: 20px; border-left: 1px solid blue; border-bottom: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            จำนวนเงินทั้งสิ้น
+                                        </font>
+                                    </td>
+                                    <td style="padding-right: 5px; text-align: right; line-height: 20px; border-left: 1px solid blue; border-right: 1px solid blue; border-bottom: 1px solid blue;">
+                                        <font style="font-size: 18px;">
+                                            <b>
+                                                <u>
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_total))"/>
+                                                </u>
+                                            </b>
+                                        </font>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <t t-call="aaa_sales.quotation_footer_template_ill">
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

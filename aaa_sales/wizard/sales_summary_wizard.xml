@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Action to open the Sales Summary Report Wizard -->
+    <record id="action_sales_summary_report_wizard" model="ir.actions.act_window">
+        <field name="name">Sales Summary Report</field>
+        <field name="res_model">sales.summary.report</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- Wizard View for Sales Summary Report -->
+    <record id="view_sales_summary_report_wizard" model="ir.ui.view">
+        <field name="name">sales.summary.report.wizard.form</field>
+        <field name="model">sales.summary.report</field>
+        <field name="arch" type="xml">
+            <form string="Sales Summary Report">
+                <group>
+                    <group>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                        <field name="sort_option"/>
+                        <field name="customer_ids" widget="many2many_tags"
+                               attrs="{'invisible': [('sort_option', '!=', 'sort_customer')]}"/>
+                        <field name="salesperson_ids" widget="many2many_tags"
+                               attrs="{'invisible': [('sort_option', '!=', 'sort_salesperson')]}"/>
+                        <field name="report_type" widget="radio"/>
+                    </group>
+                    <group>
+                        <field name="status" widget="radio"/>
+                        <field name="company_id"/>
+                    </group>
+                </group>
+                <footer>
+                    <button string="Print PDF" type="object" name="print_pdf" class="btn-primary" icon="fa-print"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Menu Item for the Sales Summary Report -->
+    <menuitem id="menu_sales_summary_report" name="Sales Summary Report" parent="sale.menu_sale_report"
+              action="action_sales_summary_report_wizard"/>
+
+</odoo>

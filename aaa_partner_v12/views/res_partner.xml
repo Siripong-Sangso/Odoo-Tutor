@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_partner_form_fax" model="ir.ui.view">
+        <field name="name">Add fax on partner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="category_id" position="after">
+                <field name="line"/>
+                <field name="facebook"/>
+                <field name="instragram"/>
+                <field name="bank_id"/>
+                <field name="account_no"/>
+            </field>
+            <field name="vat" position="after">
+                <field name="birthday"/>
+                <field name="age" readonly="1"/>
+            </field>
+            <xpath expr="//field[@name='function']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='website']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='title']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='lang']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='category_id']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='mobile']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_custom_search_partner" model="ir.ui.view">
+        <field name="name">Search</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <field name="phone" string="Phone" filter_domain="[('phone','ilike', self)]"/>
+                <field name="mobile" string="Mobile" filter_domain="[('mobile','ilike', self)]"/>
+                <field name="instragram" string="Instragram" filter_domain="[('instragram','ilike', self)]"/>
+                <field name="facebook" string="Facebook" filter_domain="[('facebook','ilike', self)]"/>
+                <field name="line" string="Line" filter_domain="[('line','ilike', self)]"/>
+                <field name="account_no" string="Account no" filter_domain="[('account_no','ilike', self)]"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

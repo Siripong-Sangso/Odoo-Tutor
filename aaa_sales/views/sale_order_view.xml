@@ -1,0 +1,79 @@
+<odoo>
+
+    <record id="product_template_kanban_view" model="ir.ui.view">
+        <field name="name">product.template.kanban.view</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='oe_kanban_details']" position="inside">
+                <div>
+                    <strong>Forecasted:</strong>
+                    <field name="virtual_available"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- inherit purchase order form -->
+    <record id="sale_order_form_aaa_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.aaa.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- เพิ่มฟิลด์ Contact Person หลังฟิลด์ Partner -->
+            <field name="partner_id" position="after">
+                <field name="contact_person" domain="[('type','=','contact'),('parent_id','=',partner_id)]"/>
+                <field name="origin" string="Source Document(PO)"/>
+            </field>
+
+            <xpath expr="//field[@name='show_update_pricelist']" position="after">
+                <field name="validity_days"/>
+                <field name="expiration_date" readonly="1"/>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+
+            </xpath>
+
+            <!-- เพิ่มฟิลด์ Fixed Discount หลังฟิลด์ Discount -->
+
+            <xpath expr="//field[@name='order_line']/form//label[@for='discount']"
+                   position="before">
+                <field
+                        name="discount_fixed"
+                        groups="product.group_discount_per_so_line"
+                />
+            </xpath>
+            <xpath
+                    expr="//field[@name='order_line']/tree/field[@name='discount']"
+                    position="before"
+            >
+                <field
+                        name="discount_fixed"
+                        groups="product.group_discount_per_so_line"
+                />
+            </xpath>
+
+            <!-- เพิ่มฟิลด์สำหรับแสดงผลยอดรวมก่อนและหลังส่วนลด -->
+            <xpath expr="//field[@name='tax_totals']" position="before">
+                <field name="total_before_discount_and_tax" readonly="1" widget="monetary"
+                       options="{'currency_field': 'currency_id'}"/>
+                <field name="total_discount" readonly="1" widget="monetary"
+                       options="{'currency_field': 'currency_id'}"/>
+                <field name="total_after_discount" readonly="1" widget="monetary"
+                       options="{'currency_field': 'currency_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_quotation_tree_aaa_inherit" model="ir.ui.view">
+        <field name="name">sale.order.tree.aaa.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <!-- เพิ่มฟิลด์ Contact Person หลังฟิลด์ Partner -->
+            <field name="partner_id" position="after">
+                <field name="origin" string="Source Document(PO)"/>
+            </field>
+        </field>
+    </record>
+</odoo>

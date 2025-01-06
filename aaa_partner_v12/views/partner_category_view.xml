@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="partner_category_form_view" model="ir.ui.view">
+        <field name="name">partner.category.form</field>
+        <field name="model">partner.category</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="category">
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <separator string="Details " colspan="4"/>
+                        <group>
+                            <field name="name"/>
+                             <field name="code"/>
+                        </group>
+                        <group>
+                            <field name="type"/>
+                            <field name="company_id"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="notes"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="partner_category_tree_view">
+        <field name="name">partner_category_tree_view.tree</field>
+        <field name="model">partner.category</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="type"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_partner_category" model="ir.actions.act_window">
+        <field name="name">Partner Category</field>
+        <field name="res_model">partner.category</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_partner_category" parent="contacts.menu_contacts" name="Partner Category" sequence="2"/>
+
+    <menuitem id="menu_partner_category_root" parent="menu_partner_category" name="Category"
+              action="action_partner_category" sequence="2"/>
+
+</odoo>
