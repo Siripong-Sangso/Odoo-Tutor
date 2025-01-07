@@ -10,7 +10,6 @@
     'depends': ['base', 'sale'],
     'data': [
         'security/ir.model.access.csv',
-        'views/company.xml',
         'views/sale.xml',
         'reports/report.xml',
         'reports/sale_report_template.xml',
