@@ -19,10 +19,10 @@
                     }
                 </style>
                 <t t-raw="0"/>
-                <table class="table_hd" style="width:100%; margin-top: 30px;">
+                <table class="table_hd" style="width:100%;">
                     <tr valign="middle">
                         <td rowspan="2" valign="middle"
-                            style="text-align:left; padding: 0px; line-height: 20px; margin-top: 10px;">
+                            style="text-align:left; padding: 0px; line-height: 20px;">
                             <br/>
                             <img t-att-src="image_data_uri(o.company_id.logo)" width="140" height="80"/>
                         </td>
