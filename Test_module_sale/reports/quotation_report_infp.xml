@@ -21,6 +21,8 @@
                 </style>
                 <t t-raw="0"/>
                 <table class="table_hd" style="width:100%;">
+                    <col width="22%"/>
+                    <col width="78%"/>
                     <tr valign="middle">
                         <td rowspan="2" valign="middle" style="text-align:left; padding: 1px; line-height: 10px;">
                             <font style="font-size: 24px;">
@@ -28,40 +30,39 @@
                                 <img t-att-src="image_data_uri(o.company_id.logo)" width="120" height="120"/>
                             </font>
                         </td>
-                        <td valign="top" style="text-align:left; padding-top: 30px; padding-left: 0px;">
-                            <font style="font-size: 20px;">
+                        <td valign="top" style="text-align:left; padding-top: 18px;">
+                            <font style="font-size: 24px;">
                                 <b>
                                     <span t-field="o.company_id.company_name_eng"
                                           style="margin: 0px; padding: 0px; line-height: 20px;"/>
                                     <br/>
                                 </b>
                             </font>
-                            <font style="font-size: 16px;">
+                            <font style="font-size: 20px;">
                                 <span t-field="o.company_id.company_name_th"
                                       style="margin: 0px; padding: 0px; line-height: 20px;"/>
                             </font>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top" style="text-align:left; padding: 3px; line-height: 8px; padding-left: 0px;">
-                            <font style="font-size: 16px;">
+                        <td valign="top" style="text-align:left; padding: 3px; line-height: 20px; padding-left: 0px;">
+                            <font style="font-size: 20px;">
                                 <span t-field="o.company_id.address_th"/>
                             </font>
-                            <font style="font-size: 20px;">
+                            <font style="font-size: 24px;">
                                 <br/>
-                                <b>CALL CENTER :<span class="custom-span" t-field="o.company_id.phone"/>&amp;nbsp;&amp;nbsp;
-                                </b>
+                                <b>CALL CENTER :</b><b><span class="custom-span" t-field="o.company_id.phone"/>&amp;nbsp;&amp;nbsp;</b>
                                 <t t-if="o.company_id.phone">
-                                    <b>Line@:
-                                        <span class="custom-span" t-field="o.company_id.line"/>
+                                    <b>Line@:</b>
+                                        <b><span class="custom-span" t-field="o.company_id.line"/>
                                     </b>
                                 </t>
                             </font>
                         </td>
                         <tr>
-                            <td colspan="4"
+                            <td colspan="2"
                                 height="18px" valign="bottom"
-                                style="text-align: center; padding: 0px; line-height: 23px; background-color: blue; color: white; border-top: 0px solid white; border-bottom: 0px solid white;">
+                                style="text-align: center; padding: 5px; line-height: 22px; background-color: blue; color: white; border-top: 0px solid white; border-bottom: 0px solid white;">
                                 <font style="font-size: 27px;">
                                     <b>ใบเสนอราคา / QUOTATION</b>
                                 </font>
@@ -70,36 +71,67 @@
                         <tr>
                             <table height="200" class="table_hd" cellspacing="0" border-collapse="collapse"
                                    style="width:100%;">
-                                <col width="68%"/>
-                                <col width="14%"/>
-                                <col width="18%"/>
+                                <col width="15%"/>
+                                <col width="53%"/>
+                                <col width="11%"/>
+                                <col width="21%"/>
                                 <tr valign="top">
                                     <td
-                                            style="padding-left: 5px; text-align: left; border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black;">
+                                            style="padding-left: 5px; text-align: left; border-top: 1px solid black; border-left: 1px solid black;">
                                         <font style="font-size: 18px;">
                                             <b>เรียน/Attention :</b>
-                                            <span class="custom-span" t-field="o.partner_id.name"/>
                                         </font>
                                     </td>
-                                    <td colspan="2"
-                                        style="padding-left: 5px; text-align: left; border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
+                                    <td
+                                            style="padding-left: 5px; text-align: left; border-top: 1px solid black; border-right: 1px solid black;">
+                                        <span class="custom-span" t-field="o.partner_id.name"/>
+                                    </td>
+                                    <td
+                                            style="padding-left: 5px; text-align: left; border-top: 1px solid black; border-left: 1px solid black; border-bottom: 1px solid black;">
                                         <font style="font-size: 18px;">
                                             <b>JOB No. :</b>
+                                        </font>
+                                    </td>
+                                    <td
+                                            style="padding-left: 5px; text-align: left; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 18px;">
+                                            <span class="custom-span" t-field="o.name"/>
                                         </font>
                                     </td>
                                 </tr>
                                 <tr valign="top">
                                     <td rowspan="4"
-                                        style="padding-left: 5px; text-align: left; border-left: 1px solid black; border-right: 1px solid black;">
+                                        style="padding-left: 5px; text-align: left; border-left: 1px solid black;">
                                         <font style="font-size: 18px;">
                                             <b>ที่อยู่/Address :</b>
-                                            <span class="custom-span" t-field="o.partner_id.street"/>
                                         </font>
                                     </td>
-                                    <td colspan="2"
-                                        style="padding-left: 5px; text-align: left; border-top: 1px solid black; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
+                                    <td rowspan="4"
+                                        style="padding-left: 5px; text-align: left; border-right: 1px solid black;">
+                                        <font style="font-size: 18px;">
+                                            <span class="custom-span" t-field="o.partner_id.street"/>
+                                            <span class="custom-span">
+                                                <t t-esc="o.partner_id.city or ''"/>
+                                                <t t-if="o.partner_id.state_id">
+                                                    <t t-esc="o.partner_id.state_id.name"/>
+                                                </t>
+                                                <t t-if="o.partner_id.zip">
+                                                    <t t-esc="o.partner_id.zip"/>
+                                                </t>
+                                            </span>
+                                        </font>
+                                    </td>
+                                    <td
+                                            style="padding-left: 5px; text-align: left; border-top: 1px solid black; border-left: 1px solid black; border-bottom: 1px solid black;">
                                         <font style="font-size: 18px;">
                                             <b>วันที่ Date :</b>
+                                        </font>
+                                    </td>
+                                    <td
+                                            style="padding-left: 5px; text-align: left; border-top: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 18px;">
+                                            <span class="custom-span"
+                                                  t-esc="o.date_order.strftime('%d/%m/%Y') if o.date_order else ''"/>
                                         </font>
                                     </td>
                                 </tr>
@@ -120,9 +152,15 @@
                                 </tr>
                                 <tr valign="top">
                                     <td
-                                            style="padding-left: 5px; text-align: left; border-left: 1px solid black; border-right: 1px solid black;">
+                                            style="padding-left: 5px; text-align: left; border-left: 1px solid black;">
                                         <font style="font-size: 18px;">
                                             <b>โครงการ/Project :</b>
+                                        </font>
+                                    </td>
+                                    <td
+                                            style="padding-left: 5px; text-align: left; border-right: 1px solid black;">
+                                        <font style="font-size: 18px;">
+
                                         </font>
                                     </td>
                                     <td style="padding-left: 5px; text-align: left; border-left: 1px solid black;">
@@ -130,16 +168,21 @@
                                             <b>พนักงานขาย :</b>
                                         </font>
                                     </td>
-                                    <td style="padding-left: 5px; text-align: center; border-right: 1px solid black;">
+                                    <td style="padding-left: 5px; text-align: left; border-right: 1px solid black;">
                                         <font style="font-size: 18px;">
                                             <span t-field="o.user_id.name"/>
                                         </font>
                                     </td>
                                     <tr valign="top">
                                         <td
-                                                style="padding-left: 5px; text-align: left; border-left: 1px solid black; border-right: 1px solid black; border-bottom: 1px solid black;">
+                                                style="padding-left: 5px; text-align: left; border-left: 1px solid black; border-bottom: 1px solid black;">
                                             <font style="font-size: 18px;">
                                                 <b>เบอร์โทร/Tel :</b>
+                                            </font>
+                                        </td>
+                                        <td
+                                                style="padding-left: 5px; text-align: left; border-right: 1px solid black; border-bottom: 1px solid black;">
+                                            <font style="font-size: 18px;">
                                                 <span class="custom-span" t-field="o.partner_id.phone"/>
                                             </font>
                                         </td>
@@ -148,15 +191,14 @@
                                                 <b>โทร :</b>
                                             </font>
                                         </td>
-                                        <td style="padding-left: 5px; text-align: center; border-right: 1px solid black; border-bottom: 1px solid black;">
+                                        <td style="padding-left: 5px; text-align: left; border-bottom: 1px solid black; border-right: 1px solid black;">
                                             <font style="font-size: 18px;">
-                                                <span class="custom-span" t-field="o.company_id.phone"/>&amp;nbsp;&amp;nbsp;ต่อ
-                                                635
+                                                <span class="custom-span" t-field="o.company_id.phone"/>
                                             </font>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="3"
+                                        <td colspan="4"
                                             style="padding-left: 5px; text-align: left;">
                                             <font style="font-size: 18px;">
                                                 ทางบริษัทขอเสนอราคาสินค้าและเงื่อนไขสำหรับท่าน ดังนี้
@@ -164,8 +206,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="2"
-                                            style="padding-left: 5px; text-align: left;">
+                                        <td colspan="4"
+                                            style="padding-left: 5px; padding-bottom: 5px; text-align: left;">
                                             <font style="font-size: 18px;">
                                                 We are please to submit you the following described here in at price,
                                                 items and terms stated :
@@ -227,8 +269,8 @@
                                     style="text-align: center; border-left: 1px solid black; border-right: 1px solid black;">
                                 <font style="font-size: 18px;">
                                     <b>(&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
-                                        &amp;nbsp;
-                                        &amp;nbsp; &amp;nbsp;)
+                                        &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                                        &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;)
                                     </b>
                                 </font>
                             </td>
@@ -284,7 +326,7 @@
                             }
                         </style>
                         <t t-raw="0"/>
-                        <table class="table2" height="600" cellspacing="0" border-collapse="collapse"
+                        <table class="table2" height="700" cellspacing="0" border-collapse="collapse"
                                style="width:100%;">
                             <col width="8%"/>
                             <col width="14%"/>
@@ -411,7 +453,7 @@
                                         </td>
                                         <td style="text-align: right; padding-left: 5px; line-height: 20px; border-right: 1px solid black;">
                                             <font style="font-size: 18px;">
-                                                -&amp;nbsp; &amp;nbsp;
+
                                             </font>
                                         </td>
                                     </tr>
@@ -465,7 +507,7 @@
                                             <br/>
                                             <br/>
                                             <br/>
-                                            <span t-esc="'{0:,.2f}'.format(float(l.price_unit))"/>
+                                            <span t-esc="'{0:,.2f}'.format(float(l.price_unit * l.product_uom_qty))"/>
                                             <br/>
                                             <br/>
                                             <br/>
@@ -480,12 +522,7 @@
                                     </td>
                                     <td style="padding-right: 5px; text-align: right;  border-bottom: 1px solid black;  border-right: 1px solid black;">
                                         <font style="font-size: 18px;">
-                                            <!--                                            <t t-if="o.total_discount == 0">-->
-                                            <!--                                                <span t-esc="'{0:,.2f}'.format(float(o.total_discount))"/>-->
-                                            <!--                                            </t>-->
-                                            <!--                                            <t t-else="">-->
-                                            -&amp;nbsp; &amp;nbsp;
-                                            <!--                                            </t>-->
+                                            <span t-esc="'{0:.2f}%'.format(l.discount)"/>
                                         </font>
                                     </td>
                                 </tr>
@@ -506,7 +543,7 @@
                                     </td>
                                     <td style="padding-right: 5px; text-align: right;  border-bottom: 1px solid black;  border-right: 1px solid black;">
                                         <font style="font-size: 18px;">
-                                            <span t-esc="'{0:,.2f}'.format(float(o.amount_total))"/>
+                                            <span t-esc="'{0:,.2f}'.format(float(l.price_subtotal))"/>
                                         </font>
                                     </td>
                                 </tr>
