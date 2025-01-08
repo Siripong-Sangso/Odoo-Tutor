@@ -13,19 +13,47 @@
         <field name="dpi">90</field> <!-- ความละเอียด DPI (Default: 90) -->
     </record>
 
-     <record id="paperformat_A4_sale_order_2" model="report.paperformat">
-            <field name="name">A4 Sale order 2</field>
-            <field name="default" eval="False"/>
-            <field name="format">A4</field>
-            <field name="orientation">Portrait</field>
-            <field name="margin_top">100</field>
-            <field name="margin_bottom">35</field>
-            <field name="margin_left">5</field>
-            <field name="margin_right">5</field>
-            <field name="header_line" eval="False"/>
-            <field name="header_spacing">0</field>
-            <field name="dpi">90</field>
-        </record>
+    <record id="paperformat_A4_sale_order_2" model="report.paperformat">
+        <field name="name">A4 Sale order 2</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">100</field>
+        <field name="margin_bottom">35</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+     <record id="paperformat_A4_sale_order_Test2" model="report.paperformat">
+        <field name="name">A4 Sale order 2</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">100</field>
+        <field name="margin_bottom">35</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="paperformat_A4_sale_order_Test3" model="report.paperformat">
+        <field name="name">A4 Sale order 2</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">100</field>
+        <field name="margin_bottom">35</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
 
     <report
             id="action_report_sale_order_custom"
@@ -37,14 +65,34 @@
             paperformat="paperformat_a4_custom"
     />
 
-              <report
-                id="action_report_sale_order_infp"
-                model="sale.order"
-                report_type="qweb-pdf"
-                string="Quotation Report INFP"
-                paperformat="paperformat_A4_sale_order_2"
-                name="Test_module_sale.report_sale_order_quotation"
-                file="Test_module_sale.report_sale_order_quotation"
-                />
+    <report
+            id="action_report_sale_order_infp"
+            model="sale.order"
+            report_type="qweb-pdf"
+            string="Quotation Report INFP"
+            paperformat="paperformat_A4_sale_order_2"
+            name="Test_module_sale.report_sale_order_quotation"
+            file="Test_module_sale.report_sale_order_quotation"
+    />
+
+    <report
+            id="action_report_sale_order_Test2"
+            model="sale.order"
+            report_type="qweb-pdf"
+            string="Report Test2"
+            paperformat="paperformat_A4_sale_order_Test2"
+            name="Test_module_sale.report_sale_order_Test2"
+            file="Test_module_sale.report_sale_order_Test2"
+    />
+
+    <report
+            id="action_report_sale_order_Test3"
+            model="sale.order"
+            report_type="qweb-pdf"
+            string="Report Test3"
+            paperformat="paperformat_A4_sale_order_Test3"
+            name="Test_module_sale.report_sale_order_Test3"
+            file="Test_module_sale.report_sale_order_Test3"
+    />
 
 </odoo>
