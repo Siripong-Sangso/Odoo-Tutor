@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="sale_tax_report_header_template">
+            <t t-if="data['form']['date_to']">
+                <t t-set="date" t-value="time.strptime(data['form']['date_to'],'%Y-%m-%d' )"/>
+            </t>
+            <div class="header"
+                 style="font-family: TH Krub; margin-bottom: -5px; padding-bottom: 0px; width:100%; position: relative;">
+                <t t-raw="0"/>
+                <style>
+                    table.fixed{
+                    border: 0px solid white;
+                    border-collapse: collapse;
+                    width: 100%;
+                    cellpadding : 0;
+                    }
+                    table.no-bordered &gt; tr &gt; td{
+                    border: 0px solid white;
+                    border-collapse: collapse;
+                    }
+                </style>
+                <div class="row">
+                    <table class="fixed">
+                        <col width="15%"/>
+                        <col width="42%"/>
+                        <col width="18%"/>
+                        <col width="25%"/>
+                        <tr>
+                            <td colspan="4" style="text-align:center;">
+                                <font style="font-size: 24px;">
+                                    <b>รายงานภาษีขาย</b>
+                                </font>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">
+                                <font style="font-size: 18px;">
+                                    <b>เดือนภาษี</b>
+                                </font>
+                            </td>
+                            <td style="text-align: left;">
+                                <font style="font-size: 18px;">
+                                    <t t-if="data['form']['date_to']">
+                                        <t t-if="date.tm_mon == 1">
+                                            มกราคม
+                                        </t>
+                                        <t t-if="date.tm_mon == 2">
+                                            กุมภาพันธ์
+                                        </t>
+                                        <t t-if="date.tm_mon == 3">
+                                            มีนาคม
+                                        </t>
+                                        <t t-if="date.tm_mon == 4">
+                                            เมษายน
+                                        </t>
+                                        <t t-if="date.tm_mon == 5">
+                                            พฤษภาคม
+                                        </t>
+                                        <t t-if="date.tm_mon == 6">
+                                            มิถุนายน
+                                        </t>
+                                        <t t-if="date.tm_mon == 7">
+                                            กรกฎาคม
+                                        </t>
+                                        <t t-if="date.tm_mon == 8">
+                                            สิงหาคม
+                                        </t>
+                                        <t t-if="date.tm_mon == 9">
+                                            กันยายน
+                                        </t>
+                                        <t t-if="date.tm_mon == 10">
+                                            ตุลาคม
+                                        </t>
+                                        <t t-if="date.tm_mon == 11">
+                                            พฤศจิกายน
+                                        </t>
+                                        <t t-if="date.tm_mon == 12">
+                                            ธันวาคม
+                                        </t>
+                                    </t>
+                                </font>
+                            </td>
+                            <td style="text-align: left;">
+                                <font style="font-size: 18px;">
+                                    <b>ปี</b>
+                                </font>
+                            </td>
+                            <td style="text-align: left;">
+                                <font style="font-size: 18px;">
+                                    <span t-esc="date.tm_year + 543"/>
+                                </font>
+                            </td>
+                        </tr>
+                        <tr>
+                            <t t-foreach="request.env['res.company'].search([('id', '=', data['form']['company_id'][0])])"
+                               t-as="o">
+                                <td style="text-align: left;">
+                                    <font style="font-size: 18px;">
+                                        <b>ชื่อผู้ประกอบการ</b>
+                                    </font>
+                                </td>
+                                <td style="text-align: left;">
+                                    <font style="font-size: 18px;">
+                                        <span t-field="o.name"/>
+                                    </font>
+                                </td>
+                                <td style="text-align: left;">
+                                    <font style="font-size: 18px;">
+                                        <b>เลขประจำตัวผู้เสียภาษี</b>
+                                    </font>
+                                </td>
+                                <td style="text-align: left;">
+                                    <font style="font-size: 18px;">
+                                        <span t-field="o.vat"/>
+                                    </font>
+                                </td>
+                            </t>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">
+                                <font style="font-size: 18px;">
+                                    <b>ชื่อสถานประกอบการ</b>
+                                </font>
+                            </td>
+                            <td style="text-align: left;">
+                                <font style="font-size: 18px;">
+                                    <span t-field="o.name"/>
+                                </font>
+                            </td>
+                            <td style="text-align: left;">
+                                <font style="font-size: 18px;">
+                                    <b>สำนักงานใหญ่ / สาขา</b>
+                                </font>
+                            </td>
+                            <td style="text-align: left;">
+                                <font style="font-size: 18px;">
+                                    <span t-field="o.branch_no"/>
+                                </font>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </template>
+
+        <template id="sale_tax_report">
+            <t t-call="web.html_container">
+                <t t-set="i" t-value="1"/>
+                <t t-set="sum_untaxed" t-value="0"/>
+                <t t-set="sum_tax" t-value="0"/>
+                <t t-call="aaa_accounting.sale_tax_report_header_template">
+                </t>
+                <div class="article" style="position: absolute; font-family: TH Krub; width:100%">
+                    <table class="fixed" cellspacing="0" border-collapse="collapse" style="width:97%;">
+                        <col width="5%"/>
+                        <col width="9%"/>
+                        <col width="13%"/>
+                        <col width="28%"/>
+                        <col width="15%"/>
+                        <col width="5%"/>
+                        <col width="5%"/>
+                        <col width="10%"/>
+                        <col width="10%"/>
+                        <thead>
+                            <tr valign="center">
+                                <th rowspan="2" style="text-align: center; vertical-align: middle;">
+                                    <font style="font-size: 17px;">
+                                        <span>ลำดับที่/เล่มที่</span>
+                                    </font>
+                                </th>
+                                <th colspan="2" style="text-align: center; vertical-align: middle;">
+                                    <font style="font-size: 18px;">
+                                        <span>ใบกำกับภาษี</span>
+                                    </font>
+                                </th>
+                                <th rowspan="2" style="text-align: center; vertical-align: middle;">
+                                    <font style="font-size: 18px;">
+                                        <span>ชื่อผู้ซื้อสินค้า/ผู้รับบริการ</span>
+                                    </font>
+                                </th>
+                                <th rowspan="2" style="text-align: center; vertical-align: middle;">
+                                    <font style="font-size: 14px;">
+                                        <span>เลขประจำตัวผู้เสียภาษีอากรของผู้ซื้อสินค้า/บริการ</span>
+                                    </font>
+                                </th>
+                                <th colspan="2" style="text-align: center; vertical-align: middle;">
+                                    <font style="font-size: 17px;">
+                                        <span>สถานประกอบการ</span>
+                                    </font>
+                                </th>
+                                <th rowspan="2" style="text-align: center; vertical-align: middle;">
+                                    <font style="font-size: 18px;">
+                                        <span>มูลค่าสินค้า</span>
+                                        <br/>
+                                        <span>หรือบริการ</span>
+                                    </font>
+                                </th>
+                                <th rowspan="2" style="text-align: center; vertical-align: middle;">
+                                    <font style="font-size: 18px;">
+                                        <span>จำนวนภาษี</span>
+                                        <br/>
+                                        <span>มูลค่าเพิ่ม</span>
+                                    </font>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th style="text-align: center; vertical-align: middle;">
+                                    <font style="font-size: 18px;">
+                                        <span>วัน เดือน ปี</span>
+                                    </font>
+                                </th>
+                                <th style="text-align: center; vertical-align: middle;">
+                                    <font style="font-size: 18px;">
+                                        <span>เลขที่</span>
+                                    </font>
+                                </th>
+                                <th style="text-align: center; vertical-align: left;">
+                                    <font style="font-size: 14px;">
+                                        <span>สำนักงานใหญ่</span>
+                                    </font>
+                                </th>
+                                <th style="text-align: center; vertical-align: left;">
+                                    <font style="font-size: 16px;">
+                                        <span>สาขาที่</span>
+                                    </font>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="o">
+                                <t t-set="sum_untaxed" t-value="sum_untaxed + (o.balance * 100 / 7)"/>
+                                <t t-set="sum_tax" t-value="sum_tax + o.balance"/>
+                                <tr>
+                                    <td style="text-align: center; padding: 5px;">
+                                        <font style="font-size: 16px;">
+                                            <span t-esc="i"/>
+                                        </font>
+                                    </td>
+                                    <t t-set="i" t-value="i+1"/>
+                                    <td style="text-align: left; padding: 5px;">
+                                        <font style="font-size: 16px;">
+                                            <span t-field="o.invoice_date" t-field-options='{"widget": "date"}'/>
+                                        </font>
+                                    </td>
+                                    <td style="text-align: left; padding: 5px;">
+                                        <font style="font-size: 16px;">
+                                            <span t-esc="o.move_id.name"/>
+                                        </font>
+                                    </td>
+                                    <td style="text-align: left; padding: 5px;">
+                                        <font style="font-size: 16px;">
+                                            <t t-if="o.partner_id">
+                                                <span t-esc="o.partner_id.name"/>
+                                            </t>
+                                        </font>
+                                    </td>
+                                    <td style="text-align: left; padding: 5px;">
+                                        <font style="font-size: 16px;">
+                                            <t t-if="o.partner_id">
+                                                <span t-esc="o.partner_id.vat"/>
+                                            </t>
+                                        </font>
+                                    </td>
+                                    <t t-if="not int(o.partner_id.branch_no)">
+                                        <td style="text-align: left; padding: 5px;">
+                                            <font style="font-size: 16px;">
+                                                <t t-if="o.partner_id">
+                                                    <span t-esc="o.partner_id.branch_no"/>
+                                                </t>
+                                            </font>
+                                        </td>
+                                        <td style="text-align: left; padding: 5px;"></td>
+                                    </t>
+                                    <t t-if="int(o.partner_id.branch_no)">
+                                        <td style="padding: 5px;"></td>
+                                        <td style="text-align: left; padding: 5px;">
+                                            <font style="font-size: 16px;">
+                                                <t t-if="o.partner_id">
+                                                    <span t-esc="o.partner_id.branch_no"/>
+                                                </t>
+                                            </font>
+                                        </td>
+                                    </t>
+                                    <td style="text-align: right; padding: 5px;">
+                                        <font style="font-size: 14px;">
+                                            <t t-if="o.debit">
+                                                <t t-if="o.move_id">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.move_id.amount_untaxed))"/>
+                                                </t>
+                                                <t t-if="not o.move_id">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.debit * 100 / 7))"/>
+                                                </t>
+                                            </t>
+                                            <t t-if="o.credit">
+                                                <t t-if="o.move_id">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.move_id.amount_untaxed))"/>
+                                                </t>
+                                                <t t-if="not o.move_id">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.credit * (100 / 7)))"/>
+                                                </t>
+                                            </t>
+                                        </font>
+                                    </td>
+                                    <td style="text-align: right; padding: 5px;">
+                                        <font style="font-size: 14px;">
+                                            <t t-if="o.debit">
+                                                <span t-esc="'{0:,.2f}'.format(float(o.debit))"/>
+                                            </t>
+                                            <t t-if="o.credit">
+                                                <span t-esc="'{0:,.2f}'.format(float(o.credit))"/>
+                                            </t>
+                                        </font>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="6"/>
+                                <td style="text-align: center;  padding: 5px;">
+                                    <font style="font-size: 16px;">
+                                        <span>รวม</span>
+                                    </font>
+                                </td>
+                                <td style="text-align: right;  padding: 5px;">
+                                    <font style="font-size: 16px;">
+                                        <span t-esc="'{0:,.2f}'.format(float(sum_untaxed * (-1)))"/>
+                                    </font>
+                                </td>
+                                <td style="text-align: right;  padding: 5px;">
+                                    <font style="font-size: 16px;">
+                                        <span t-esc="'{0:,.2f}'.format(float(sum_tax * (-1)))"/>
+                                    </font>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -18,7 +18,7 @@
             id="action_report_account_move_Test2"
             model="account.move"
             report_type="qweb-pdf"
-            string="CN Report Test2"
+            string="Credit Notes Report Lifesmart"
             paperformat="paperformat_A4_account_move_Test2"
             name="Test_module_sale.report_account_move_Test2"
             file="Test_module_sale.report_account_move_Test2"
@@ -29,8 +29,8 @@
         <field name="default" eval="False"/>
         <field name="format">A4</field>
         <field name="orientation">Portrait</field>
-        <field name="margin_top">75</field>
-        <field name="margin_bottom">25</field>
+        <field name="margin_top">80</field>
+        <field name="margin_bottom">20</field>
         <field name="margin_left">5</field>
         <field name="margin_right">5</field>
         <field name="header_line" eval="False"/>
@@ -42,7 +42,7 @@
             id="action_report_account_move_Test3"
             model="account.move"
             report_type="qweb-pdf"
-            string="CN Report Test2"
+            string="Credit Notes Report Infinity"
             paperformat="paperformat_A4_account_move_Test3"
             name="Test_module_sale.report_account_move_Test3"
             file="Test_module_sale.report_account_move_Test3"

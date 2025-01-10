@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_asset_report">
+        <t t-call="web.html_container">
+            <t t-if="data['form']['date_to']">
+                <t t-set="date_from" t-value="time.strptime(data['form']['date_from'],'%Y-%m-%d' )"/>
+            </t>
+            <t t-if="data['form']['date_to']">
+                <t t-set="date_to" t-value="time.strptime(data['form']['date_to'],'%Y-%m-%d' )"/>
+            </t>
+            <t t-foreach="docs" t-as="o">
+                <t t-set="i" t-value="0"/>
+                <t t-set="j" t-value="0"/>
+                <div class="header" style="position: absolute; center: font-family: TH Krub; width:100%;">
+                    <div class="row">
+                        <table style="width:100%; margin-bottom: 20px;">
+                            <col width="14%"/>
+                            <col width="25%"/>
+                            <col width="13%"/>
+                            <col width="20%"/>
+                            <col width="28%"/>
+                            <tr>
+                                <td colspan="5" style="text-align:center; line-height:30px;">
+                                    <font style="font-size: 22px;">
+                                        <b>รายงานทรัพย์สินค่าสึกหรอและค่าเสื่อมราคา</b>
+                                    </font>
+                                </td>
+                            </tr>
+                            <tr>
+                                <t t-if="data['form']['company_id']">
+                                    <t t-foreach="request.env['res.company'].search([('id', '=', data['form']['company_id'][0])])"
+                                       t-as="o">
+                                        <td style="text-align: left;">
+                                            <font style="font-size: 18px;">
+                                                <span>ชื่อสถานประกอบการ</span>
+                                            </font>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <font style="font-size: 18px;">
+                                                <span t-field="o.company_name_th"/>
+                                            </font>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <font style="font-size: 18px;">
+                                                <span>สำนักงานใหญ่ / สาขา</span>
+                                            </font>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <font style="font-size: 18px;">
+                                                <span t-field="o.branch_no"/>
+                                            </font>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <font style="font-size: 18px;">
+                                                วันที่:
+                                                <span t-esc="data['form']['create_date']"
+                                                      t-field-options='{"format": "dd/MM/yyyy"}'/>
+                                            </font>
+                                        </td>
+
+                                    </t>
+                                </t>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;">
+                                    <font style="font-size: 18px;">
+                                        <span>รอบระยะเวลาบัญชีตั้งแต่</span>
+                                    </font>
+                                </td>
+                                <td style="text-align: left;">
+                                    <font style="font-size: 18px;">
+                                        <span t-esc="data['form']['date_from']"
+                                              t-field-options='{"format": "dd/MM/yyyy"}'/>
+                                    </font>
+                                </td>
+                                <td style="text-align: left;">
+                                    <font style="font-size: 18px;">
+                                        <span>ถึง</span>
+                                    </font>
+                                </td>
+                                <td style="text-align: left;">
+                                    <font style="font-size: 18px;">
+                                        <span t-esc="data['form']['date_to']"
+                                              t-field-options='{"format": "dd/MM/yyyy"}'/>
+                                    </font>
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left;">
+                                    <font style="font-size: 18px;">
+                                        <span>รหัสทรัพย์สิน</span>
+                                    </font>
+                                </td>
+                                <td style="text-align: left;">
+                                    <font style="font-size: 18px;">
+                                        <t t-if="data['form']['category_id']">
+                                            <t t-foreach="request.env['account.asset.category'].search([('id', '=', data['form']['category_id'][0])])"
+                                               t-as="o">
+                                                <font style="font-size: 18px;">
+                                                    <span t-field="o.name"/>
+                                                </font>
+                                            </t>
+                                        </t>
+                                    </font>
+                                </td>
+                                <td style="text-align: left;">
+                                    <font style="font-size: 18px;">
+
+                                    </font>
+                                </td>
+                                <td style="text-align: left;">
+                                    <font style="font-size: 18px;">
+                                    </font>
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="article" style="font-family: TH Krub; width:100%">
+                        <div style="width:100%; position: absolute; top: 0 cm;">
+                            <div class="row" style="font-family: TH Krub; margin_bottom: -5px;">
+                                <table width="98%" style="margin_bottom: -5px;">
+                                    <col width="3%"/>
+                                    <col width="27%"/>
+                                    <col width="10%"/>
+                                    <col width="10%"/>
+                                    <col width="10%"/>
+                                    <col width="10%"/>
+                                    <col width="10%"/>
+                                    <col width="10%"/>
+                                    <col width="10%"/>
+                                    <thead>
+                                        <tr>
+                                            <th style="line-height: 20px; padding: 3px; text-align:center; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                <font style="font-size: 20px;">
+                                                    <strong>#</strong>
+                                                </font>
+                                            </th>
+                                            <th style="line-height: 20px; padding: 3px; text-align:center; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                <font style="font-size: 20px;">
+                                                    <strong>รายการทรัพย์สิน</strong>
+                                                </font>
+                                            </th>
+                                            <th style="line-height: 18px; padding: 3px; text-align:center; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                <font style="font-size: 18px;">
+                                                    <strong>วันที่ซื้อ</strong>
+                                                </font>
+                                            </th>
+                                            <th style="line-height: 20px; padding: 3px; text-align:center; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                <font style="font-size: 20px;">
+                                                    <strong>ราคาทรัพย์สิน</strong>
+                                                </font>
+                                            </th>
+                                            <th style="line-height: 20px; padding: 3px; text-align:center; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                <font style="font-size: 20px;">
+                                                    <strong>ยอดยกมา</strong>
+                                                </font>
+                                            </th>
+
+                                            <th style="line-height: 20px; padding: 3px; text-align:center; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                <font style="font-size: 18px;">
+                                                    <strong>อัตราค่าเสื่อม</strong>
+                                                </font>
+                                            </th>
+
+                                            <th style="line-height: 20px; padding: 3px; text-align:center; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                <font style="font-size: 20px;">
+                                                    <strong>ค่าเสื่อม</strong>
+                                                </font>
+                                            </th>
+                                            <th style="line-height: 20px; padding: 3px; text-align:center; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                <font style="font-size: 20px;">
+                                                    <strong>ยอดยกไป</strong>
+                                                </font>
+                                            </th>
+                                            <th style="line-height: 20px; padding: 3px; text-align:center; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                <font style="font-size: 20px;">
+                                                    <strong>วันที่ขาย</strong>
+                                                </font>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tboby>
+                                        <t t-set="i" t-value="1"/>
+                                        <!--ยอดรวม-->
+                                        <t t-set="purchase_amount" t-value="0"/>
+                                        <!--ยอดยกมา-->
+                                        <t t-set="beginning_amount" t-value="0"/>
+                                        <!--ค่าเสื่อมราคา-->
+                                        <t t-set="depreciated_amount" t-value="0"/>
+                                        <!--ยอดยกไป-->
+                                        <t t-set="remaining_amount" t-value="0"/>
+                                        <t t-set="asset_category" t-value="[]"/>
+                                        <t t-foreach="docs" t-as="l">
+                                            <t t-set="asset_category" t-value="asset_category+[l.category_id]"/>
+                                        </t>
+                                        <t t-foreach="set(asset_category)" t-as="category">
+                                            <tr>
+                                                <td style="line-height: 18px; padding: 5px;">
+                                                </td>
+                                                <td colspan="4" style="line-height: 18px; padding: 5px;">
+                                                    <font style="font-size: 20px;">
+                                                        <span t-field="category.name"/>
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <!--ยอดรวม-->
+                                            <t t-set="purchase_cate_amount" t-value="0"/>
+                                            <!--ยอดยกมา-->
+                                            <t t-set="beginning_cate_amount" t-value="0"/>
+                                            <!--ค่าเสื่อมราคา-->
+                                            <t t-set="depreciated_cate_amount" t-value="0"/>
+                                            <!--ยอดยกไป-->
+                                            <t t-set="remaining_cate_amount" t-value="0"/>
+                                            <t t-foreach="docs" t-as="o">
+                                                <!--ยอดยกมา-->
+                                                <t t-set="beginning_value" t-value="0"/>
+                                                <!--ค่าเสื่อมราคา-->
+                                                <t t-set="depreciated_value" t-value="0"/>
+                                                <!--ยอดยกไป-->
+                                                <t t-set="remaining_value" t-value="0"/>
+                                                <t t-set="amount" t-value="0"/>
+                                                <t t-if="category.id==o.category_id.id">
+                                                    <tr>
+                                                        <td style="line-height: 18px; padding: 5px; text-align:center;">
+                                                            <font style="font-size: 20px;">
+                                                                <span t-esc="i"/>
+                                                            </font>
+                                                            <t t-set="i" t-value="i+1"/>
+                                                        </td>
+                                                        <td style="line-height: 18px; padding: 5px;">
+                                                            <font style="font-size: 20px;">
+                                                                <span t-field="o.code"/>
+                                                                -
+                                                                <span t-field="o.name"/>
+                                                            </font>
+                                                        </td>
+                                                        <td style="line-height: 18px; padding: 5px;">
+                                                            <font style="font-size: 20px;">
+                                                                <span t-field="o.purchase_date"
+                                                                      t-field-options='{"format": "dd/MM/yyyy"}'/>
+                                                            </font>
+                                                        </td>
+                                                        <td style="line-height: 18px; padding: 5px; text-align:right;">
+                                                            <font style="font-size: 20px;">
+                                                                <span t-esc="'{0:,.2f}'.format(float(o.asset_purchase_price))"/>
+                                                                <t t-set="purchase_cate_amount"
+                                                                   t-value="purchase_cate_amount+o.asset_purchase_price"/>
+                                                                <t t-set="purchase_amount"
+                                                                   t-value="purchase_amount+o.asset_purchase_price"/>
+                                                            </font>
+                                                        </td>
+
+                                                        <t t-foreach="request.env['account.asset.depreciation.line'].search([('asset_id.id', '=', o.id), ('depreciation_date','&gt;=', data['form']['first_date_from']), ('depreciation_date','&lt;=', data['form']['last_date_from'])])"
+                                                           t-as="l">
+                                                            <t t-set="beginning_value" t-value="l.remaining_value + l.amount"/>
+                                                            <t t-set="amount"
+                                                               t-value="l.amount"/>
+                                                        </t>
+                                                        <t t-foreach="request.env['account.asset.depreciation.line'].search([('asset_id.id', '=', o.id), ('depreciation_date','&gt;=', data['form']['first_date_from']), ('depreciation_date','&lt;=', data['form']['last_date_to'])])"
+                                                           t-as="l">
+                                                            <t t-set="depreciated_value"
+                                                               t-value="depreciated_value + l.amount"/>
+                                                        </t>
+                                                        <t t-foreach="request.env['account.asset.depreciation.line'].search([('asset_id.id', '=', o.id), ('depreciation_date','&gt;=', data['form']['first_date_to']), ('depreciation_date','&lt;=', data['form']['last_date_to'])])"
+                                                           t-as="l">
+                                                            <t t-set="remaining_value" t-value="l.remaining_value"/>
+                                                        </t>
+
+                                                        <td style="line-height: 18px; padding: 5px; text-align:right;">
+                                                            <font style="font-size: 20px;">
+                                                                <span t-esc="'{0:,.2f}'.format(float(beginning_value))"/>
+                                                                <t t-set="beginning_cate_amount"
+                                                                   t-value="beginning_cate_amount+beginning_value"/>
+                                                                <t t-set="beginning_amount"
+                                                                   t-value="beginning_amount+beginning_value"/>
+                                                            </font>
+                                                        </td>
+                                                        <td style="line-height: 18px; padding: 5px; text-align:center;">
+                                                            <font style="font-size: 20px;">
+                                                                <span t-esc="'{0:,.0f}'.format(float(amount))"/>
+                                                            </font>
+                                                        </td>
+                                                        <td style="line-height: 18px; padding: 5px; text-align:right;">
+                                                            <font style="font-size: 20px;">
+                                                                <span t-esc="'{0:,.2f}'.format(float(depreciated_value))"/>
+                                                                <t t-set="depreciated_cate_amount"
+                                                                   t-value="depreciated_cate_amount+depreciated_value"/>
+                                                                <t t-set="depreciated_amount"
+                                                                   t-value="depreciated_amount+depreciated_value"/>
+                                                            </font>
+                                                        </td>
+                                                        <td style="line-height: 18px; padding: 5px; text-align:right;">
+                                                            <font style="font-size: 20px;">
+                                                                <span t-esc="'{0:,.2f}'.format(float(remaining_value))"/>
+                                                                <t t-set="remaining_cate_amount"
+                                                                   t-value="remaining_cate_amount+remaining_value"/>
+                                                                <t t-set="remaining_amount"
+                                                                   t-value="remaining_amount+remaining_value"/>
+                                                            </font>
+                                                        </td>
+                                                        <td style="line-height: 18px; padding: 5px; text-align:right;">
+                                                            <font style="font-size: 20px;">
+                                                                <span t-field="o.asset_disposal_date"
+                                                                      t-field-options='{"format": "dd/MM/yyyy"}'/>
+                                                            </font>
+                                                        </td>
+                                                    </tr>
+                                                </t>
+                                            </t>
+                                            <tr>
+                                                <td style="line-height: 18px; padding: 5px; text-align:center; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                    <font style="font-size: 20px;">
+                                                    </font>
+                                                </td>
+                                                <td colspan="2"
+                                                    style="line-height: 18px; padding: 5px; text-align:center; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                    <font style="font-size: 20px;">
+                                                        รวม
+                                                        <span t-field="category.name"/>
+                                                    </font>
+                                                </td>
+                                                <td style="line-height: 18px; padding: 5px; text-align:right; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                    <font style="font-size: 20px;">
+                                                        <span t-esc="'{0:,.2f}'.format(float(purchase_cate_amount))"/>
+                                                    </font>
+                                                </td>
+                                                <td style="line-height: 18px; padding: 5px; text-align:right; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                    <font style="font-size: 20px;">
+                                                        <span t-esc="'{0:,.2f}'.format(float(beginning_cate_amount))"/>
+                                                    </font>
+                                                </td>
+                                                <td style="line-height: 18px; padding: 5px; text-align:right; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                    <font style="font-size: 20px;">
+
+                                                    </font>
+                                                </td>
+                                                <td style="line-height: 18px; padding: 5px; text-align:right; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                    <font style="font-size: 20px;">
+                                                        <span t-esc="'{0:,.2f}'.format(float(depreciated_cate_amount))"/>
+                                                    </font>
+                                                </td>
+                                                <td style="line-height: 18px; padding: 5px; text-align:right; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                    <font style="font-size: 20px;">
+                                                        <span t-esc="'{0:,.2f}'.format(float(remaining_cate_amount))"/>
+                                                    </font>
+                                                </td>
+                                                <td style="line-height: 18px; padding: 5px; text-align:right; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                    <font style="font-size: 20px;">
+
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tboby>
+                                    <tfoot>
+                                        <tr>
+                                            <td style="line-height: 22px; padding: 5px; text-align:center; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                <font style="font-size: 20px;">
+                                                </font>
+                                            </td>
+                                            <td colspan="2"
+                                                style="line-height: 22px; padding: 5px; text-align:center; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                <font style="font-size: 20px;">
+                                                    <b>รวมทรัพย์สินที่ยังเหลืออยู</b>
+                                                </font>
+                                            </td>
+                                            <td style="line-height: 22px; padding: 5px; text-align:right; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                <font style="font-size: 20px;">
+                                                    <b>
+                                                        <span t-esc="'{0:,.2f}'.format(float(purchase_amount))"/>
+                                                    </b>
+                                                </font>
+                                            </td>
+                                            <td style="line-height: 22px; padding: 5px; text-align:right; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                <font style="font-size: 20px;">
+                                                    <b>
+                                                        <span t-esc="'{0:,.2f}'.format(float(beginning_amount))"/>
+                                                    </b>
+                                                </font>
+                                            </td>
+                                            <td style="line-height: 22px; padding: 5px; text-align:right; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                <font style="font-size: 20px;">
+
+                                                </font>
+                                            </td>
+                                            <td style="line-height: 22px; padding: 5px; text-align:right; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                <font style="font-size: 20px;">
+                                                    <b>
+                                                        <span t-esc="'{0:,.2f}'.format(float(depreciated_amount))"/>
+                                                    </b>
+                                                </font>
+                                            </td>
+                                            <td style="line-height: 22px; padding: 5px; text-align:right; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                <font style="font-size: 20px;">
+                                                    <b>
+                                                        <span t-esc="'{0:,.2f}'.format(float(remaining_amount))"/>
+                                                    </b>
+                                                </font>
+                                            </td>
+                                            <td style="line-height: 22px; padding: 5px; text-align:right; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                <font style="font-size: 20px;">
+
+                                                </font>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

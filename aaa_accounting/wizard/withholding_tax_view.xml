@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_withholding_tax_all_wizard" model="ir.ui.view">
+        <field name="name">withholding.tax.all.wizard</field>
+        <field name="model">withholding.tax.all</field>
+        <field name="arch" type="xml">
+            <form string="Withholding Tax Print">
+                <group>
+                    <group>
+                        <field name="date_from"/>
+                    </group>
+                    <group>
+                        <field name="date_to"/>
+                        <field name="company_id"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="print_pdf" type="object" string="Print" class="btn-primary"/>
+                    or
+                    <button string="_Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_view_withholding_tax_all" model="ir.actions.act_window">
+        <field name="name">Withholding Tax Reports</field>
+        <field name="res_model">withholding.tax.all</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_withholding_tax_all_wizard"/>
+        <field name="context">{}</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_withholding_tax_report"
+              name="Withholding Tax Report"
+              sequence="3"
+              action="action_view_withholding_tax_all"
+              parent="menu_main_tex_reports"/>
+
+</odoo>

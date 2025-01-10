@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="paperformat_A4_invoice" model="report.paperformat">
+            <field name="name">A4 Invoice</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">85</field>
+            <field name="margin_bottom">40</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">80</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="paperformat_A4_invoice_2" model="report.paperformat">
+            <field name="name">A4 Invoice V2</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">93</field>
+            <field name="margin_bottom">40</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">90</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="paperformat_A4_invoice_3" model="report.paperformat">
+            <field name="name">A4 Invoice V3</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">89.50</field>
+            <field name="margin_bottom">10</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">80</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="paperformat_A4_credit_note" model="report.paperformat">
+            <field name="name">A4 Credit Note</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">85</field>
+            <field name="margin_bottom">35</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">80</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="paperformat_A4_tex" model="report.paperformat">
+            <field name="name">A4 Tex</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">30</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">25</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="paperformat_A4_payable" model="report.paperformat">
+            <field name="name">A4 Payable</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">25</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">20</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="paperformat_A4_asset" model="report.paperformat">
+            <field name="name">A4 Asset</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">30</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="paper_format_withholding_tax" model="report.paperformat">
+            <field name="name">A4_withholding_tax</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="paperformat_A4_Zero_Margin2" model="report.paperformat">
+            <field name="name">A4_Zero_Margin2</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Landscape</field>
+            <field name="margin_top">29</field>
+            <field name="margin_bottom">5</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">23</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="paperformat_A4_vendor_bill" model="report.paperformat">
+            <field name="name">A4 vendor bill</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">88.50</field>
+            <field name="margin_bottom">40.5</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">80</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="paperformat_A4_credit_note_2" model="report.paperformat">
+            <field name="name">A4 credit note2</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">109.5</field>
+            <field name="margin_bottom">44</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">99</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <record id="paperformat_pre_inv" model="report.paperformat">
+            <field name="name">Pre print invoice</field>
+            <field name="default" eval="False"/>
+            <field name="format">custom</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">85</field>
+            <field name="margin_bottom">85</field>
+            <field name="margin_left">2</field>
+            <field name="margin_right">2</field>
+            <field name="page_height">280</field>
+            <field name="page_width">230</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">85</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <!-- QWeb Reports for Product -->
+
+        <report
+                id="pre_invoice_report_id1"
+                model="account.move"
+                menu="True"
+                report_type="qweb-pdf"
+                string="Pre Invoice"
+                paperformat="paperformat_pre_inv"
+                name="aaa_accounting.pre_invoice_report_ill"
+                file="aaa_accounting.pre_invoice_report_ill"/>
+
+        <report
+                id="action_invoice_report_id_ill_pdf"
+                model="account.move"
+                report_type="qweb-pdf"
+                string="ใบส่งของ/ใบกำกับภาษี(สำเนา)"
+                paperformat="paperformat_A4_invoice_3"
+                name="aaa_accounting.invoice_report_id_ill"
+                file="aaa_accounting.invoice_report_id_ill"/>
+
+        <report
+                id="action_vendor_bill_report_id_ill_pdf"
+                model="account.move"
+                report_type="qweb-pdf"
+                string="ใบตั้งหนี้(สำเนา)"
+                paperformat="paperformat_A4_vendor_bill"
+                name="aaa_accounting.vendor_bill_report_id_ill"
+                file="aaa_accounting.vendor_bill_report_id_ill"/>
+
+        <report
+                id="action_credit_note_report_id_ill_pdf"
+                model="account.move"
+                report_type="qweb-pdf"
+                string="ใบลดหนี้"
+                paperformat="paperformat_A4_credit_note_2"
+                name="aaa_accounting.credit_note_report_id_ill"
+                file="aaa_accounting.credit_note_report_id_ill"/>
+
+        <report
+                id="action_report_invoice_th"
+                model="account.move"
+                menu="True"
+                report_type="qweb-pdf"
+                string="Invoice V.TH"
+                paperformat="paperformat_A4_invoice"
+                name="aaa_accounting.invoice_th_report_id"
+                file="aaa_accounting.invoice_th_report_id"
+        />
+
+        <report
+                id="action_report_invoice_eng"
+                model="account.move"
+                menu="True"
+                report_type="qweb-pdf"
+                string="Invoice V.ENG"
+                paperformat="paperformat_A4_invoice"
+                name="aaa_accounting.invoice_eng_report_id"
+                file="aaa_accounting.invoice_eng_report_id"
+        />
+
+        <report
+                id="action_report_invoice_th_eng"
+                model="account.move"
+                menu="True"
+                report_type="qweb-pdf"
+                string="Invoice V.TH&amp;ENG"
+                paperformat="paperformat_A4_invoice_2"
+                name="aaa_accounting.invoice_th_eng_report_id"
+                file="aaa_accounting.invoice_th_eng_report_id"
+        />
+
+        <report
+                id="action_report_credit_note_th"
+                model="account.move"
+                menu="True"
+                report_type="qweb-pdf"
+                string="Credit Note V.TH"
+                paperformat="paperformat_A4_credit_note"
+                name="aaa_accounting.credit_note_th_report_id"
+                file="aaa_accounting.credit_note_th_report_id"
+        />
+
+        <report
+                id="action_report_credit_note_eng"
+                model="account.move"
+                menu="True"
+                report_type="qweb-pdf"
+                string="Credit Note V.ENG"
+                paperformat="paperformat_A4_credit_note"
+                name="aaa_accounting.credit_note_eng_report_id"
+                file="aaa_accounting.credit_note_eng_report_id"
+        />
+
+        <report
+                id="action_report_credit_note_th_eng"
+                model="account.move"
+                menu="True"
+                report_type="qweb-pdf"
+                string="Credit Note V.TH&amp;ENG"
+                paperformat="paperformat_A4_credit_note"
+                name="aaa_accounting.credit_note_th_eng_report_id"
+                file="aaa_accounting.credit_note_th_eng_report_id"
+        />
+
+        <report
+                id="action_sale_tax_report_pdf"
+                model="account.move.line"
+                menu="False"
+                report_type="qweb-pdf"
+                string="Sales Tax Report"
+                paperformat="paperformat_A4_tex"
+                name="aaa_accounting.sale_tax_report"
+                file="aaa_accounting.sale_tax_report"/>
+
+        <report
+                id="action_purchase_tax_report_pdf"
+                model="account.move.line"
+                menu="False"
+                report_type="qweb-pdf"
+                string="Purchase Tax Report"
+                paperformat="paperformat_A4_tex"
+                name="aaa_accounting.purchase_tax_report"
+                file="aaa_accounting.purchase_tax_report"/>
+
+        <report
+                id="action_sale_tax_report_xls"
+                model="account.move.line"
+                menu="False"
+                report_type="xlsx"
+                string="Sales Tax Report"
+                paperformat="paperformat_A4_tex"
+                name="aaa_accounting.sale_tax_report_xls"
+                file="aaa_accounting.sale_tax_report_xls"/>
+
+        <report
+                id="action_purchase_tax_report_xls"
+                model="account.move.line"
+                menu="False"
+                report_type="xlsx"
+                string="Purchase Tax Report"
+                paperformat="paperformat_A4_tex"
+                name="aaa_accounting.purchase_tax_report_xls"
+                file="aaa_accounting.purchase_tax_report_xls"/>
+
+        <report
+                id="action_payable_detail_report_pdf"
+                model="account.move"
+                report_type="qweb-pdf"
+                string="Account Payable Report"
+                paperformat="paperformat_A4_payable"
+                name="aaa_accounting.account_payable_detail_report"
+                file="aaa_accounting.account_payable_detail_report"
+                menu="False"/>
+
+        <report
+                id="action_payable_summary_report_pdf"
+                model="account.move"
+                report_type="qweb-pdf"
+                string="Account Payable Report"
+                paperformat="paperformat_A4_payable"
+                name="aaa_accounting.account_payable_summary_report"
+                file="aaa_accounting.account_payable_summary_report"
+                menu="False"/>
+
+        <report
+                id="action_asset_report_pdf"
+                model="asset.report"
+                menu="False"
+                report_type="qweb-pdf"
+                string="Asset Report"
+                paperformat="paperformat_A4_asset"
+                name="aaa_accounting.report_asset_report"
+                file="aaa_accounting.report_asset_report"/>
+
+        <report
+                id="withholding_tax_report"
+                model="withholding.tax"
+                string="หนังสือรับรองการหลักภาษี ณ ที่จ่าย"
+                report_type="qweb-pdf"
+                paperformat="paper_format_withholding_tax"
+                name="aaa_accounting.withholding_tax_id"
+                file="aaa_accounting.withholding_tax_id"/>
+
+        <report
+                id="withholding_tax_all_report"
+                model="withholding.tax"
+                menu="False"
+                report_type="qweb-pdf"
+                string="Withholding tax Report"
+                paperformat="paperformat_A4_Zero_Margin2"
+                name="aaa_accounting.withholding_tax_all"
+                file="aaa_accounting.withholding_tax_all"/>
+
+    </data>
+</odoo>

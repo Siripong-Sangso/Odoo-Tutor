@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="withholding_tax_all">
+            <t t-call="web.html_container">
+                <t t-if="data['form']['date_to']">
+                    <t t-set="date" t-value="time.strptime(data['form']['date_to'],'%Y-%m-%d' )"/>
+                </t>
+                <t t="docs" t-as="o">
+                    <div class="header" style="position: absolute; center: font-family: TH Krub; width:100%;">
+                        <div class="row">
+                            <table class="fixed" style="width:100%; margin-bottom: 0px; cellspacing:0px;">
+                                <col width="10%"/>
+                                <col width="30%"/>
+                                <col width="10%"/>
+                                <col width="30%"/>
+                                <tr>
+                                    <td colspan="4" style="text-align: center;">
+                                        <font style="font-size: 24px; line-height:20px;">
+                                            <b>รายงานภาษีเงินได้ถูกหัก ณ ที่จ่าย</b>
+                                        </font>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">
+                                        <font style="font-size: 18px;">
+                                            <span>จากวันที่</span>
+                                        </font>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <font style="font-size: 18px;">
+                                            <span t-esc="data['form']['date_from']"
+                                                  t-field-options='{"format": "dd/MM/yyyy"}'/>
+                                        </font>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <font style="font-size: 18px;">
+                                            <span>ถึง</span>
+                                        </font>
+                                    </td>
+                                    <td style="text-align: left;">
+                                        <font style="font-size: 18px;">
+                                            <span t-esc="data['form']['date_to']"
+                                                  t-field-options='{"format": "dd/MM/yyyy"}'/>
+                                        </font>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <t t-foreach="request.env['res.company'].search([('id', '=', data['form']['company_id'][0])])"
+                                       t-as="o">
+                                        <td style="text-align: left;">
+                                            <font style="font-size: 18px;">
+                                                <span>ชื่อสถานประกอบการ</span>
+                                            </font>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <font style="font-size: 18px;">
+                                                <span t-field="o.name"/>
+                                            </font>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <font style="font-size: 18px;">
+                                                <span>สาขาที่</span>
+                                            </font>
+                                        </td>
+                                        <td style="text-align: left;">
+                                            <font style="font-size: 18px;">
+                                                <span t-field="o.branch_no"/>
+                                            </font>
+                                        </td>
+                                    </t>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="article" style="font-family: TH Krub; width:100%">
+
+                        <table class="fixed" cellspacing="0" border-collapse="collapse"
+                               style="width:100%; margin-bottom: 0px; cellspacing:0px;">
+                            <col width="3%"/>
+                            <col width="10%"/>
+                            <col width="10%"/>
+                            <col width="10%"/>
+                            <col width="15%"/>
+                            <col width="20%"/>
+                            <col width="10%"/>
+                            <col width="8%"/>
+                            <col width="8%"/>
+                            <col width="8%"/>
+                            <thead>
+                                <tr valign="center">
+                                    <th style="text-align: center; vertical-align: middle; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                        <font style="font-size: 17px;">
+                                            <span>#</span>
+                                        </font>
+                                    </th>
+                                    <th style="vertical-align: middle; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                        <font style="font-size: 17px;">
+                                            <span>วันที่</span>
+                                        </font>
+                                    </th>
+                                    <th style="vertical-align: middle; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                        <font style="font-size: 18px;">
+                                            <span>เลขที่เอกสาร</span>
+                                        </font>
+                                    </th>
+                                    <th style="vertical-align: middle; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                        <font style="font-size: 18px;">
+                                            <span>เลขที่ถูกหัก ณ ที่จ่าย</span>
+                                        </font>
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <span>เลขประจำตัวผู้เสียภาษี</span>
+                                        </font>
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                        <font style="font-size: 18px;">
+                                            <span>ผู้ถูกหัก ณ ที่จ่าย</span>
+                                        </font>
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                        <font style="font-size: 18px;">
+                                            <span>ประเภทเงินได้ที่ถูกหัก</span>
+                                        </font>
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                        <font style="font-size: 18px;">
+                                            <span>ฐานภาษี</span>
+                                        </font>
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                        <font style="font-size: 18px;">
+                                            <span>อัตราภาษี</span>
+                                        </font>
+                                    </th>
+                                    <th style="text-align: center; vertical-align: middle; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                        <font style="font-size: 18px;">
+                                            <span>จำนวน</span>
+                                        </font>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="withholding_tbody">
+                                <t t-set="i" t-value="1"/>
+                                <t t-set="sum_amount" t-value="0"/>
+                                <t t-set="sum_tax" t-value="0"/>
+                                <t t-foreach="docs" t-as="o">
+                                    <t t-foreach="o.wht_line" t-as="l">
+                                        <tr>
+                                            <td style="text-align: center; padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="i"/>
+                                                </font>
+                                            </td>
+                                            <t t-set="i" t-value="i+1"/>
+                                            <td style="text-align: left; padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-field="o.order_date" t-field-options='{"widget": "date"}'/>
+                                                </font>
+                                            </td>
+                                            <td style="text-align: left; padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="o.name"/>
+                                                </font>
+                                            </td>
+                                            <td style="text-align: left; padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="o.name"/>
+                                                </font>
+                                            </td>
+                                            <td style="text-align: left; padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="o.vendor_id.vat"/>
+                                                </font>
+                                            </td>
+
+                                            <td style="text-align: left; padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="o.vendor_id.name"/>
+                                                </font>
+                                            </td>
+                                            <td style="text-align: left; padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="l.type.name"/>
+                                                </font>
+                                            </td>
+                                            <td style="text-align: right; padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="'{0:,.2f}'.format(float(l.amount))"/>
+                                                    <t t-set="sum_amount" t-value="sum_amount +l.amount"/>
+                                                </font>
+                                            </td>
+                                            <td style="text-align: center; padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <t t-set="values" t-value="dict([('wht_tax_3%', '3%'), ('wht_tax_5%', '5'),
+                                     ('wht_tax_0_5%', '0.5'),
+                                     ('wht_tax_0_75%', '0.75'),
+                                     ('wht_tax_1%', '1'),
+                                     ('wht_tax_1_5%', '1.5'),
+                                     ('wht_tax_2%', '2'),
+                                     ('wht_tax_10%', '10'),
+                                     ('wht_tax_15%', '15'), (False,False)])"/>
+                                                    <span t-esc="values[l.type_wht_tax]"/>
+                                                </font>
+                                            </td>
+                                            <td style="text-align: right; padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="'{0:,.2f}'.format(float(l.wht_tax))"/>
+                                                    <t t-set="sum_tax" t-value="sum_tax +l.wht_tax"/>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </t>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="7"
+                                        style="padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;;"/>
+                                    <td style="padding: 5px; text-align: right; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(sum_amount))"/>
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; text-align: right; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                        <font style="font-size: 16px;">
+
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; text-align: right; border-bottom: 1px solid black; border-top: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(sum_tax))"/>
+                                        </font>
+                                    </td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

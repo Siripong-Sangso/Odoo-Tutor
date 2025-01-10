@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_account_cheque_statement_receive_form" model="ir.ui.view">
+            <field name="name">account.cheque.statement.receive.form</field>
+            <field name="model">account.cheque.statement</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="ทะเบียนเช็ครับ">
+                    <header>
+                        <button name="action_validate" string="Confirm" type="object" states="open"
+                                class="btn-primary"/>
+                        <button name="action_cancel" string="Cancel" type="object" states="open" class="btn-primary"/>
+                        <!--                        <button name="action_reject" string="Reject" type="object" states="open" class="btn-primary"/>-->
+                        <field name="state" widget="statusbar"
+                               statusbar_visible="open,confirm,cancel,reject"/>
+
+                    </header>
+                    <sheet string="ทะเบียนเช็ค">
+                        <group col="4" colspan="4" string="รายการเช็ค">
+                            <field name="type" widget="radio"/>
+                            <field name="name"/>
+                            <field name="partner_id" string="ลูกค้า"/>
+                            <field name="ref"/>
+                            <field name="journal_id"/>
+                            <field name="cheque_bank"/>
+                            <field name="payment_id"/>
+                            <field name="cheque_branch"/>
+                            <field name="user_id"/>
+                            <field name="cheque_number"/>
+                            <field name="communication"/>
+                            <field name="cheque_date"/>
+                            <field name="amount"/>
+                            <field name="over_due" invisible="1"/>
+                            <!--<field name="allow_dup_cheque_no"/>-->
+                            <field name="company_id" invisible="1"/>
+                        </group>
+                        <group col="4" colspan="4" string="รายการทางบัญขี">
+                            <field name="move_id" string="รายการบัญชีเดิม"/>
+                            <field name="issue_date"/>
+                            <field name="move_new_id" string="รายการบัญชีใหม่"
+                                   attr="{'invisible': [('move_new_id','=',False)]}"/>
+                            <field name="validate_date" attr="{'invisible': [('validate_date','=',False)]}"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="cheque_receive_tree_view">
+            <field name="name">cheque_receive_tree_view.tree</field>
+            <field name="model">account.cheque.statement</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree decoration-info="state == 'open'" decoration-danger="over_due == True" string="ทะเบียนเช็ค">
+                    <field name="type" invisible="1"/>
+                    <field name="over_due" invisible="1"/>
+                    <field name="name"/>
+                    <field name="partner_id" string="ลูกค้า"/>
+                    <field name="issue_date"/>
+                    <field name="ref"/>
+                    <field name="cheque_bank"/>
+                    <field name="cheque_branch"/>
+                    <field name="cheque_number"/>
+                    <field name="cheque_date"/>
+                    <field name="journal_id" invisible="1"/>
+                    <field name="move_id" invisible="1"/>
+                    <field name="payment_id"/>
+                    <field name="user_id"/>
+                    <field name="state"/>
+                    <field name="amount" sum="Total Amount"/>
+                    <field name="communication" invisible="1"/>
+                    <field name="company_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_cheque_receive" model="ir.actions.act_window">
+            <field name="name">Cheque Receive</field>
+            <field name="res_model">account.cheque.statement</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="cheque_receive_tree_view"/>
+            <field name="domain">[('type','=','rec')]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your First Cheque Receive!!!
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="cheque_payment_tree_view">
+            <field name="name">cheque_payment_tree_view.tree</field>
+            <field name="model">account.cheque.statement</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree decoration-info="state == 'open'" decoration-danger="over_due == True" string="ทะเบียนเช็ค">
+                    <field name="type" invisible="1"/>
+                    <field name="over_due" invisible="1"/>
+                    <field name="name"/>
+                    <field name="partner_id" string="ผู้จำหน่าย"/>
+                    <field name="issue_date"/>
+                    <field name="ref"/>
+                    <field name="cheque_bank"/>
+                    <field name="cheque_branch"/>
+                    <field name="cheque_number"/>
+                    <field name="cheque_date"/>
+                    <field name="journal_id" invisible="1"/>
+                    <field name="move_id" invisible="1"/>
+                    <field name="payment_id"/>
+                    <field name="user_id"/>
+                    <field name="state"/>
+                    <field name="amount" sum="Total Amount"/>
+                    <field name="communication" invisible="1"/>
+                    <field name="company_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_cheque_payment" model="ir.actions.act_window">
+            <field name="name">Cheque Payment</field>
+            <field name="res_model">account.cheque.statement</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="cheque_payment_tree_view"/>
+            <field name="domain">[('type','=','pay')]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your First Cheque Payment!!!
+                </p>
+            </field>
+        </record>
+
+
+<!--        <menuitem action="action_cheque_receive" id="menu_cheque_receive" name="Cheque (Receive)"-->
+<!--                  parent="account.menu_finance_receivables" sequence="10"/>-->
+
+<!--        <menuitem action="action_cheque_payment" id="menu_cheque_payment" name="Cheque (Payment)"-->
+<!--                  parent="account.menu_finance_payables" sequence="11"/>-->
+
+    </data>
+</odoo>

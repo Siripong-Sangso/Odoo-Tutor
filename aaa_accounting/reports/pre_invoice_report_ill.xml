@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+        <template id="pre_invoice_report_ill">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="downpayment" t-value="0"/>
+                    <div class="header" style="font-family: TH Krub; width:100%;">
+                        <style>
+                            .custom-span {
+                            margin: 0px;
+                            padding: 0px;
+                            line-height: 20px;
+                            }
+                            table.table{
+                            border: 0px solid white;
+                            border-collapse: collapse;
+                            width: 100%;
+                            cellpadding : 0;
+                            }
+                        </style>
+                        <!--                        หน้า-->
+                        <div class="col-xs-12" style="position: absolute; top: 27mm; right: 0; width: 100%;">
+                            <font style="font-size: 22px; text-align: right; display: block;">
+                                หน้า
+                                <span class="page"/> <!-- แสดงเลขหน้าปัจจุบัน -->
+                                /
+                                <span class="topage"/> <!-- แสดงจำนวนหน้าทั้งหมด -->
+                                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                            </font>
+                        </div>
+                        <!--                        รหัส เลขที่ใบกำกับ-->
+                        <div class="col-xs-7" style="text-align:left; position: absolute; top:40mm; left: 42mm;">
+                            <font style="font-size: 22px;">
+                                <span class="custom-span" t-field="o.partner_id.sequence_number"/>
+                            </font>
+                        </div>
+                        <div class="col-xs-5" style="text-align:left; position: absolute; top:40mm; left: 216mm;">
+                            <font style="font-size: 22px;">
+                                <span class="custom-span" t-field="o.name"/>
+                            </font>
+                        </div>
+                        <!--                        ชื่อลูกค้า วันที่ใบกำกับ-->
+                        <div class="col-xs-7" style="text-align:left; position: absolute; top:47mm; left: 42mm;">
+                            <font style="font-size: 22px;">
+                                <span class="custom-span" t-field="o.partner_id.name"/>
+                            </font>
+                        </div>
+                        <div class="col-xs-5" style="text-align:left; position: absolute; top:47mm; left: 216mm;">
+                            <font style="font-size: 22px;">
+                                <span class="custom-span"
+                                      t-esc="o.invoice_date.strftime('%d/%m/%Y') if o.invoice_date else ''"/>
+                            </font>
+                        </div>
+                        <!--                        ที่อยู่ เครดิต-->
+                        <div class="col-xs-7" style="text-align:left; position: absolute; top:54mm; left: 42mm;">
+                            <font style="font-size: 22px;">
+                                <span class="custom-span" t-field="o.partner_id.street"/>
+                                <br/>
+                                <t t-if="o.partner_id.street2">
+                                    <span class="custom-span" t-field="o.partner_id.street2"/>
+                                    <br/>
+                                </t>
+                                <span class="custom-span" t-field="o.partner_id.city"/>
+                                <span class="custom-span" t-field="o.partner_id.state_id.name"/>
+                                <span class="custom-span" t-field="o.partner_id.zip"/>
+                            </font>
+                        </div>
+                        <div class="col-xs-5" style="text-align:left; position: absolute; top:54mm; left: 216mm;">
+                            <font style="font-size: 22px;">
+                                <t t-if="o.invoice_date and o.invoice_date_due">
+                                    <t t-set="days_diff" t-value="(o.invoice_date_due - o.invoice_date).days"/>
+                                    <span class="custom-span" t-esc="days_diff"/>&amp;nbsp;วัน
+                                </t>
+                                <t t-else="">
+                                    <span class="custom-span">&amp;nbsp;</span>
+                                </t>
+                            </font>
+                        </div>
+                        <!--                        ครบกำหนด-->
+                        <div class="col-xs-12" style="text-align:left; position: absolute; top:61mm; left: 216mm;">
+                            <font style="font-size: 22px;">
+                                <span class="custom-span"
+                                      t-esc="o.invoice_date_due.strftime('%d/%m/%Y') if o.invoice_date_due else ''"/>
+                            </font>
+                        </div>
+                        <!--                        อ้างอิงใบสั่งขาย-->
+                        <div class="col-xs-12" style="text-align:left; position: absolute; top:68mm; left: 216mm;">
+                            <font style="font-size: 22px;">
+                                <span class="custom-span" t-field="o.invoice_origin"/>
+                            </font>
+                        </div>
+                        <!--                       โทรศัพท์ โทรสาร เลขที่ PO/PO No.-->
+                        <div class="col-xs-4" style="text-align:left; position: absolute; top:74mm; left: 42mm;">
+                            <font style="font-size: 22px;">
+                                <span class="custom-span" t-field="o.partner_id.phone"/>
+                            </font>
+                        </div>
+                        <div class="col-xs-3" style="text-align:left; position: absolute; top:74mm; left: 128mm;">
+                            <font style="font-size: 22px;">
+                                <span class="custom-span" t-field="o.partner_id.fax"/>
+                            </font>
+                        </div>
+                        <div class="col-xs-5" style="text-align:left; position: absolute; top:75mm; left: 216mm;">
+                            <font style="font-size: 22px;">
+                                <span class="custom-span" t-field="o.ref"/>
+                            </font>
+                        </div>
+                        <!--                        พนักงานขาย-->
+                        <div class="col-xs-4" style="text-align:left; position: absolute; top:81mm; left: 55mm;">
+                            <font style="font-size: 22px;">
+                                <span class="custom-span" t-field="o.partner_id.vat"/>
+                            </font>
+                        </div>
+                        <div class="col-xs-3" style="text-align:left; position: absolute; top:81mm; left: 128mm;">
+                            <font style="font-size: 22px;">
+                                <span class="custom-span" t-field="o.partner_id.branch_no"/>
+                            </font>
+                        </div>
+                        <div class="col-xs-5" style="text-align:left; position: absolute; top:81mm; left: 216mm;">
+                            <font style="font-size: 22px;">
+                                <span class="custom-span" t-field="o.invoice_user_id.name"/>
+                            </font>
+                        </div>
+                    </div>
+                    <div class="article" style="width:100%">
+                        <style>
+                            .custom-span {
+                            margin: 0;
+                            padding: 0;
+                            line-height: 20px;
+                            display: inline; /* หรือ block */
+                            white-space: pre-wrap; /* บังคับตัดขึ้นบรรทัดใหม่ */
+                            word-break: break-word;
+                            }
+                        </style>
+                        <div class="row" style="font-family: TH Krub; font-size: 22px; width:100%;">
+                            <div class="col-xs-12" style="width:100%;">
+                                <table style="width:100%; position: absolute; left: 7mm; top:1mm; border: 0px solid white;">
+                                    <tbody class="invoice_tbody">
+                                        <t t-set="i" t-value="1"/>
+                                        <t t-foreach="o.invoice_line_ids" t-as="l">
+                                            <t t-if="not l.is_downpayment and not l.display_type == 'line_section'">
+                                                <tr valign="top">
+                                                    <td width="4.2%" style="text-align:left; padding-left: 12px;">
+                                                        <font style="font-size: 22px;">
+                                                            <span class="custom-span" t-esc="i"/>
+                                                        </font>
+                                                    </td>
+                                                    <t t-set="i" t-value="i+1"/>
+                                                    <td width="9.3%" style="text-align:left; padding-left: 8px;">
+                                                        <font style="font-size: 22px;">
+                                                            <span class="custom-span"
+                                                                  t-field="l.product_id.default_code"/>
+                                                        </font>
+                                                    </td>
+                                                    <td width="36.5%" style="text-align:left; padding-left: 8px;padding-right: 8px;">
+                                                        <font style="font-size: 22px;">
+                                                            <span class="custom-span" t-field="l.name"/>
+                                                        </font>
+                                                    </td>
+                                                    <td width="7.9%" style="text-align:right; padding-right: 8px;">
+                                                        <font style="font-size: 22px;">
+                                                            <span class="custom-span"
+                                                                  t-esc="'{0:,.2f}'.format(float(l.quantity))"/>
+                                                        </font>
+                                                    </td>
+                                                    <td width="6.1%" style="text-align:right; padding-right: 8px;">
+                                                        <font style="font-size: 22px;">
+                                                            <span class="custom-span" t-esc="l.product_uom_id.name"/>
+                                                        </font>
+                                                    </td>
+                                                    <td width="10.3%" style="text-align:right; padding-right: 8px;">
+                                                        <font style="font-size: 22px;">
+                                                            <span class="custom-span"
+                                                                  t-esc="'{0:,.2f}'.format(float(l.price_unit))"/>
+                                                        </font>
+                                                    </td>
+                                                    <td width="6.5%" style="text-align:right; padding-right: 8px;">
+                                                        <font style="font-size: 22px;">
+                                                            <span class="custom-span"
+                                                                  t-esc="'{0:,.2f}'.format(float(l.discount_fixed))"/>
+                                                        </font>
+                                                    </td>
+                                                    <td width="14.5%" style="text-align:right; padding-right: 8px;">
+                                                        <font style="font-size: 22px;">
+                                                            <span class="custom-span"
+                                                                  t-esc="'{0:,.2f}'.format(float(l.price_subtotal))"/>
+                                                        </font>
+                                                    </td>
+                                                    <td width="4.7%" style="text-align:right;">
+                                                        <font style="font-size: 22px;">
+                                                        </font>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                            <t t-else="">
+                                                <t t-set="downpayment" t-value="downpayment+l.price_unit"/>
+                                            </t>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer" style="width:100%;">
+                        <div class="row" style="font-family: TH Krub; font-size: 22px; width:100%;">
+                            <div class="col-xs-12" style="text-align:right; position: absolute; top:1mm; right:18mm;">
+                                <font style="font-size: 22px;">
+                                    <span t-esc="'{0:,.2f}'.format(float(o.total_before_discount_and_tax))"/>
+                                </font>
+                            </div>
+                            <div class="col-xs-7" style="text-align:left; position: absolute; top:8mm;">
+                                <font style="font-size: 22px; position: absolute; left:195mm;">
+                                    <span>7</span>
+                                </font>
+                            </div>
+                            <div class="col-xs-5" style="text-align:right; position: absolute; top:10mm; right:18mm;">
+                                <font style="font-size: 22px;">
+                                    <span t-esc="'{0:,.2f}'.format(float(o.total_discount))"/>
+                                </font>
+                            </div>
+                            <div class="col-xs-12" style="text-align:right; position: absolute; top:19mm; right:18mm;">
+                                <font style="font-size: 22px;">
+                                    <span t-esc="'{0:,.2f}'.format(float(downpayment))"/>
+                                </font>
+                            </div>
+                            <div class="col-xs-12" style="text-align:right; position: absolute; top:28mm; right:18mm;">
+                                <font style="font-size: 22px;">
+                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_untaxed))"/>
+                                </font>
+                            </div>
+
+                            <div class="col-xs-7" style="text-align:left; position: absolute; top:37mm;">
+                                <font style="font-size: 22px; position: absolute; left:195mm;">
+                                    <span>7</span>
+                                </font>
+                            </div>
+                            <div class="col-xs-5" style="text-align:right; position: absolute; top:37mm; right:18mm;">
+                                <font style="font-size: 22px;">
+                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_tax))"/>
+                                </font>
+                            </div>
+
+                            <div class="col-xs-7" style="position: absolute; top:46mm;">
+                                <font style="font-size: 22px; position: absolute; left:50mm;">
+                                    <span t-esc="o.baht_text(o.amount_total)"/>
+                                </font>
+                            </div>
+
+                            <div class="col-xs-5" style="text-align:right; position: absolute; top:46mm; right:18mm;">
+                                <font style="font-size: 22px;">
+                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_total))"/>
+                                </font>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</openerp>

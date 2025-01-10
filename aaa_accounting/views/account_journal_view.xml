@@ -1,0 +1,18 @@
+<odoo>
+    <!-- inherit account journal form -->
+    <record id="account_journal_form_cheque_aaa_inherit" model="ir.ui.view">
+        <field name="name">account.journal.form.itaas</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.view_account_journal_form"/>
+        <field name="arch" type="xml">
+            <field name="type" position="after">
+                <field name="bank_cheque" attrs="{'invisible': ['!', ('type', 'in', ('bank'))]}"/>
+            </field>
+            <field name="suspense_account_id" position="before">
+				<field name="bank_cheque" invisible="1"/>
+                <field name="bank_for_cheque_account_id" attrs="{'invisible': [('bank_cheque', '=', False)]}"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

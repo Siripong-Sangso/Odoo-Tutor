@@ -1,0 +1,14 @@
+<odoo>
+    <data>
+        <record id="account_account_form_aaa_inherit" model="ir.ui.view">
+            <field name="name">account.account.form.aaa</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_form"/>
+            <field name="arch" type="xml">
+                <field name="deprecated" position="after">
+                    <field name="is_cheque"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

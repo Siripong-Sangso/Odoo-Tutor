@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="sequence_withholding_tax" model="ir.sequence">
+            <field name="name">Withholding Tax Sequence</field>
+            <field name="code">withholding.tax</field>
+            <field name="prefix">WHT%(y)s</field>
+            <field eval="1" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+            <field eval="True" name="use_date_range"/>
+            <field name="padding">4</field>
+        </record>
+    </data>
+
+    <record id="withholding_tax_form_view" model="ir.ui.view">
+        <field name="name">withholding.tax.form</field>
+        <field name="model">withholding.tax</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="หัก ณ ที่จ่าย">
+                <header>
+                    <button name="action_open" string="ยืนยัน" type="object"
+                            attrs="{'invisible': [('state', '!=', 'draft')]}" class="oe_highlight"/>
+                    <button name="action_cancel" string="Cancel" type="object"
+                            attrs="{'invisible': [('state', '!=', 'done')]}" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title oe_inline">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <separator string="ผู้จำหน่าย/คู่ค้า" colspan="2"/>
+                        <group>
+                            <field name="order_date"/>
+                            <field name="vendor_id"/>
+                            <field name="wht_form"/>
+                            <field name="book_ids" readonly = "1" />
+                        </group>
+                        <group>
+                            <field name="company_id"/>
+                            <field name="untaxed_amount"/>
+                            <field name="vat"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="รายละเอียด">
+                            <field name="wht_line" mode="tree,kanban">
+                                <form string="รายละเอียด">
+                                    <group>
+                                        <group>
+                                            <field name="type"/>
+                                            <field name="type_income" string="ประเภทเงินได้ที่จ่าย"/>
+                                            <field name="type6_note" string="โปรดระบุ" attrs="{'invisible': [('type_income','!=', 'type6'),('type_income','!=', 'type4_b_2_5')]}"/>
+                                            <field name="type_wht_tax"/>
+                                            <field name="type_wht_tax_1_4" string="โปรดระบุ" attrs="{'invisible': [('type_income','!=', 'type4_b_1_4')]}"/>
+                                            <field name="input_wht_tax" string="จำนวนเงินภาษีที่หัก" attrs="{'invisible': [('type_wht_tax','!=', 'wht_tax_amount')]}"/>
+                                            <field name="amount"/>
+                                            <field name="wht_vat"/>
+                                        </group>
+                                        <group>
+                                        </group>
+                                    </group>
+                                </form>
+                                <tree string="รายละเอียด" editable="bottom">
+                                     <field name="type"/>
+                                    <field name="type_income" string="ประเภทเงินได้ที่จ่าย"/>
+                                    <field name="type6_note" string="โปรดระบุ" attrs="{'invisible': [('type_income','!=', 'type6'),('type_income','!=', 'type4_b_2_5')]}"/>
+                                    <field name="type_wht_tax" attrs="{'invisible': [('type_income','==', 'type4_b_1_4')]}"/>
+                                    <field name="type_wht_tax_1_4" string="อัตราอื่นๆ" attrs="{'invisible': [('type_income','!=', 'type4_b_1_4')]}"/>
+                                    <field name="input_wht_tax" string="จำนวนเงินภาษีที่หัก" attrs="{'invisible': [('type_wht_tax','!=', 'wht_tax_amount')]}"/>
+                                    <field name="amount"/>
+                                    <field name="wht_vat"/>
+                                </tree>
+                            </field>
+                            <div>
+                                <group class="oe_subtotal_footer oe_right">
+                                    <field name="untaxed_amount"/>
+                                    <field name="vat"/>
+                                    <field name="total_amount"/>
+                                    <field name="wht_tax"/>
+                                    <field name="paid_amount" class="oe_subtotal_footer_separator"/>
+                                </group>
+                            </div>
+                        </page>
+                    </notebook>
+                    <group>
+                        <separator string="ผู้จ่ายเงิน" colspan="2"/>
+                        <group colspan="2">
+                            <div class="o_row">
+                                <field name="paid_in" widget="radio" options="{'horizontal': true}"/>
+                                &amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;
+                                <field name="paid_etc"
+                                       attrs="{'invisible': [('paid_in','!=', 'paid_4')]}"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="detail" string="หมายเหตุ"/>
+                        </group>
+                        <group>
+                            <field name="notes" string="โน๊ตภายในบริษัทฯ"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="withholding_tax_tree" model="ir.ui.view">
+        <field name="name">withholding.tax.tree</field>
+        <field name="model">withholding.tax</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state == 'draft'" decoration-primary="state == 'open'"
+                  decoration-warning="state == 'maintenance'" decoration-danger="state == 'non_approve'"
+                  decoration-success="state == 'done'" decoration-muted="state == 'cancel'">
+                <field name="name"/>
+                <field name="order_date"/>
+                <field name="vendor_id"/>
+                <field name="vendor_id"/>
+                <field name="company_id"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="withholding_tax_search_view" model="ir.ui.view">
+        <field name="name">withholding_tax_search</field>
+        <field name="model">withholding.tax</field>
+        <field name="arch" type="xml">
+            <search string="Search">
+                <field name="name" string="Name" filter_domain="[('name','ilike', self)]"/>
+                <field name="state" string="State" filter_domain="[('state','ilike', self)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Status" name="Status" context="{'group_by':'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_withholding_tax" model="ir.actions.act_window">
+        <field name="name">Withholding Tax</field>
+        <field name="res_model">withholding.tax</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="withholding_tax_form_view"/>
+    </record>
+
+    <menuitem name="Withholding Tax" id="menu_withholding_tax"
+              parent="menu_main_withholding_tax"
+              groups="account.group_account_manager,account.group_account_user"
+              action="action_withholding_tax" sequence="15"/>
+
+</odoo>

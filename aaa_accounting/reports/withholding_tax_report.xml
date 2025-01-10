@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="withholding_tax_id">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="article" style="font-family: TH Krub; width:100%">
+                        <div class="page" style="font-family: TH Krub; width:100%"
+                             t-attf-style="background-image:url('/aaa_accounting/static/img/whithoding.jpg'); background-size:400mm 555mm; width:400mm; height:555mm;">
+                            <font style="font-size: 30px; position: absolute; top: 3.1cm; left: 35.4cm; width:100%;">
+                                <span t-esc="o.book_ids.name"/>
+                            </font>
+                            <font style="font-size: 30px; position: absolute; top: 4.1cm; left: 35.05cm; width:100%;">
+                                <span t-esc="o.name"/>
+                            </font>
+                            <font style="font-size: 34px; position: absolute; top: 5.3cm; left: 25.8cm; width:100%;">
+                                <span t-esc="o.company_id.vat[0]"/>
+                            </font>
+                            <font style="font-size: 34px; position: absolute; top: 5.3cm; left: 27cm; width:100%;">
+                                <span t-esc="o.company_id.vat[1]"/>
+                            </font>
+                            <font style="font-size: 34px; position: absolute; top: 5.3cm; left: 27.8cm; width:100%;">
+                                <span t-esc="o.company_id.vat[2]"/>
+                            </font>
+                            <font style="font-size: 34px; position: absolute; top: 5.3cm; left: 28.7cm; width:100%;">
+                                <span t-esc="o.company_id.vat[3]"/>
+                            </font>
+                            <font style="font-size: 34px; position: absolute; top: 5.3cm; left: 29.5cm; width:100%;">
+                                <span t-esc="o.company_id.vat[4]"/>
+                            </font>
+                            <font style="font-size: 34px; position: absolute; top: 5.3cm; left: 30.7cm; width:100%;">
+                                <span t-esc="o.company_id.vat[5]"/>
+                            </font>
+                            <font style="font-size: 34px; position: absolute; top: 5.3cm; left: 31.5cm; width:100%;">
+                                <span t-esc="o.company_id.vat[6]"/>
+                            </font>
+                            <font style="font-size: 34px; position: absolute; top: 5.3cm; left: 32.3cm; width:100%;">
+                                <span t-esc="o.company_id.vat[7]"/>
+                            </font>
+                            <font style="font-size: 34px; position: absolute; top: 5.3cm; left: 33.1cm; width:100%;">
+                                <span t-esc="o.company_id.vat[8]"/>
+                            </font>
+                            <font style="font-size: 34px; position: absolute; top: 5.3cm; left: 33.9cm; width:100%;">
+                                <span t-esc="o.company_id.vat[9]"/>
+                            </font>
+                            <font style="font-size: 34px; position: absolute; top: 5.3cm; left: 35.2cm; width:100%;">
+                                <t t-if="o.company_id.vat[10]"></t>
+                                <span t-esc="o.company_id.vat[10]"/>
+                            </font>
+                            <font style="font-size: 34px; position: absolute; top: 5.3cm; left: 36cm; width:100%;">
+                                <span t-esc="o.company_id.vat[11]"/>
+                            </font>
+                            <font style="font-size: 34px; position: absolute; top: 5.3cm; left: 37.3cm; width:100%;">
+                                <span t-esc="o.company_id.vat[12]"/>
+                            </font>
+                            <font style="font-size: 30px; position: absolute; top: 6.4cm; left: 4cm; width:100%;">
+                                <span t-field="o.company_id.name"/>
+                            </font>
+                            <font style="font-size: 30px; position: absolute; top: 8cm; left: 4.5cm; width:100%;">
+                                <span t-field="o.company_id.street"/>
+                            </font>
+                            <t t-if="o.vendor_id.vat">
+                                <font style="font-size: 34px; position: absolute; top: 9.8cm; left: 25.8cm; width:100%;">
+                                    <span t-esc="o.vendor_id.vat[0]"/>
+                                </font>
+                                <font style="font-size: 34px; position: absolute; top: 9.8cm; left: 27cm; width:100%;">
+                                    <span t-esc="o.vendor_id.vat[1]"/>
+                                </font>
+                                <font style="font-size: 34px; position: absolute; top: 9.8cm; left: 27.8cm; width:100%;">
+                                    <span t-esc="o.vendor_id.vat[2]"/>
+                                </font>
+                                <font style="font-size: 34px; position: absolute; top: 9.8cm; left: 28.7cm; width:100%;">
+                                    <span t-esc="o.vendor_id.vat[3]"/>
+                                </font>
+                                <font style="font-size: 34px; position: absolute; top: 9.8cm; left: 29.5cm; width:100%;">
+                                    <span t-esc="o.vendor_id.vat[4]"/>
+                                </font>
+                                <font style="font-size: 34px; position: absolute; top: 9.8cm; left: 30.7cm; width:100%;">
+                                    <span t-esc="o.vendor_id.vat[5]"/>
+                                </font>
+                                <font style="font-size: 34px; position: absolute; top: 9.8cm; left: 31.5cm; width:100%;">
+                                    <span t-esc="o.vendor_id.vat[6]"/>
+                                </font>
+                                <font style="font-size: 34px; position: absolute; top: 9.8cm; left: 32.3cm; width:100%;">
+                                    <span t-esc="o.vendor_id.vat[7]"/>
+                                </font>
+                                <font style="font-size: 34px; position: absolute; top: 9.8cm; left: 33.1cm; width:100%;">
+                                    <span t-esc="o.vendor_id.vat[8]"/>
+                                </font>
+                                <font style="font-size: 34px; position: absolute; top: 9.8cm; left: 33.9cm; width:100%;">
+                                    <span t-esc="o.vendor_id.vat[9]"/>
+                                </font>
+                                <font style="font-size: 34px; position: absolute; top: 9.8cm; left: 35.2cm; width:100%;">
+                                    <span t-esc="o.vendor_id.vat[10]"/>
+                                </font>
+                                <font style="font-size: 34px; position: absolute; top: 9.8cm; left: 36cm; width:100%;">
+                                    <span t-esc="o.vendor_id.vat[11]"/>
+                                </font>
+                                <font style="font-size: 34px; position: absolute; top: 9.8cm; left: 37.3cm; width:100%;">
+                                    <span t-esc="o.vendor_id.vat[12]"/>
+                                </font>
+                            </t>
+                            <font style="font-size: 30px; position: absolute; top: 11.2cm; left: 4cm; width:100%;">
+                                <span t-field="o.vendor_id.name"/>
+                            </font>
+                            <font style="font-size: 30px; position: absolute; top: 12.9cm; left: 4.5cm; width:100%;">
+                                <span t-field="o.vendor_id.street"/>
+                            </font>
+                            <font style="font-size: 30px; position: absolute; top: 14.8cm; left: 6cm; width:100%;">
+                                <t t-if="o.name">
+                                    <span t-esc="o.name[6]"/>
+                                    <span t-esc="o.name[7]"/>
+                                    <span t-esc="o.name[8]"/>
+                                </t>
+                            </font>
+                            <font style="font-size: 30px; position: absolute; top: 14.9cm; left: 14.6cm; width:100%;">
+                                <t t-if="o.wht_form == 'wht_1_a'">
+                                    &#10003;
+                                </t>
+                            </font>
+                            <font style="font-size: 30px; position: absolute; top: 14.9cm; left: 19.8cm; width:100%;">
+                                <t t-if="o.wht_form == 'wht_1_s'">
+                                    &#10003;
+                                </t>
+                            </font>
+                            <font style="font-size: 30px; position: absolute; top: 14.9cm; left: 27.1cm; width:100%;">
+                                <t t-if="o.wht_form == 'wht_2'">
+                                    &#10003;
+                                </t>
+                            </font>
+                            <font style="font-size: 30px; position: absolute; top: 14.9cm; left: 32.3cm; width:100%;">
+                                <t t-if="o.wht_form == 'wht_3'">
+                                    &#10003;
+                                </t>
+                            </font>
+                            <font style="font-size: 30px; position: absolute; top: 16.1cm; left: 14.6cm; width:100%;">
+                                <t t-if="o.wht_form == 'wht_2_a'">
+                                    &#10003;
+                                </t>
+                            </font>
+                            <font style="font-size: 30px; position: absolute; top: 16.1cm; left: 19.8cm; width:100%;">
+                                <t t-if="o.wht_form == 'wht_3_a'">
+                                    &#10003;
+                                </t>
+                            </font>
+                            <font style="font-size: 30px; position: absolute; top: 16.1cm; left: 27.1cm; width:100%;">
+                                <t t-if="o.wht_form == 'wht_53'">
+                                    &#10003;
+                                </t>
+                            </font>
+                            <t t-foreach="o.wht_line" t-as="l">
+                                <t t-if="l.type_income == 'type1'">
+                                    <font style="font-size: 30px; position: absolute; top: 19.3cm; left: 23cm; width:100%;">
+                                        <span t-field="o.order_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 19.3cm; left: 28cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.amount))"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 19.3cm; left: 34cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.wht_tax))"/>
+                                    </font>
+                                </t>
+                                <t t-if="l.type_income == 'type2'">
+                                    <font style="font-size: 30px; position: absolute; top: 20.3cm; left: 23cm; width:100%;">
+                                        <span t-field="o.order_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 20.3cm; left: 28cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.amount))"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 20.3cm; left: 34cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.wht_tax))"/>
+                                    </font>
+                                </t>
+                                <t t-if="l.type_income == 'type3'">
+                                    <font style="font-size: 30px; position: absolute; top: 21.2cm; left: 23cm; width:100%;">
+                                        <span t-field="o.order_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 21.2cm; left: 28cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.amount))"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 21.2cm; left: 34cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.wht_tax))"/>
+                                    </font>
+                                </t>
+                                <t t-if="l.type_income == 'type4_a'">
+                                    <font style="font-size: 30px; position: absolute; top: 22.2cm; left: 23cm; width:100%;">
+                                        <span t-field="o.order_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 22.2cm; left: 28cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.amount))"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 22.2cm; left: 34cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.wht_tax))"/>
+                                    </font>
+                                </t>
+                                <t t-if="l.type_income == 'type4_b_1_1'">
+                                    <font style="font-size: 30px; position: absolute; top: 26.0cm; left: 23cm; width:100%;">
+                                        <span t-field="o.order_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 26.0cm; left: 28cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.amount))"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 26.0cm; left: 34cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.wht_tax))"/>
+                                    </font>
+                                </t>
+                                <t t-if="l.type_income == 'type4_b_1_2'">
+                                    <font style="font-size: 30px; position: absolute; top: 27.0cm; left: 23cm; width:100%;">
+                                        <span t-field="o.order_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 27.0cm; left: 28cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.amount))"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 27.0cm; left: 34cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.wht_tax))"/>
+                                    </font>
+                                </t>
+                                <t t-if="l.type_income == 'type4_b_1_3'">
+                                    <font style="font-size: 30px; position: absolute; top: 27.9cm; left: 23cm; width:100%;">
+                                        <span t-field="o.order_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 27.9cm; left: 28cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.amount))"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 27.9cm; left: 34cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.wht_tax))"/>
+                                    </font>
+                                </t>
+                                <t t-if="l.type_income == 'type4_b_1_4'">
+                                    <font style="font-size: 30px; position: absolute; top: 29cm; left: 23cm; width:100%;">
+                                        <span t-field="o.order_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 29cm; left: 11.5cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.type_wht_tax_1_4))"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 28.9cm; left: 28cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.amount))"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 28.9cm; left: 34cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.wht_tax))"/>
+                                    </font>
+                                </t>
+                                <t t-if="l.type_income == 'type4_b_2_1'">
+                                    <font style="font-size: 30px; position: absolute; top: 30.8cm; left: 23cm; width:100%;">
+                                        <span t-field="o.order_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 30.8cm; left: 28cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.amount))"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 30.8cm; left: 34cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.wht_tax))"/>
+                                    </font>
+                                </t>
+                                <t t-if="l.type_income == 'type4_b_2_2'">
+                                    <font style="font-size: 30px; position: absolute; top: 32.7cm; left: 23cm; width:100%;">
+                                        <span t-field="o.order_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 32.7cm; left: 28cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.amount))"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 32.7cm; left: 34cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.wht_tax))"/>
+                                    </font>
+                                </t>
+                                <t t-if="l.type_income == 'type4_b_2_3'">
+                                    <font style="font-size: 30px; position: absolute; top: 34.6cm; left: 23cm; width:100%;">
+                                        <span t-field="o.order_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 34.6cm; left: 28cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.amount))"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 34.6cm; left: 34cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.wht_tax))"/>
+                                    </font>
+                                </t>
+                                <t t-if="l.type_income == 'type4_b_2_4'">
+                                    <font style="font-size: 30px; position: absolute; top: 36.5cm; left: 23cm; width:100%;">
+                                        <span t-field="o.order_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 36.5cm; left: 28cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.amount))"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 36.5cm; left: 34cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.wht_tax))"/>
+                                    </font>
+                                </t>
+                                <t t-if="l.type_income == 'type4_b_2_5'">
+                                    <font style="font-size: 30px; position: absolute; top: 36.6cm; left: 10.5cm; width:100%;">
+                                        <span t-field="l.type6_note"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 36.5cm; left: 23cm; width:100%;">
+                                        <span t-field="o.order_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 36.5cm; left: 28cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.amount))"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 36.5cm; left: 34cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.wht_tax))"/>
+                                    </font>
+                                </t>
+                                <t t-if="l.type_income == 'type5'">
+                                    <font style="font-size: 30px; position: absolute; top: 40.35cm; left: 23cm; width:100%;">
+                                        <span t-field="o.order_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 40.35cm; left: 28cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.amount))"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 40.35cm; left: 34cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.wht_tax))"/>
+                                    </font>
+                                </t>
+                                <t t-if="l.type_income == 'type6'">
+                                    <font style="font-size: 30px; position: absolute; top: 41.4cm; left: 7cm; width:100%;">
+                                        <span t-field="l.type6_note"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 41.4cm; left: 23cm; width:100%;">
+                                        <span t-field="o.order_date" t-options='{"format": "dd/MM/yyyy"}'/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 41.3cm; left: 28cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.amount))"/>
+                                    </font>
+                                    <font style="font-size: 30px; position: absolute; top: 41.3cm; left: 34cm; width:100%;">
+                                        <span t-esc="'{0:,.2f}'.format(float(l.wht_tax))"/>
+                                    </font>
+                                </t>
+                            </t>
+                            <font style="font-size: 30px; position: absolute; top: 42.7cm; left: 28cm; width:100%;">
+                                <span t-esc="'{0:,.2f}'.format(float(o.untaxed_amount))"/>
+                            </font>
+                            <font style="font-size: 30px; position: absolute; top: 42.7cm; left: 34cm; width:100%;">
+                                <span t-esc="'{0:,.2f}'.format(float(o.wht_tax))"/>
+                            </font>
+                            <font style="font-size: 30px; position: absolute; top: 44cm; left: 15cm; width:100%;">
+                                <span>
+                                    (
+                                    <span t-if="o.state == 'cancel'">ศูนย์บาทถ้วน</span>
+                                    <span t-if="o.state != 'cancel'">
+                                        <span t-esc="o.baht_text(o.amount_total)"/>
+                                    </span>
+                                    ).
+                                </span>
+                            </font>
+                            <t t-if="o.paid_in == 'paid_1'">
+                                <font style="font-size: 30px; position: absolute; top: 46.7cm; left: 6.1cm; width:100%;">
+                                    &#10003;
+                                </font>
+                            </t>
+                            <t t-if="o.paid_in == 'paid_2'">
+                                <font style="font-size: 30px; position: absolute; top: 46.7cm; left: 12.3cm; width:100%;">
+                                    &#10003;
+                                </font>
+                            </t>
+                            <t t-if="o.paid_in == 'paid_3'">
+                                <font style="font-size: 30px; position: absolute; top: 46.7cm; left: 19.55cm; width:100%;">
+                                    &#10003;
+                                </font>
+                            </t>
+                            <t t-if="o.paid_in == 'paid_4'">
+                                <font style="font-size: 30px; position: absolute; top: 46.7cm; left: 27.0cm; width:100%;">
+                                    &#10003;
+                                </font>
+                                <font style="font-size: 30px; position: absolute; top: 46.7cm; left: 32cm; width:100%;">
+                                    <span t-field="o.paid_etc"/>
+                                </font>
+                            </t>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
+
+
+        <!--                        <font style="font-size: 18px; line-height: 14px;">-->
+        <!--                            <b>ฉบับที่ 1</b>-->
+        <!--                            <i>(สำหรับผู้ถูกหักภาษี ณ ที่จ่าย ใช้แนบพร้อมกับแบบแสดงรายการภาษี)</i>-->
+        <!--                            <br/>-->
+        <!--                            <b>ฉบับที่ 2</b>-->
+        <!--                            <i>(สำหรับผู้ถูกหักภาษี ณ ที่จ่าย เก็บไว้เป็นหลักฐาน)</i>-->
+        <!--                        </font>-->
+        <!--                        <table class="fixed" cellspacing="0" border-collapse="collapse"-->
+        <!--                               style="border: 1px solid black; width:100%; margin-bottom: 0px;">-->
+        <!--                            <col width="3%"/>-->
+        <!--                            <col width="80%"/>-->
+        <!--                            <col width="12%"/>-->
+        <!--                            <col width="1%"/>-->
+        <!--                            <tr>-->
+        <!--                                <td/>-->
+        <!--                                <td style="text-align:center; line-height: 26px;">-->
+        <!--                                    <font style="font-size: 28px;">-->
+        <!--                                        หนังสือรับรองการหักภาษี ณ ที่จ่าย-->
+        <!--                                    </font>-->
+        <!--                                    <font style="font-size: 20px;">-->
+        <!--                                        <br/>-->
+        <!--                                        ตามมาตรา 50 ทวิ แห่งประมวลรัษฎากร-->
+        <!--                                    </font>-->
+        <!--                                </td>-->
+        <!--                                <td style="line-height: 16px;">-->
+        <!--                                    <font style="font-size: 18px;">-->
+        <!--                                        เล่มที่-->
+        <!--                                        <br/>-->
+        <!--                                        เลขที่-->
+        <!--                                    </font>-->
+        <!--                                </td>-->
+        <!--                                <td/>-->
+        <!--                            </tr>-->
+        <!--                            <tr>-->
+        <!--                                <td/>-->
+        <!--                                <td colspan="2">-->
+        <!--                                    <table class="fixed" cellspacing="0" border-collapse="collapse"-->
+        <!--                                           style="border: 1px solid black; width:100%; margin-bottom: 0px;">-->
+        <!--                                        <col width="100%"/>-->
+        <!--                                        <tr>-->
+        <!--                                            <td style="padding: 5px; line-height: 18px;">-->
+        <!--                                                <font style="font-size: 20px;">-->
+        <!--                                                    ผู้มีหน้าที่หักภาษี ณ ที่จ่าย :- -->
+        <!--                                                </font>-->
+        <!--                                                <font style="font-size: 20px; position: absolute; left: 14cm;">-->
+        <!--                                                    เลขประจำตัวประชาชน-->
+        <!--                                                </font>-->
+        <!--                                                <br/>-->
+        <!--                                                <font style="font-size: 20px;">-->
+        <!--                                                    ชื่อ-->
+        <!--                                                </font>-->
+        <!--                                                <font style="font-size: 20px; position: absolute; left: 14cm;">-->
+        <!--                                                    เลขประจำตัวผู้เสียภาษีอากร-->
+        <!--                                                </font>-->
+        <!--                                                <font style="font-size: 15px;">-->
+        <!--                                                    <br/>-->
+        <!--                                                    (ให้ระบุว่าเป็น บุคคล นิติบุคคล บริษัท สมาคม หรือคณะบุคคล)-->
+        <!--                                                </font>-->
+        <!--                                                <font style="font-size: 15px; position: absolute; left: 16cm;">-->
+        <!--                                                    (กรอกเฉพาะกรณีเป็นผู้ไม่มีเลขประจำตัวประชาชน)-->
+        <!--                                                </font>-->
+        <!--                                                <font style="font-size: 20px;">-->
+        <!--                                                    <br/>ที่อยู่-->
+        <!--                                                </font>-->
+        <!--                                                <font style="font-size: 15px;">-->
+        <!--                                                    <br/>-->
+        <!--                                                    (ให้ระบุ ชื่ออาคาร/หมู่บ้าน ห้องเลขที่ ชั้นที่ เลขที่ ตรอก/ซอย-->
+        <!--                                                    หมู่ที่ ถนน ตำบล/แขวง อำเภอ/เขต จังหวัด)-->
+        <!--                                                </font>-->
+        <!--                                            </td>-->
+        <!--                                        </tr>-->
+        <!--                                    </table>-->
+        <!--                                </td>-->
+        <!--                                <td/>-->
+        <!--                            </tr>-->
+        <!--                            <tr>-->
+        <!--                                <td/>-->
+        <!--                                <td colspan="2">-->
+        <!--                                    <table class="fixed" cellspacing="0" border-collapse="collapse"-->
+        <!--                                           style="border: 1px solid black; width:100%; margin-bottom: 0px;">-->
+        <!--                                        <col width="100%"/>-->
+        <!--                                        <tr>-->
+        <!--                                            <td style="padding: 5px; line-height: 18px;">-->
+        <!--                                                <font style="font-size: 20px;">-->
+        <!--                                                    ผู้ถูกหักภาษี ณ ที่จ่าย : - -->
+        <!--                                                </font>-->
+        <!--                                                <font style="font-size: 20px; position: absolute; left: 14cm;">-->
+        <!--                                                    เลขประจำตัวประชาชน <div style="border: 1px solid black;"> </div>-->
+        <!--                                                </font>-->
+        <!--                                                <br/>-->
+        <!--                                                <font style="font-size: 20px;">-->
+        <!--                                                    ชื่อ-->
+        <!--                                                </font>-->
+        <!--                                                <font style="font-size: 20px; position: absolute; left: 14cm;">-->
+        <!--                                                    เลขประจำตัวผู้เสียภาษีอากร-->
+        <!--                                                </font>-->
+        <!--                                                <font style="font-size: 15px;">-->
+        <!--                                                    <br/>-->
+        <!--                                                    (ให้ระบุว่าเป็น บุคคล นิติบุคคล บริษัท สมาคม หรือคณะบุคคล)-->
+        <!--                                                </font>-->
+        <!--                                                <font style="font-size: 15px; position: absolute; left: 16cm;">-->
+        <!--                                                    (กรอกเฉพาะกรณีเป็นผู้ไม่มีเลขประจำตัวประชาชน)-->
+        <!--                                                </font>-->
+        <!--                                                <font style="font-size: 20px;">-->
+        <!--                                                    <br/>ที่อยู่-->
+        <!--                                                </font>-->
+        <!--                                                <font style="font-size: 15px;">-->
+        <!--                                                    <br/>-->
+        <!--                                                    (ให้ระบุ ชื่ออาคาร/หมู่บ้าน ห้องเลขที่ ชั้นที่ เลขที่ ตรอก/ซอย-->
+        <!--                                                    หมู่ที่ ถนน ตำบล/แขวง อำเภอ/เขต จังหวัด)-->
+        <!--                                                </font>-->
+        <!--                                                <font style="font-size: 20px;">-->
+        <!--                                                    <br/>ลำดับที่-->
+        <!--                                                </font>-->
+        <!--                                            </td>-->
+        <!--                                        </tr>-->
+        <!--                                    </table>-->
+        <!--                                </td>-->
+        <!--                                <td/>-->
+        <!--                            </tr>-->
+        <!--                            <tr>-->
+
+        <!--                            </tr>-->
+        <!--                        </table>-->

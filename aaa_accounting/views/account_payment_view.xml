@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- inherit account invoice payment form -->
+        <record id="view_account_payment_invoice_form_aaa_inherit" model="ir.ui.view">
+            <field name="name">account.payment.invoice.form.aaa.inherit</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_invoice_form"></field>
+            <field name="arch" type="xml">
+                <field name="communication" position="after">
+                        <field name="bank_cheque" invisible="1"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- inherit account.payment form -->
+        <record id="view_account_payment_form_aaa_inherit" model="ir.ui.view">
+            <field name="name">account.payment.form.aaa.inherit</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"></field>
+            <field name="arch" type="xml">
+                <field name="communication" position="after">
+                    <field name="bank_cheque" invisible="1"/>
+                    <field name="cheque_reg_id" attrs="{'invisible': [('bank_cheque','=',False)]}"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -31,14 +31,14 @@
                             </font>
                         </td>
                         <td valign="top" style="text-align:left; padding-top: 18px;">
-                            <font style="font-size: 24px;">
+                            <font style="font-size: 22px;">
                                 <b>
                                     <span t-field="o.company_id.company_name_eng"
                                           style="margin: 0px; padding: 0px; line-height: 20px;"/>
                                     <br/>
                                 </b>
                             </font>
-                            <font style="font-size: 20px;">
+                            <font style="font-size: 18px;">
                                 <span t-field="o.company_id.company_name_th"
                                       style="margin: 0px; padding: 0px; line-height: 20px;"/>
                             </font>
@@ -46,15 +46,19 @@
                     </tr>
                     <tr>
                         <td valign="top" style="text-align:left; padding: 3px; line-height: 20px; padding-left: 0px;">
-                            <font style="font-size: 20px;">
+                            <font style="font-size: 18px;">
                                 <span t-field="o.company_id.address_th"/>
                             </font>
-                            <font style="font-size: 24px;">
+                            <font style="font-size: 22px;">
                                 <br/>
-                                <b>CALL CENTER :</b><b><span class="custom-span" t-field="o.company_id.phone"/>&amp;nbsp;&amp;nbsp;</b>
+                                <b style="font-size: 22px;">
+                                    CALL CENTER :
+                                    <span class="custom-span" t-field="o.company_id.phone" style="font-size: 22px;"/>&amp;nbsp;&amp;nbsp;
+                                </b>
                                 <t t-if="o.company_id.phone">
-                                    <b>Line@:</b>
-                                        <b><span class="custom-span" t-field="o.company_id.line"/>
+                                    <b style="font-size: 22px;">
+                                        Line@:
+                                        <span class="custom-span" t-field="o.company_id.line" style="font-size: 22px;"/>
                                     </b>
                                 </t>
                             </font>

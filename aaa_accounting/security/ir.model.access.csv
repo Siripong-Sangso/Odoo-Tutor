@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_asset_report,access.asset.report,model_asset_report,account.group_account_invoice,1,1,1,1
+access_payable_report,access.payable.report,model_payable_report,account.group_account_invoice,1,1,1,1
+access_tax_report,access.tax.report,model_tax_report,account.group_account_invoice,1,1,1,1
+access_book_withholding_tax,access.book.withholding.tax,model_book_withholding_tax,account.group_account_invoice,1,1,1,0
+access_withholding_tax,access.withholding.tax,model_withholding_tax,account.group_account_invoice,1,1,1,0
+access_withholding_tax_line,access.withholding.tax.line,model_withholding_tax_line,account.group_account_invoice,1,1,1,0
+
+access_withholding_tax_all,access.withholding.tax.all,model_withholding_tax_all,account.group_account_invoice,1,1,1,1

@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="account_payable_report_header_template">
+            <t t-if="data['form']['date_to']">
+                <t t-set="date" t-value="time.strptime(data['form']['date_to'],'%Y-%m-%d' )"/>
+            </t>
+            <div class="header"
+                 style="font-family: TH Krub; margin-bottom: -5px; padding-bottom: 0px; width:100%; position: relative;">
+                <t t-raw="0"/>
+                <style>
+                    table.fixed{
+                    border: 0px solid white;
+                    border-collapse: collapse;
+                    width: 100%;
+                    cellpadding : 0;
+                    }
+                    table.no-bordered &gt; tr &gt; td{
+                    border: 0px solid white;
+                    border-collapse: collapse;
+                    }
+                </style>
+                <div class="row">
+                    <table class="fixed">
+                        <col width="10%"/>
+                        <col width="20%"/>
+                        <col width="10%"/>
+                        <col width="60%"/>
+                        <tr>
+                            <t t-foreach="request.env['res.company'].search([('id', '=', data['form']['company_id'][0])])"
+                               t-as="o">
+                                <td colspan="4" style="text-align:center;">
+                                    <font style="font-size: 22px;">
+                                        <b>
+                                            <span t-field="o.name"/>
+                                        </b>
+                                    </font>
+                                </td>
+                            </t>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-align:center;">
+                                <font style="font-size: 20px;">
+                                    <t t-if="data['form']['report_type'] == 'detail'">
+                                        <b>รายงานตั้งเจ้าหนี้อื่น ๆ เรียงตามวันที่เอกสาร (แบบแจกแจง)</b>
+                                    </t>
+                                    <t t-if="data['form']['report_type'] == 'summary'">
+                                        <b>รายงานตั้งเจ้าหนี้อื่น ๆ เรียงตามวันที่เอกสาร (แบบสรุป)</b>
+                                    </t>
+                                </font>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">
+                                <font style="font-size: 16px;">
+                                    <b>วันที่เอกสาร</b>
+                                </font>
+                            </td>
+                            <td style="text-align: left;">
+                                <font style="font-size: 18px;">
+                                    <span t-esc="data['form']['date_from']" t-field-options='{"format": "dd/MM/yyyy"}'/>
+                                </font>
+                            </td>
+                            <td style="text-align: left;">
+                                <font style="font-size: 16px;">
+                                    <b>ถึง</b>
+                                </font>
+                            </td>
+                            <td style="text-align: left;">
+                                <font style="font-size: 16px;">
+                                    <span t-esc="data['form']['date_to']" t-field-options='{"format": "dd/MM/yyyy"}'/>
+                                </font>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </template>
+
+        <template id="account_payable_detail_report">
+            <t t-call="web.html_container">
+                <t t-set="i" t-value="1"/>
+                <t t-set="sum_untaxed" t-value="0"/>
+                <t t-set="sum_tax" t-value="0"/>
+                <t t-call="aaa_accounting.account_payable_report_header_template">
+                </t>
+                <div class="article" style="position: absolute; font-family: TH Krub; width:100%">
+                    <style>
+                        table.fixed{
+                        border: 0px solid white;
+                        border-collapse: collapse;
+                        width: 100%;
+                        cellpadding : 0;
+                        }
+                        table.fixed &gt; thead &gt; tr &gt; th{
+                        border-bottom: 1px solid black;
+                        border-top: 1px solid black;
+                        border-collapse: collapse;
+                        cellpadding : 0;
+                        }
+                        table.fixed &gt; tfoot &gt; tr &gt; th{
+                        border-bottom: 1px solid black;
+                        border-top: 1px solid black;
+                        border-collapse: collapse;
+                        cellpadding : 0;
+                        }
+
+                    </style>
+                    <table class="fixed" cellspacing="0" border-collapse="collapse" style="width:97%;">
+                        <col width="8%"/>
+                        <col width="8%"/>
+                        <col width="8%"/>
+                        <col width="18%"/>
+                        <col width="10%"/>
+                        <col width="8%"/>
+                        <col width="8%"/>
+                        <col width="8%"/>
+                        <col width="8%"/>
+                        <col width="8%"/>
+                        <col width="8%"/>
+                        <thead>
+                            <tr>
+                                <th style="padding: 5px; text-align: left;">
+                                    <font style="font-size: 16px;">
+                                        <b>วันที่เอกสาร</b>
+                                        <br/>
+                                        &amp;nbsp;&amp;nbsp;รหัสค่าใช้จ่าย
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: left;">
+                                    <font style="font-size: 16px;">
+                                        <b>เลขที่เอกสาร</b>
+                                        <br/>
+                                        &amp;nbsp;&amp;nbsp;ชื่อค่าใช้จ่าย
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: left;">
+                                    <font style="font-size: 16px;">
+                                        <b>เลขที่ใบกำกับ</b>
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: left;">
+                                    <font style="font-size: 16px;">
+                                        <b>ชื่อเจ้าหนี้</b>
+                                        <br/>
+                                        คำอธิบายรายการ
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: left;">
+                                    <font style="font-size: 16px;">
+                                        <b>ผู้รับผิดชอบ</b>
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: right;">
+                                    <font style="font-size: 16px;">
+                                        <b>จำนวนเงิน</b>
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: right;">
+                                    <font style="font-size: 16px;">
+                                        <b>ส่วนลดบิล</b>
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: right;">
+                                    <font style="font-size: 16px;">
+                                        <b>เงินมัดจำ</b>
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: right;">
+                                    <font style="font-size: 16px;">
+                                        <b>เงินก่อนภาษี</b>
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: right;">
+                                    <font style="font-size: 16px;">
+                                        <b>ภาษีขาย</b>
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: right;">
+                                    <font style="font-size: 16px;">
+                                        <b>รวมทั้งสิ้น</b>
+                                        <br/>
+                                        จำนวนเงิน
+                                    </font>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="i_amount" t-value="0"/>
+                            <t t-set="amount" t-value="0"/>
+                            <t t-set="amount_discount" t-value="0"/>
+                            <t t-set="amount_deposit" t-value="0"/>
+                            <t t-set="amount_untaxed" t-value="0"/>
+                            <t t-set="amount_tax" t-value="0"/>
+                            <t t-set="amount_total" t-value="0"/>
+                            <t t-set="payable_date" t-value="[]"/>
+                            <t t-foreach="docs" t-as="o">
+                                <t t-set="payable_date" t-value="payable_date + [o.invoice_date]"/>
+                            </t>
+                            <t t-foreach="set(payable_date)" t-as="date">
+                                <t t-set="i" t-value="0"/>
+                                <t t-set="total" t-value="0"/>
+                                <t t-set="total_discount" t-value="0"/>
+                                <t t-set="total_deposit" t-value="0"/>
+                                <t t-set="total_untaxed" t-value="0"/>
+                                <t t-set="total_tax" t-value="0"/>
+                                <t t-set="total_total" t-value="0"/>
+                                <t t-foreach="docs" t-as="o">
+                                    <t t-if="date==o.invoice_date">
+                                        <tr>
+                                            <td class="tr-alice" style="padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-field="o.invoice_date"
+                                                          t-field-options='{"widget": "date"}'/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-field="o.name"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-field="o.name"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-field="o.partner_id.name"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-field="o.partner_id.name"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px; text-align: right;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_untaxed))"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px; text-align: right;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_tax))"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px; text-align: right;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_paid))"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px; text-align: right;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_untaxed))"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px; text-align: right;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_tax))"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px; text-align: right;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_total))"/>
+                                                </font>
+                                            </td>
+                                            <t t-set="i" t-value="i+1"/>
+                                            <t t-set="total" t-value="total+o.amount_untaxed"/>
+                                            <t t-set="total_discount" t-value="total_discount+o.amount_tax"/>
+                                            <t t-set="total_deposit" t-value="total_deposit+o.amount_paid"/>
+                                            <t t-set="total_untaxed" t-value="total_untaxed+o.amount_untaxed"/>
+                                            <t t-set="total_tax" t-value="total_tax+o.amount_tax"/>
+                                            <t t-set="total_total" t-value="total_total+o.amount_total"/>
+                                            <t t-set="i_amount" t-value="i_amount+1"/>
+                                            <t t-set="amount" t-value="amount+o.amount_untaxed"/>
+                                            <t t-set="amount_discount" t-value="amount_discount+o.amount_tax"/>
+                                            <t t-set="amount_deposit" t-value="amount_deposit+o.amount_paid"/>
+                                            <t t-set="amount_untaxed" t-value="amount_untaxed+o.amount_untaxed"/>
+                                            <t t-set="amount_tax" t-value="amount_tax+o.amount_tax"/>
+                                            <t t-set="amount_total" t-value="amount_total+o.amount_total"/>
+                                        </tr>
+                                        <t t-foreach="o.invoice_line_ids" t-as="l">
+                                            <tr>
+                                                <td style="padding: 5px;">
+                                                    <font style="font-size: 16px;">
+                                                        &amp;nbsp;&amp;nbsp;
+                                                        <span t-field="l.product_id.default_code"/>
+                                                    </font>
+                                                </td>
+                                                <td colspan="3" style="padding: 5px;">
+                                                    <font style="font-size: 16px;">
+                                                        &amp;nbsp;&amp;nbsp;
+                                                        <span t-field="l.product_id.name"/>
+                                                    </font>
+                                                </td>
+                                                <td style="padding: 5px;">
+                                                    <font style="font-size: 16px;">
+
+                                                    </font>
+                                                </td>
+                                                <td style="padding: 5px; text-align: right;">
+                                                    <font style="font-size: 16px;">
+                                                        <span t-esc="'{0:,.2f}'.format(float(l.price_subtotal))"/>
+                                                    </font>
+                                                </td>
+                                                <td style="padding: 5px; text-align: right;">
+                                                    <font style="font-size: 16px;">
+
+                                                    </font>
+                                                </td>
+                                                <td style="padding: 5px; text-align: right;">
+                                                    <font style="font-size: 16px;">
+
+                                                    </font>
+                                                </td>
+                                                <td style="padding: 5px; text-align: right;">
+                                                    <font style="font-size: 16px;">
+
+                                                    </font>
+                                                </td>
+                                                <td style="padding: 5px; text-align: right;">
+                                                    <font style="font-size: 16px;">
+
+                                                    </font>
+                                                </td>
+                                                <td style="padding: 5px; text-align: right;">
+                                                    <font style="font-size: 16px;">
+
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </t>
+                                </t>
+                                <tr>
+                                    <td style="text-align: center; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <b>รวมประจำวัน</b>
+                                        </font>
+                                    </td>
+                                    <td style="text-align: center;  padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <b>
+                                                <span t-esc="'{0:,.0f}'.format(float(i))"/>
+                                            </b>
+                                        </font>
+                                    </td>
+                                    <td style="text-align: center;  padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <b>รายการ</b>
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; text-align: right; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <b>รวมเงิน</b>
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; text-align: right; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(total))"/>
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; text-align: right; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(total_discount))"/>
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; text-align: right; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(total_deposit))"/>
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; text-align: right; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(total_untaxed))"/>
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; text-align: right; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(total_tax))"/>
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; text-align: right; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(total_total))"/>
+                                        </font>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td style="text-align: center;  padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <b>รวม</b>
+                                    </font>
+                                </td>
+                                <td style="text-align: center;  padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <b>
+                                            <span t-esc="'{0:,.0f}'.format(float(i_amount))"/>
+                                        </b>
+                                    </font>
+                                </td>
+                                <td style="text-align: center;  padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <b>รายการ</b>
+                                    </font>
+                                </td>
+                                <td style="padding: 5px; text-align: right; padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+
+                                    </font>
+                                </td>
+                                <td style="padding: 5px; padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <b>รวมเงินทั้งสิ้น</b>
+                                    </font>
+                                </td>
+                                <td style="padding: 5px; text-align: right; padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <span t-esc="'{0:,.2f}'.format(float(amount))"/>
+                                    </font>
+                                </td>
+                                <td style="padding: 5px; text-align: right; padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <span t-esc="'{0:,.2f}'.format(float(amount_discount))"/>
+                                    </font>
+                                </td>
+                                <td style="padding: 5px; text-align: right; padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <span t-esc="'{0:,.2f}'.format(float(amount_deposit))"/>
+                                    </font>
+                                </td>
+                                <td style="padding: 5px; text-align: right; padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <span t-esc="'{0:,.2f}'.format(float(amount_untaxed))"/>
+                                    </font>
+                                </td>
+                                <td style="padding: 5px; text-align: right; padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <span t-esc="'{0:,.2f}'.format(float(amount_tax))"/>
+                                    </font>
+                                </td>
+                                <td style="padding: 5px; text-align: right; padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <span t-esc="'{0:,.2f}'.format(float(amount_total))"/>
+                                    </font>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+        <template id="account_payable_summary_report">
+            <t t-call="web.html_container">
+                <t t-set="i" t-value="1"/>
+                <t t-set="sum_untaxed" t-value="0"/>
+                <t t-set="sum_tax" t-value="0"/>
+                <t t-call="aaa_accounting.account_payable_report_header_template">
+                </t>
+                <div class="article" style="position: absolute; font-family: TH Krub; width:100%">
+                    <style>
+                        table.fixed{
+                        border: 0px solid white;
+                        border-collapse: collapse;
+                        width: 100%;
+                        cellpadding : 0;
+                        }
+                        table.fixed &gt; thead &gt; tr &gt; th{
+                        border-bottom: 1px solid black;
+                        border-top: 1px solid black;
+                        border-collapse: collapse;
+                        cellpadding : 0;
+                        }
+                        table.fixed &gt; tfoot &gt; tr &gt; th{
+                        border-bottom: 1px solid black;
+                        border-top: 1px solid black;
+                        border-collapse: collapse;
+                        cellpadding : 0;
+                        }
+
+                    </style>
+                    <table class="fixed" cellspacing="0" border-collapse="collapse" style="width:97%;">
+                        <col width="8%"/>
+                        <col width="8%"/>
+                        <col width="8%"/>
+                        <col width="18%"/>
+                        <col width="10%"/>
+                        <col width="8%"/>
+                        <col width="8%"/>
+                        <col width="8%"/>
+                        <col width="8%"/>
+                        <col width="8%"/>
+                        <col width="8%"/>
+                        <thead>
+                            <tr>
+                                <th style="padding: 5px; text-align: left;">
+                                    <font style="font-size: 16px;">
+                                        <b>วันที่เอกสาร</b>
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: left;">
+                                    <font style="font-size: 16px;">
+                                        <b>เลขที่เอกสาร</b>
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: left;">
+                                    <font style="font-size: 16px;">
+                                        <b>เลขที่ใบกำกับ</b>
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: left;">
+                                    <font style="font-size: 16px;">
+                                        <b>ชื่อเจ้าหนี้</b>
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: left;">
+                                    <font style="font-size: 16px;">
+                                        <b>ผู้รับผิดชอบ</b>
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: right;">
+                                    <font style="font-size: 16px;">
+                                        <b>จำนวนเงิน</b>
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: right;">
+                                    <font style="font-size: 16px;">
+                                        <b>ส่วนลดบิล</b>
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: right;">
+                                    <font style="font-size: 16px;">
+                                        <b>เงินมัดจำ</b>
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: right;">
+                                    <font style="font-size: 16px;">
+                                        <b>เงินก่อนภาษี</b>
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: right;">
+                                    <font style="font-size: 16px;">
+                                        <b>ภาษีขาย</b>
+                                    </font>
+                                </th>
+                                <th style="padding: 5px; text-align: right;">
+                                    <font style="font-size: 16px;">
+                                        <b>รวมทั้งสิ้น</b>
+                                        <br/>
+                                        จำนวนเงิน
+                                    </font>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="i_amount" t-value="0"/>
+                            <t t-set="amount" t-value="0"/>
+                            <t t-set="amount_discount" t-value="0"/>
+                            <t t-set="amount_deposit" t-value="0"/>
+                            <t t-set="amount_untaxed" t-value="0"/>
+                            <t t-set="amount_tax" t-value="0"/>
+                            <t t-set="amount_total" t-value="0"/>
+                            <t t-set="payable_date" t-value="[]"/>
+                            <t t-foreach="docs" t-as="o">
+                                <t t-set="payable_date" t-value="payable_date + [o.invoice_date]"/>
+                            </t>
+                            <t t-foreach="set(payable_date)" t-as="date">
+                                <t t-set="i" t-value="0"/>
+                                <t t-set="total" t-value="0"/>
+                                <t t-set="total_discount" t-value="0"/>
+                                <t t-set="total_deposit" t-value="0"/>
+                                <t t-set="total_untaxed" t-value="0"/>
+                                <t t-set="total_tax" t-value="0"/>
+                                <t t-set="total_total" t-value="0"/>
+                                <t t-foreach="docs" t-as="o">
+                                    <t t-if="date==o.invoice_date">
+                                        <tr>
+                                            <td class="tr-alice" style="padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-field="o.invoice_date"
+                                                          t-field-options='{"widget": "date"}'/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-field="o.name"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-field="o.name"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-field="o.partner_id.name"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-field="o.partner_id.name"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px; text-align: right;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_untaxed))"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px; text-align: right;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_tax))"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px; text-align: right;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_paid))"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px; text-align: right;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_untaxed))"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px; text-align: right;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_tax))"/>
+                                                </font>
+                                            </td>
+                                            <td style="padding: 5px; text-align: right;">
+                                                <font style="font-size: 16px;">
+                                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_total))"/>
+                                                </font>
+                                            </td>
+                                            <t t-set="i" t-value="i+1"/>
+                                            <t t-set="total" t-value="total+o.amount_untaxed"/>
+                                            <t t-set="total_discount" t-value="total_discount+o.amount_tax"/>
+                                            <t t-set="total_deposit" t-value="total_deposit+o.amount_paid"/>
+                                            <t t-set="total_untaxed" t-value="total_untaxed+o.amount_untaxed"/>
+                                            <t t-set="total_tax" t-value="total_tax+o.amount_tax"/>
+                                            <t t-set="total_total" t-value="total_total+o.amount_total"/>
+                                            <t t-set="i_amount" t-value="i_amount+1"/>
+                                            <t t-set="amount" t-value="amount+o.amount_untaxed"/>
+                                            <t t-set="amount_discount" t-value="amount_discount+o.amount_tax"/>
+                                            <t t-set="amount_deposit" t-value="amount_deposit+o.amount_paid"/>
+                                            <t t-set="amount_untaxed" t-value="amount_untaxed+o.amount_untaxed"/>
+                                            <t t-set="amount_tax" t-value="amount_tax+o.amount_tax"/>
+                                            <t t-set="amount_total" t-value="amount_total+o.amount_total"/>
+                                        </tr>
+                                    </t>
+                                </t>
+                                <tr>
+                                    <td style="text-align: center; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <b>รวมประจำวัน</b>
+                                        </font>
+                                    </td>
+                                    <td style="text-align: center;  padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <b>
+                                                <span t-esc="'{0:,.0f}'.format(float(i))"/>
+                                            </b>
+                                        </font>
+                                    </td>
+                                    <td style="text-align: center;  padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <b>รายการ</b>
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; text-align: right; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <b>รวมเงิน</b>
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; text-align: right; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(total))"/>
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; text-align: right; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(total_discount))"/>
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; text-align: right; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(total_deposit))"/>
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; text-align: right; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(total_untaxed))"/>
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; text-align: right; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(total_tax))"/>
+                                        </font>
+                                    </td>
+                                    <td style="padding: 5px; text-align: right; padding: 5px; border-top: 1px solid black; border-bottom: 1px solid black;">
+                                        <font style="font-size: 16px;">
+                                            <span t-esc="'{0:,.2f}'.format(float(total_total))"/>
+                                        </font>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td style="text-align: center;  padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <b>รวม</b>
+                                    </font>
+                                </td>
+                                <td style="text-align: center;  padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <b>
+                                            <span t-esc="'{0:,.0f}'.format(float(i_amount))"/>
+                                        </b>
+                                    </font>
+                                </td>
+                                <td style="text-align: center;  padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <b>รายการ</b>
+                                    </font>
+                                </td>
+                                <td style="padding: 5px; text-align: right; padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+
+                                    </font>
+                                </td>
+                                <td style="padding: 5px; padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <b>รวมเงินทั้งสิ้น</b>
+                                    </font>
+                                </td>
+                                <td style="padding: 5px; text-align: right; padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <span t-esc="'{0:,.2f}'.format(float(amount))"/>
+                                    </font>
+                                </td>
+                                <td style="padding: 5px; text-align: right; padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <span t-esc="'{0:,.2f}'.format(float(amount_discount))"/>
+                                    </font>
+                                </td>
+                                <td style="padding: 5px; text-align: right; padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <span t-esc="'{0:,.2f}'.format(float(amount_deposit))"/>
+                                    </font>
+                                </td>
+                                <td style="padding: 5px; text-align: right; padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <span t-esc="'{0:,.2f}'.format(float(amount_untaxed))"/>
+                                    </font>
+                                </td>
+                                <td style="padding: 5px; text-align: right; padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <span t-esc="'{0:,.2f}'.format(float(amount_tax))"/>
+                                    </font>
+                                </td>
+                                <td style="padding: 5px; text-align: right; padding: 5px; border-bottom: 1px solid black;">
+                                    <font style="font-size: 16px;">
+                                        <span t-esc="'{0:,.2f}'.format(float(amount_total))"/>
+                                    </font>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- customer billing tree view -->
+    <record id="customer_billing_tree" model="ir.ui.view">
+        <field name="name">customer.billing.tree</field>
+        <field name="model">customer.billing</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="state == 'draft'" decoration-muted="state == 'cancel'" string="Customer Billing">
+                <field name="name"/>
+                <field name="partner_id" groups="base.group_user" string="Customer"/>
+                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                <field name="date_billing"/>
+
+                <field name="user_id"/>
+                <field name="amount_untaxed" sum="Untaxed"/>
+                <field name="amount_tax" sum="Tax"/>
+                <field name="amount_total" sum="Total"/>
+                <field name="residual" sum="Due"/>
+                <field name="currency_id" invisible="1"/>
+                <field name="company_currency_id" invisible="1"/>
+                <field name="state"/>
+                <field name="invoice_number"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- customer billing search -->
+    <record id="view_customer_billing_filter" model="ir.ui.view">
+        <field name="name">customer.billing</field>
+        <field name="model">customer.billing</field>
+        <field name="arch" type="xml">
+            <search string="Search Bill">
+                <field name="name" string="Customer Bill"/>
+                <filter name="draft" string="Draft" domain="[('state','=','draft')]"/>
+                <filter name="confirm" string="Unpaid" domain="[('state','=','confirm')]"/>
+                <filter name="paid" string="Paid" domain="[('state','=','paid')]"/>
+                <separator/>
+                <field name="partner_id" operator="child_of"/>
+                <field name="user_id" string="Salesperson"/>
+                <field name="date_billing" string="Period"/>
+                <separator/>
+                <filter domain="[('user_id','=',uid)]" name="customer_bills" help="My Customer Bills"/>
+                <group expand="0" string="Group By">
+                    <filter name="group_by_partner_id" string="Partner" context="{'group_by':'partner_id'}"/>
+                    <filter string="Salesperson" context="{'group_by':'user_id'}" name="salesperson"/>
+                    <filter name="status" string="Status" context="{'group_by':'state'}"/>
+                    <separator/>
+                    <filter string="Bill Date" context="{'group_by':'date_billing'}" name="bill_date"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- customer billing form view -->
+    <record id="customer_billing_form" model="ir.ui.view">
+        <field name="name">customer.billing.form</field>
+        <field name="model">customer.billing</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Customer Billing">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                </header>
+                <sheet string="Customer Billing">
+                    <div class="oe_button_box" name="button_box">
+                    </div>
+                    <h1>
+                        <field name="name" readonly="1" class="oe_inline"/>
+                    </h1>
+                    <group>
+                        <group>
+                            <label for="partner_id" string="Customer" style="font-weight:bold;"/>
+                            <field name="partner_id" widget="res_partner_many2one" nolabel="1"/>
+                            <field name="desc"/>
+                        </group>
+                        <group>
+                            <field name="date_billing"/>
+                            <field name="user_id"/>
+                            <field name="type"/>
+                            <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Invoices">
+                            <field name="invoice_ids" nolabel="1"
+                                   domain="[('partner_id', '=', partner_id), ('move_type','=','out_invoice'), ('state','=','posted'),
+                                   ('billing_id','=',False) ,('invoice_date_due', '&lt;', date_billing)]">
+                                <tree string="Invoices" editable="bottom">
+                                    <field name="invoice_date"/>
+                                    <field name="name"/>
+                                    <field name="company_id" groups="base.group_multi_company"
+                                           options="{'no_create': True}"/>
+                                    <field name="invoice_user_id"/>
+                                    <field name="invoice_date_due"/>
+                                    <field name="invoice_origin"/>
+                                    <field name="amount_tax"/>
+                                    <field name="amount_total_signed" sum="Total"/>
+                                    <field name="amount_residual_signed" sum="Amount due"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- customer billing action -->
+    <record id="action_customer_billing" model="ir.actions.act_window">
+        <field name="name">Customer Billing</field>
+        <field name="res_model">customer.billing</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="customer_billing_tree"/>
+        <field name="search_view_id" ref="view_customer_billing_filter"/>
+        <field name="domain">[('type','in',('out_invoice','out_refund'))]</field>
+		<field name="context">{'default_type':'out_invoice', 'type':'out_invoice'}</field>
+    </record>
+
+
+    <menuitem action="action_customer_billing" id="menu_action_customer_billing"
+              parent="account.menu_finance_receivables" sequence="3"/>
+
+</odoo>
