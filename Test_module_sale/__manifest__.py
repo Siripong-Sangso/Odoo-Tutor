@@ -16,7 +16,7 @@
         'reports/report_cn.xml',
         'reports/sale_report_template.xml',
         'reports/quotation_report_infp.xml',
-        'reports/Test2.xml',
+        'reports/credit_notes_report_infp.xml',
         'reports/Test3.xml',
     ],
     'demo': [
