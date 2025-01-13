@@ -35,7 +35,7 @@
                         <td
                                 valign="top"
                                 style="text-align:left; line-height: 20px; padding-bottom: 0px; padding-top: 110px; margin-bottom: 0px;">
-                            <font style="font-size: 26px;">
+                            <font style="font-size: 28px;">
                                 <b>
                                     <span t-field="o.company_id.company_name_th"
                                           style="margin: 0px; padding: 0px; line-height: 20px;"/>
