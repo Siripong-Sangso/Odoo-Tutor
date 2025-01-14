@@ -18,20 +18,29 @@
         <field name="binding_type">action</field>
     </record>
 
-    <record id="action_report_account_move_Test4" model="ir.actions.report">
+    <record id="action_report_account_move_billing1" model="ir.actions.report">
         <field name="model">account.move</field>
-        <field name="name">Invoice Infinity</field>
+        <field name="name">Billing Infinity</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">Test_module_sale.report_invoice_infp_H</field>
+        <field name="report_name">Test_module_sale.report_billing_infp_H</field>
         <field name="binding_model_id" ref="model_account_move"/>
         <field name="binding_type">action</field>
     </record>
 
-      <record id="action_report_account_move_Test5" model="ir.actions.report">
+      <record id="action_report_account_move_billing2" model="ir.actions.report">
         <field name="model">account.move</field>
-        <field name="name">Invoice Lifesmart</field>
+        <field name="name">Billing Lifesmart</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">Test_module_sale.report_invoice_infp</field>
+        <field name="report_name">Test_module_sale.report_billing_infp</field>
+        <field name="binding_model_id" ref="model_account_move"/>
+        <field name="binding_type">action</field>
+    </record>
+
+    <record id="action_report_account_move_invoice1" model="ir.actions.report">
+        <field name="model">account.move</field>
+        <field name="name">Invoice Infinity</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">Test_module_sale.report_invoice_infp_H</field>
         <field name="binding_model_id" ref="model_account_move"/>
         <field name="binding_type">action</field>
     </record>
