@@ -54,7 +54,7 @@
         <field name="format">A4</field>
         <field name="orientation">Portrait</field>
         <field name="margin_top">80</field>
-        <field name="margin_bottom">68</field>
+        <field name="margin_bottom">57</field>
         <field name="margin_left">5</field>
         <field name="margin_right">5</field>
         <field name="header_line" eval="False"/>
@@ -70,5 +70,29 @@
             paperformat="paperformat_A4_invoice_report_infp_H"
             name="Test_module_sale.report_invoice_infp_H"
             file="Test_module_sale.report_invoice_infp_H"
+    />
+
+    <record id="paperformat_A4_invoice_report_infp" model="report.paperformat">
+        <field name="name">A4 Credit Note 2</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">80</field>
+        <field name="margin_bottom">57</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report
+            id="action_report_account_move_Test5"
+            model="account.move"
+            report_type="qweb-pdf"
+            string="Invoice Lifesmart"
+            paperformat="paperformat_A4_invoice_report_infp"
+            name="Test_module_sale.report_invoice_infp"
+            file="Test_module_sale.report_invoice_infp"
     />
 </odoo>
