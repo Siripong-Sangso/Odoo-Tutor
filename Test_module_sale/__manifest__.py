@@ -18,8 +18,9 @@
         'reports/quotation_report_infp.xml',
         'reports/credit_notes_report_infp.xml',
         'reports/credit_notes_report_infp_H.xml',
+        'reports/billing_report_infp_H.xml',
+        'reports/billing_report_infp.xml',
         'reports/invoice_report_infp_H.xml',
-        'reports/invoice_report_infp.xml',
         'reports/Test3.xml',
     ],
     'demo': [
