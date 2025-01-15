@@ -44,4 +44,13 @@
         <field name="binding_model_id" ref="model_account_move"/>
         <field name="binding_type">action</field>
     </record>
+
+    <record id="action_report_delivery_report_H" model="ir.actions.report">
+        <field name="model">stock.picking</field>
+        <field name="name">Delivery Report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">Test_module_sale.report_delivery_infp_H</field>
+        <field name="binding_model_id" ref="model_stock_picking"/>
+        <field name="binding_type">action</field>
+    </record>
 </odoo>
