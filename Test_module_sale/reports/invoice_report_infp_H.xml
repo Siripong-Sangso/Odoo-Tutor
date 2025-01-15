@@ -309,74 +309,50 @@
                     font-size: 18px;
                     }
                 </style>
-                <div style="font-family: TH Krub; border: 1px solid black; border-radius: 10px;">
+                <div style="font-family: TH Krub;margin-bottom: 2px; border: 1px solid black; border-radius: 10px;">
                     <table class="table" style="width: 100%;">
-                        <col width="65%"/>
-                        <col width="35%"/>
                         <tr>
                             <td
-                                    style="padding: 3px; line-height: 20px; padding-left: 30px; padding-top: 20px; text-align: left;">
-                                <font style="font-size: 20px;">
-                                    ชื่อผู้วางบิล..................................
-                                </font>
-                            </td>
-                            <td
-                                    style="padding: 3px; line-height: 20px;padding-top: 20px; text-align: left;">
-                                <font style="font-size: 20px;">
-                                    ชื่อผู้รับวางบิล..................................
+                                    style="padding: 3px; line-height: 20px; padding-left: 10px; padding-top: 10px; text-align: left;">
+                                <font style="font-size: 16px;">
+                                    การชำระเงินด้วยเช็คจะสมบูรณ์เมื่อบริษัทได้รับเงินตามเช็คเรียบร้อย
                                 </font>
                             </td>
                         </tr>
                         <tr>
                             <td
-                                    style="padding: 3px; line-height: 20px; text-align: left;">
-                                <font style="font-size: 20px;">
-
-                                </font>
-                            </td>
-                            <td
-                                    style="padding: 3px; line-height: 20px; text-align: left;">
-                                <font style="font-size: 20px;">
-                                    วันที่รับ......../........../..............
+                                    style="padding: 3px; line-height: 20px; padding-left: 10px; text-align: left;">
+                                <font style="font-size: 16px;">
+                                    เงินสด _______________________
                                 </font>
                             </td>
                         </tr>
                         <tr>
                             <td
-                                    style="padding: 3px; line-height: 20px; text-align: left;">
-                                <font style="font-size: 20px;">
-
-                                </font>
-                            </td>
-                            <td
-                                    style="padding: 3px; line-height: 20px; text-align: left;">
-                                <font style="font-size: 20px;">
-                                    วันที่นัดรับเช็ค......../........../..............
+                                    style="padding: 3px; padding-left: 10px; line-height: 20px; text-align: left;">
+                                <font style="font-size: 16px;">
+                                    โอนเข้าบัญชี ธ.กสิกรไทย เลขที่บัญชี 739-2-31784-2 ชื่อบัญชี บจก.อินฟินิตี้พลัส
+                                    เทรดดิ้ง จำกัด วันที่__________จำนวนเงิน__________
                                 </font>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2" rowspan="3"
-                                style="padding: 3px;padding-left: 30px; padding-bottom: 20px; line-height: 20px; text-align: left;">
-                                <font style="font-size: 20px;">
-                                    โปรดจ่ายเช็คในนาม บริษัท อินฟินิตี้ พลัส เทรดดิ้ง จำกัด
-                                    <br/>
-                                    หรือ โอนเข้าบัญชี บริษัท อินฟินิตี้ พลัส เทรดดิ้ง จำกัด ธ.กสิกรไทย เลขที่บัญชี :
-                                    739-2-31784-2
-                                    <br/>
-                                    หมายเหตุ กำหนดชำระเงินภายในวันที่ / /
+                                style="padding: 3px;padding-left: 10px; padding-bottom: 10px; line-height: 20px; text-align: left;">
+                                <font style="font-size: 16px;">
+                                    เช็คธนาคาร__________________ ลงวันที่____________ จำนวนเงิน________________
                                 </font>
                             </td>
                         </tr>
                     </table>
                 </div>
                 <div style="width: 100%; box-sizing: border-box;">
-                    <div style="display: inline-block; width: 48%; height: 50px; border: 1px solid black; border-radius: 10px; padding: 15px; vertical-align: top; text-align: center;">
+                    <div style="display: inline-block; width: 56%; height: 50px; border: 1px solid black; border-radius: 10px; padding: 15px; vertical-align: top; text-align: center;">
                         <table class="table_hd" style="width:100%;">
-                             <tr>
+                            <tr>
                                 <td
                                         style="padding: 3px; line-height: 20px; text-align: left;">
-                                    <font style="font-size: 20px;">
+                                    <font style="font-size: 16px;">
                                         ได้รับสินค้าตามรายการข้างบนนี้ไว้ถูกต้องและอยู่ในสภาพเรียบร้อยทุกประการ
                                     </font>
                                 </td>
@@ -384,19 +360,19 @@
                             <tr>
                                 <td
                                         style="padding: 3px; line-height: 20px; text-align: left;">
-                                    <font style="font-size: 20px;">
+                                    <font style="font-size: 16px;">
                                         ผู้รับสินค้า __________________________ วันที่...../....../.......
                                     </font>
                                 </td>
                             </tr>
                         </table>
                     </div>
-                    <div style="display: inline-block; width: 48%;height: 50px; border: 1px solid black; border-radius: 10px; padding: 15px; vertical-align: top; text-align: center;">
+                    <div style="display: inline-block; width: 36%;height: 50px; border: 1px solid black; border-radius: 10px; padding: 15px; vertical-align: top; text-align: center;">
                         <table class="table_hd" style="width:100%;">
                             <tr>
                                 <td
                                         style="padding: 3px; line-height: 20px; text-align: left;">
-                                    <font style="font-size: 20px;">
+                                    <font style="font-size: 16px;">
                                         ในนาม
                                         <b>บริษัท อินฟินิตี้พลัส เทรดดิ้ง จำกัด (สำนักงานใหญ่)</b>
                                     </font>
@@ -405,7 +381,7 @@
                             <tr>
                                 <td
                                         style="padding: 3px; line-height: 20px; text-align: left;">
-                                    <font style="font-size: 20px;">
+                                    <font style="font-size: 16px;">
                                         ผู้มอบอำนาจ __________________________
                                     </font>
                                 </td>
@@ -439,45 +415,45 @@
                             border-collapse: collapse;
                             }
                         </style>
-                        <div style="border: 1px solid black; border-radius: 0 0 10px 10px; ">
+                        <div style="border: 1px solid black; border-radius: 10px 10px 10px 10px; ">
                             <table class="table2" height="600" cellspacing="0" border-collapse="collapse"
                                    style="width:100%;">
                                 <col width="7%"/>
-                                <col width="21%"/>
-                                <col width="21%"/>
-                                <col width="17%"/>
-                                <col width="18%"/>
-                                <col width="16%"/>
+                                <col width="20%"/>
+                                <col width="35%"/>
+                                <col width="11%"/>
+                                <col width="12%"/>
+                                <col width="15%"/>
                                 <thead>
                                     <tr valign="center">
                                         <th style="text-align: center; vertical-align: middle; line-height: 24px; padding: 5px; border-bottom: 1px solid black;">
                                             <font style="font-size: 18px; line-height: 24px;">
-                                                <b>ลำดับที่</b>
+                                                <b>ลำดับ</b>
                                             </font>
                                         </th>
                                         <th style="text-align: center; vertical-align: middle; line-height: 24px; border-left: 1px solid black; padding: 5px;  border-bottom: 1px solid black;">
                                             <font style="font-size: 18px;">
-                                                <b>เลขที่บิล</b>
+                                                <b>รหัสสินค้า</b>
                                             </font>
                                         </th>
                                         <th style="text-align: center; vertical-align: middle; line-height: 24px; border-left: 1px solid black; padding: 5px;  border-bottom: 1px solid black;">
                                             <font style="font-size: 18px;">
-                                                <b>วันที่</b>
+                                                <b>รายละเอียดสินค้า</b>
                                             </font>
                                         </th>
                                         <th style="text-align: center; vertical-align: middle; line-height: 24px; border-left: 1px solid black; padding: 5px;  border-bottom: 1px solid black;">
                                             <font style="font-size: 18px;">
-                                                <b>วันครบรอบกำหนด</b>
+                                                <b>จำนวน</b>
                                             </font>
                                         </th>
                                         <th style="text-align: center; vertical-align: middle; line-height: 24px; border-left: 1px solid black; padding: 5px; border-bottom: 1px solid black;border-right: 1px solid black;">
                                             <font style="font-size: 18px;">
-                                                <b>จำนวนเงิน</b>
+                                                <b>หน่วยละ</b>
                                             </font>
                                         </th>
                                         <th style="text-align: center; vertical-align: middle; line-height: 24px; border-left: 1px solid black; padding: 5px;border-bottom: 1px solid black;">
                                             <font style="font-size: 18px;">
-                                                <b>หมายเหตุ</b>
+                                                <b>จำนวนเงิน</b>
                                             </font>
                                         </th>
                                     </tr>
@@ -489,17 +465,15 @@
                                     <!-- วนลูปรายการสินค้าใน invoice_line_ids -->
                                     <t t-foreach="o.invoice_line_ids" t-as="l">
                                         <tr valign="top">
-                                            <!-- รหัสสินค้า -->
                                             <td style="text-align: center; line-height: 20px; padding: 3px; border-right: 1px solid black;">
                                                 <font style="font-size: 18px;">
                                                     <span t-esc="i"/>
                                                 </font>
                                             </td>
-                                            <!-- ชื่อสินค้า -->
                                             <t t-set="i" t-value="i+1"/>
                                             <td style="text-align: center; line-height: 20px; padding: 3px; border-right: 1px solid black;">
                                                 <font style="font-size: 18px;">
-                                                    <span t-field="o.name"/>
+                                                    <span t-field="l.product_id.default_code"/>
                                                 </font>
                                             </td>
                                             <!-- นับจำนวนบรรทัดของข้อความ -->
@@ -507,37 +481,58 @@
                                             <!-- เพิ่มจำนวนบรรทัดลงในตัวแปร count -->
                                             <t t-set="count" t-value="count + line_count"/>
 
-                                            <!-- จำนวน -->
+
                                             <td style="text-align: center; line-height: 20px; padding: 3px; border-right: 1px solid black;">
                                                 <font style="font-size: 18px;">
-                                                    <span t-field="o.invoice_date"/>
+                                                    <span t-field="l.product_id.name"/>
                                                 </font>
                                             </td>
-                                            <!-- ราคาต่อหน่วย -->
+
                                             <td style="text-align: center; line-height: 20px; padding: 3px; border-right: 1px solid black;">
                                                 <font style="font-size: 18px;">
-                                                    <span t-field="o.invoice_date_due"/>
+                                                    <span t-esc="int(l.quantity)"/>
                                                 </font>
                                             </td>
-                                            <!-- ยอดรวม (subtotal) -->
+
                                             <td style="padding-right: 10px; text-align: right; line-height: 20px; padding: 3px; padding-right: 5px; border-right: 1px solid black;">
                                                 <font style="font-size: 18px;">
-                                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_total))"/>
+                                                    <span t-esc="'{0:,.2f}'.format(float(l.price_unit))"/>
                                                 </font>
                                             </td>
                                             <td style="text-align: center; line-height: 20px; padding: 3px; padding-right: 5px;">
                                                 <font style="font-size: 18px;">
-                                                    <!--                                                    <span t-field="line.name" />-->
-                                                    <span t-field="o.narration"/>
+                                                    <span t-esc="'{0:,.2f}'.format(float(l.price_subtotal))"/>
                                                 </font>
                                             </td>
                                         </tr>
+                                        <t t-if="l.product_id.bom_ids">
+                                            <t t-foreach="l.product_id.bom_ids[0].bom_line_ids" t-as="component">
+                                                <tr>
+                                                    <td style=" border-right: 1px solid black; text-align: center;">
+                                                        <span t-esc="i"/> <!-- ลำดับที่ต่อจากสินค้าหลัก -->
+                                                    </td>
+                                                    <t t-set="i" t-value="i+1"/> <!-- เพิ่มตัวนับลำดับ -->
+                                                    <td style=" border-right: 1px solid black; text-align: center;">
+                                                        <span t-field="component.product_id.default_code"/> <!-- รหัสสินค้าใน Set -->
+                                                    </td>
+                                                    <td style=" border-right: 1px solid black; text-align: left;">
+                                                        <span t-field="component.product_id.name"/> <!-- ชื่อสินค้าใน Set -->
+                                                    </td>
+                                                    <td style=" border-right: 1px solid black; text-align: center;">
+                                                        <span t-esc="component.product_qty * l.quantity"/> <!-- จำนวนสินค้าใน Set -->
+                                                    </td>
+                                                    <td style=" border-right: 1px solid black; text-align: right;"></td> <!-- เว้นช่องสำหรับราคา -->
+                                                    <td style="text-align: right;"></td> <!-- เว้นช่องสำหรับยอดรวม -->
+                                                </tr>
+                                            </t>
+                                        </t>
                                     </t>
                                     <!--            Loop สำหรับแสดงช่องว่าง หากไม่ถึงจำนวนบรรทัดที่กำหนด-->
                                     <t t-foreach="range(int(count), 20)" t-as="x">
                                         <tr>
                                             <td style="padding-left: 5px; line-height: 20px; border-right: 1px solid black;">
                                                 <font style="font-size: 18px;">
+
                                                 </font>
                                             </td>
                                             <td style="padding-left: 5px; line-height: 20px; border-right: 1px solid black;">
@@ -567,42 +562,94 @@
                                             </td>
                                         </tr>
                                     </t>
+                                    <tr valign="top">
+                                        <td colspan="3" rowspan="6"
+                                                style="padding-left: 5px; text-align: center; line-height: 20px; border-right: 1px solid black; border-top: 1px solid black;">
+                                            <font style="font-size: 18px;">
+                                                หมายเหตุ
+                                            </font>
+                                        </td>
+                                        <td colspan="2"
+                                                style="padding-left: 5px; line-height: 20px; border-right: 1px solid black; border-top: 1px solid black;">
+                                            <font style="font-size: 18px;">
+                                                รวมเป็นเงิน
+                                            </font>
+                                        </td>
+                                        <td style="padding-left: 5px; line-height: 20px;  border-top: 1px solid black;">
+                                            <font style="font-size: 18px;">
+                                                12,677.57
+                                            </font>
+                                        </td>
+                                    </tr>
                                     <tr>
-                                        <td style="padding-left: 5px; line-height: 20px; border-right: 1px solid black;">
+                                        <td colspan="2"
+                                                style="padding-left: 5px; line-height: 20px; border-right: 1px solid black;">
                                             <font style="font-size: 18px;">
-                                            </font>
-                                        </td>
-                                        <td style="padding-left: 5px; text-align: center; line-height: 20px; border-right: 1px solid black;">
-                                            <font style="font-size: 18px;">
-                                                รวม&amp;nbsp;&amp;nbsp;
-                                                <span t-esc="line_count"/>&amp;nbsp;&amp;nbsp;ฉบับ
-                                            </font>
-                                        </td>
-                                        <td style="padding-left: 5px; line-height: 20px; border-right: 1px solid black;">
-                                            <font style="font-size: 18px;">
-
-                                            </font>
-                                        </td>
-                                        <td style="padding-left: 5px; line-height: 20px; border-right: 1px solid black;">
-                                            <font style="font-size: 18px;">
-
-                                            </font>
-                                        </td>
-                                        <td style="padding-left: 5px; line-height: 20px; border-right: 1px solid black;">
-                                            <font style="font-size: 18px;">
-
+                                                หักส่วนลด
                                             </font>
                                         </td>
                                         <td style="padding-left: 5px; line-height: 20px;">
                                             <font style="font-size: 18px;">
-
+                                                0
+                                            </font>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"
+                                                style="padding-left: 5px; line-height: 20px; border-right: 1px solid black;">
+                                            <font style="font-size: 18px;">
+                                                ยอดหลังหักส่วนลด
+                                            </font>
+                                        </td>
+                                        <td style="padding-left: 5px; line-height: 20px;">
+                                            <font style="font-size: 18px;">
+                                                12,677.57
+                                            </font>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"
+                                                style="padding-left: 5px; line-height: 20px; border-right: 1px solid black;">
+                                            <font style="font-size: 18px;">
+                                                หักเงินมัดจำ
+                                            </font>
+                                        </td>
+                                        <td style="padding-left: 5px; line-height: 20px;">
+                                            <font style="font-size: 18px;">
+                                                0
+                                            </font>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"
+                                                style="padding-left: 5px; line-height: 20px; border-right: 1px solid black;">
+                                            <font style="font-size: 18px;">
+                                                จำนวนเงินหลังหักมัดจำ
+                                            </font>
+                                        </td>
+                                        <td style="padding-left: 5px; line-height: 20px;">
+                                            <font style="font-size: 18px;">
+                                                12,677.57
+                                            </font>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2"
+                                                style="padding-left: 5px; line-height: 20px; border-right: 1px solid black;">
+                                            <font style="font-size: 18px;">
+                                                จำนวนภาษีมูลค่าเพิ่ม 7%
+                                            </font>
+                                        </td>
+                                        <td style="padding-left: 5px; line-height: 20px;">
+                                            <font style="font-size: 18px;">
+                                                887.43
                                             </font>
                                         </td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr valign="top">
-                                        <td colspan="4"
+                                        <td colspan="3"
                                             style="padding: 10px; padding-left: 5px; text-align: center; line-height: 30px; border-top: 1px solid black;border-right: 1px solid black;">
                                             <font style="font-size: 18px;">
                                                 (
@@ -610,6 +657,12 @@
                                             </font>
                                         </td>
                                         <td colspan="2"
+                                            style="padding: 10px; padding-left: 5px; text-align: center; line-height: 30px; border-right: 1px solid black; border-top: 1px solid black;">
+                                            <font style="font-size: 18px;">
+                                                จำนวนเงินรวมทั้งสิ้น
+                                            </font>
+                                        </td>
+                                        <td
                                             style="padding: 10px; padding-left: 5px; text-align: center; line-height: 30px;border-top: 1px solid black;">
                                             <font style="font-size: 18px;">
                                                 <span t-esc="'{0:,.2f}'.format(float(o.amount_total))"/>
