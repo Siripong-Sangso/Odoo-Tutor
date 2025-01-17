@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="view_move_form_inherit" model="ir.ui.view">
+        <field name="name">account.move.form.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position="inside">
+                <field name="project_name"/>
+            </xpath>
+        </field>
+    </record>
+
     <record id="action_report_account_move_Test2" model="ir.actions.report">
         <field name="model">account.move</field>
         <field name="name">Credit Note Lifesmart</field>
@@ -9,7 +20,7 @@
         <field name="binding_type">action</field>
     </record>
 
-     <record id="action_report_account_move_Test3" model="ir.actions.report">
+    <record id="action_report_account_move_Test3" model="ir.actions.report">
         <field name="model">account.move</field>
         <field name="name">Credit Note Infinity</field>
         <field name="report_type">qweb-pdf</field>
@@ -18,21 +29,21 @@
         <field name="binding_type">action</field>
     </record>
 
-    <record id="action_report_account_move_billing1" model="ir.actions.report">
-        <field name="model">account.move</field>
+    <record id="action_report_billing1" model="ir.actions.report">
+        <field name="model">customer.billing</field>
         <field name="name">Billing Infinity</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">Test_module_sale.report_billing_infp_H</field>
-        <field name="binding_model_id" ref="model_account_move"/>
+        <field name="binding_model_id" ref="model_customer_billing"/>
         <field name="binding_type">action</field>
     </record>
 
-      <record id="action_report_account_move_billing2" model="ir.actions.report">
-        <field name="model">account.move</field>
+    <record id="action_report_billing2" model="ir.actions.report">
+        <field name="model">customer.billing</field>
         <field name="name">Billing Lifesmart</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">Test_module_sale.report_billing_infp</field>
-        <field name="binding_model_id" ref="model_account_move"/>
+        <field name="binding_model_id" ref="model_customer_billing"/>
         <field name="binding_type">action</field>
     </record>
 

@@ -186,7 +186,7 @@
                                 <td
                                         style="padding: 3px; padding-bottom: 10px; line-height: 20px; padding-left: 10px; text-align: center;">
                                     <font style="font-size: 18px;">
-                                        สำนักงานใหญ่
+                                        <span t-field="o.company_id.branch_name"/>
                                     </font>
                                 </td>
                             </tr>
@@ -206,7 +206,7 @@
                                 <td>
                                     <div style="padding: 3px;padding-top: 0px; text-align: left; line-height: 20px;">
                                         <font style="font-size: 18px;">
-                                           <span t-field="o.invoice_origin"/>
+                                            <span t-esc="' ,'.join(o.line_ids.mapped('sale_line_ids.order_id.picking_ids.name'))"/>
                                         </font>
                                     </div>
                                 </td>
@@ -259,7 +259,7 @@
                                 <td
                                         style=" padding: 3px; text-align: left; line-height: 20px;">
                                     <font style="font-size: 18px;">
-                                        <span t-field="o.reversed_entry_id.name"/>
+                                        <span t-field="o.invoice_origin"/>
                                     </font>
                                 </td>
                             </tr>
@@ -579,8 +579,7 @@
                                         <td colspan="3" rowspan="6"
                                             style="padding-left: 10px; text-align: left; line-height: 20px; border-right: 1px solid black; border-top: 1px solid black;">
                                             <font style="font-size: 18px;">
-                                                หมายเหตุ :
-                                                <!--                                                <span t-field="o.note"/>-->
+                                                หมายเหตุ : <span t-field="o.narration"/>
                                             </font>
                                         </td>
                                         <td colspan="2"

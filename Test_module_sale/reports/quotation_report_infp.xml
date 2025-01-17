@@ -164,7 +164,7 @@
                                     <td
                                             style="padding-left: 5px; text-align: left; border-right: 1px solid black;">
                                         <font style="font-size: 18px;">
-
+                                            <span class="custom-span" t-field="o.project_name"/>
                                         </font>
                                     </td>
                                     <td style="padding-left: 5px; text-align: left; border-left: 1px solid black;">
@@ -424,7 +424,7 @@
                                         </td>
                                         <td style="text-align: right; line-height: 20px; padding: 3px; padding-right: 5px; border-right: 1px solid black;">
                                             <font style="font-size: 18px;">
-                                                <span t-esc="'{0:,.2f}'.format(float(l.price_subtotal))"/>
+                                                <span t-esc="'{0:,.2f}'.format(float(l.price_unit * l.product_uom_qty))"/>
                                             </font>
                                         </td>
                                     </tr>
@@ -511,7 +511,7 @@
                                             <br/>
                                             <br/>
                                             <br/>
-                                            <span t-esc="'{0:,.2f}'.format(float(l.price_unit * l.product_uom_qty))"/>
+                                            <span t-esc="'{0:,.2f}'.format(float(l.price_subtotal))"/>
                                             <br/>
                                             <br/>
                                             <br/>
@@ -547,7 +547,7 @@
                                     </td>
                                     <td style="padding-right: 5px; text-align: right;  border-bottom: 1px solid black;  border-right: 1px solid black;">
                                         <font style="font-size: 18px;">
-                                            <span t-esc="'{0:,.2f}'.format(float(l.price_subtotal))"/>
+                                            <span t-esc="'{0:,.2f}'.format(float(l.price_subtotal - l.discount))"/>
                                         </font>
                                     </td>
                                 </tr>

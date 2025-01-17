@@ -61,6 +61,8 @@
                             <font style="font-size: 18px;">
                                 <br/>
                                 <span t-field="o.company_id.address_th"/>
+                                <br/>
+                                <span t-field="o.company_id.address_eng"/>
                             </font>
                             <font style="font-size: 18px;">
                                 <br/>
@@ -174,7 +176,7 @@
                             </td>
                             <td style="padding-left: 5px; text-align: left; line-height: 20px; padding: 3px;">
                                 <font style="font-size: 18px;">
-                                    <span t-field="o.invoice_date"/>
+                                    <span t-field="o.date_billing"/>
                                 </font>
                             </td>
                         </tr>
@@ -208,7 +210,8 @@
                             <td colspan="3"
                                 style="padding: 3px; padding-left: 10px; text-align: left; border-left: 1px solid black;">
                                 <font style="font-size: 18px;line-height: 3px;">
-                                    หมายเหตุ&amp;nbsp;<span t-esc="o.narration" />
+                                    หมายเหตุ&amp;nbsp;
+                                    <span t-esc="o.comment"/>
                                 </font>
                             </td>
                         </tr>
@@ -223,7 +226,7 @@
                             <td
                                     style="padding: 3px; padding-bottom: 10px; line-height: 20px; padding-left: 10px; text-align: left;">
                                 <font style="font-size: 18px;">
-                                    สำนักงานใหญ่
+                                    <span class="custom-span" t-field="o.partner_id.branch_no"/>
                                 </font>
                             </td>
                             <td colspan="3"
@@ -278,44 +281,45 @@
                                 </font>
                             </td>
                         </tr>
-                            <tr>
-                                <td
-                                        style="padding: 3px; line-height: 20px; text-align: left;">
-                                    <font style="font-size: 20px;">
+                        <tr>
+                            <td
+                                    style="padding: 3px; line-height: 20px; text-align: left;">
+                                <font style="font-size: 20px;">
 
-                                    </font>
-                                </td>
-                                <td
-                                        style="padding: 3px; line-height: 20px; text-align: left;">
-                                    <font style="font-size: 20px;">
-                                        วันที่รับ......../........../..............
-                                    </font>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td
-                                        style="padding: 3px; line-height: 20px; text-align: left;">
-                                    <font style="font-size: 20px;">
+                                </font>
+                            </td>
+                            <td
+                                    style="padding: 3px; line-height: 20px; text-align: left;">
+                                <font style="font-size: 20px;">
+                                    วันที่รับ......../........../..............
+                                </font>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                                    style="padding: 3px; line-height: 20px; text-align: left;">
+                                <font style="font-size: 20px;">
 
-                                    </font>
-                                </td>
-                                <td
-                                        style="padding: 3px; line-height: 20px; text-align: left;">
-                                    <font style="font-size: 20px;">
-                                        วันที่นัดรับเช็ค......../........../..............
-                                    </font>
-                                </td>
-                            </tr>
+                                </font>
+                            </td>
+                            <td
+                                    style="padding: 3px; line-height: 20px; text-align: left;">
+                                <font style="font-size: 20px;">
+                                    วันที่นัดรับเช็ค......../........../..............
+                                </font>
+                            </td>
+                        </tr>
                         <tr>
                             <td colspan="2" rowspan="3"
                                 style="padding: 3px;padding-left: 30px; padding-bottom: 20px; line-height: 20px; text-align: left;">
-                                    <font style="font-size: 20px;">
-                                        โปรดจ่ายเช็คในนาม บริษัท อินฟินิตี้ พลัส เทรดดิ้ง จำกัด
-                                        <br/>
-                                        หรือ โอนเข้าบัญชี บริษัท อินฟินิตี้ พลัส เทรดดิ้ง จำกัด ธ.กสิกรไทย เลขที่บัญชี : 739-2-31784-2
-                                        <br/>
-                                        หมายเหตุ  กำหนดชำระเงินภายในวันที่   / /
-                                    </font>
+                                <font style="font-size: 20px;">
+                                    โปรดจ่ายเช็คในนาม บริษัท อินฟินิตี้ พลัส เทรดดิ้ง จำกัด
+                                    <br/>
+                                    หรือ โอนเข้าบัญชี บริษัท อินฟินิตี้ พลัส เทรดดิ้ง จำกัด ธ.กสิกรไทย เลขที่บัญชี :
+                                    739-2-31784-2
+                                    <br/>
+                                    หมายเหตุ กำหนดชำระเงินภายในวันที่ / / <span t-esc="o.comment"/>
+                                </font>
                             </td>
                         </tr>
                     </table>
@@ -393,53 +397,46 @@
                                     <t t-set="i" t-value="1"/>
                                     <t t-set="line_count" t-value="0"/>
                                     <t t-set="count" t-value="0"/>
-                                    <!-- วนลูปรายการสินค้าใน invoice_line_ids -->
-                                    <t t-foreach="o.invoice_line_ids" t-as="l">
+                                    <t t-foreach="o.invoice_ids" t-as="l">
                                         <tr valign="top">
-                                            <!-- รหัสสินค้า -->
-                                            <td style="text-align: center; line-height: 20px; padding: 3px; border-right: 1px solid black;">
+                                            <td style=" padding: 3px;  border-right: 1px solid black; line-height: 20px; padding: 3px; text-align: center;">
                                                 <font style="font-size: 18px;">
                                                     <span t-esc="i"/>
                                                 </font>
                                             </td>
-                                            <!-- ชื่อสินค้า -->
                                             <t t-set="i" t-value="i+1"/>
-                                            <td style="text-align: center; line-height: 20px; padding: 3px; border-right: 1px solid black;">
+                                            <td style="line-height: 20px; text-align: center; padding: 3px; border-right: 1px solid black;">
                                                 <font style="font-size: 18px;">
-                                                    <span t-field="o.name"/>
+                                                    <span t-field="l.name"/>
                                                 </font>
                                             </td>
-                                            <!-- นับจำนวนบรรทัดของข้อความ -->
+
                                             <t t-set="line_count" t-value="l.get_line_count() if l.name else 1"/>
-                                            <!-- เพิ่มจำนวนบรรทัดลงในตัวแปร count -->
                                             <t t-set="count" t-value="count + line_count"/>
 
-                                            <!-- จำนวน -->
-                                            <td style="text-align: center; line-height: 20px; padding: 3px; border-right: 1px solid black;">
+                                            <td style="line-height: 20px; padding: 3px; text-align: center; border-right: 1px solid black;">
                                                 <font style="font-size: 18px;">
-                                                    <span t-field="o.invoice_date"/>
+                                                    <span t-esc="l.invoice_date.strftime('%d/%m/%Y') if l.invoice_date else ''"/>
                                                 </font>
                                             </td>
-                                            <!-- ราคาต่อหน่วย -->
-                                            <td style="text-align: center; line-height: 20px; padding: 3px; border-right: 1px solid black;">
+                                            <td style="line-height: 20px; padding: 3px; text-align: center; border-right: 1px solid black; ">
                                                 <font style="font-size: 18px;">
-                                                    <span t-field="o.invoice_date_due"/>
+                                                    <span t-esc="l.invoice_date_due.strftime('%d/%m/%Y') if l.invoice_date_due else ''"/>
                                                 </font>
                                             </td>
-                                            <!-- ยอดรวม (subtotal) -->
-                                            <td style="padding-right: 10px; text-align: right; line-height: 20px; padding: 3px; padding-right: 5px; border-right: 1px solid black;">
+                                            <td style="text-align: right;padding-right: 5px; line-height: 20px; padding: 3px; border-right: 1px solid black;">
                                                 <font style="font-size: 18px;">
-                                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_total))"/>
+                                                    <span t-esc="'{0:,.2f}'.format(float(l.amount_total_signed))"/>
                                                 </font>
                                             </td>
-                                            <td style="text-align: center; line-height: 20px; padding: 3px; padding-right: 5px;">
+                                            <td style="text-align: right; line-height: 20px; padding: 3px; padding-right: 5px;">
                                                 <font style="font-size: 18px;">
-<!--                                                    <span t-field="line.name" />-->
-                                                    <span t-field="o.narration"/>
+                                                    <span t-esc="o.invoice_ids.narration"/>
                                                 </font>
                                             </td>
                                         </tr>
                                     </t>
+
                                     <!--            Loop สำหรับแสดงช่องว่าง หากไม่ถึงจำนวนบรรทัดที่กำหนด-->
                                     <t t-foreach="range(int(count), 20)" t-as="x">
                                         <tr>

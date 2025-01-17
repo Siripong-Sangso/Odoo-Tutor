@@ -49,7 +49,7 @@
     />
 
     <record id="paperformat_A4_billing_report_infp_H" model="report.paperformat">
-        <field name="name">A4 Credit Note 2</field>
+        <field name="name">A4 Billing 1</field>
         <field name="default" eval="False"/>
         <field name="format">A4</field>
         <field name="orientation">Portrait</field>
@@ -63,8 +63,8 @@
     </record>
 
     <report
-            id="action_report_account_move_billing1"
-            model="account.move"
+            id="action_report_billing1"
+            model="customer.billing"
             report_type="qweb-pdf"
             string="Billing Infinity"
             paperformat="paperformat_A4_billing_report_infp_H"
@@ -73,7 +73,7 @@
     />
 
     <record id="paperformat_A4_billing_report_infp" model="report.paperformat">
-        <field name="name">A4 Credit Note 2</field>
+        <field name="name">A4 Billing 2</field>
         <field name="default" eval="False"/>
         <field name="format">A4</field>
         <field name="orientation">Portrait</field>
@@ -87,8 +87,8 @@
     </record>
 
     <report
-            id="action_report_account_move_billing2"
-            model="account.move"
+            id="action_report_billing2"
+            model="customer.billing"
             report_type="qweb-pdf"
             string="Billing Lifesmart"
             paperformat="paperformat_A4_billing_report_infp"

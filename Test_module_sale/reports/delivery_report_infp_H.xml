@@ -186,7 +186,7 @@
                                 <td
                                         style="padding: 3px; padding-bottom: 10px; line-height: 20px; padding-left: 10px; text-align: center;">
                                     <font style="font-size: 18px;">
-                                        สำนักงานใหญ่
+                                        <span t-field="o.company_id.branch_name"/>
                                     </font>
                                 </td>
                             </tr>
@@ -206,7 +206,7 @@
                                 <td>
                                     <div style="padding: 3px;padding-top: 0px; text-align: left; line-height: 20px;">
                                         <font style="font-size: 18px;">
-                                            <span t-field="o.origin"/>
+                                            <span t-field="o.name"/>
                                         </font>
                                     </div>
                                 </td>
@@ -231,7 +231,7 @@
                                 </td>
                                 <td style=" padding: 3px; padding-left: 5px; text-align: left; line-height: 20px;">
                                     <font style="font-size: 18px;">
-                                        <!--                                        <span t-field="o.partner_id.credit_limit"/>-->
+                                        <span t-field="o.partner_id.credit_limit"/>
                                     </font>
                                 </td>
                             </tr>
@@ -259,7 +259,7 @@
                                 <td
                                         style=" padding: 3px; text-align: left; line-height: 20px;">
                                     <font style="font-size: 18px;">
-                                        <span t-field="o.name"/>
+                                        <span t-field="o.origin"/>
                                     </font>
                                 </td>
                             </tr>
@@ -273,7 +273,7 @@
                                 <td
                                         style=" padding: 3px; text-align: left; line-height: 20px;">
                                     <font style="font-size: 18px;">
-                                        <span t-field="o.user_id.name"/>
+                                        <span t-field="o.sale_id.user_id.name"/>
                                     </font>
                                 </td>
                             </tr>
@@ -580,12 +580,12 @@
                                     </t>
                                     <tr valign="top">
                                         <td colspan="3" rowspan="6"
-                                            style="padding-left: 10px; text-align: left; line-height: 20px; border-right: 1px solid black; border-top: 1px solid black;">
+                                            style="padding-left: 10px; text-align: left; line-height: 20px; border-right: 1px solid black; border-top: 1px solid black; white-space: nowrap;">
                                             <font style="font-size: 18px;">
-                                                หมายเหตุ :
-                                                <!--                                                <span t-field="o.note"/>-->
+                                                หมายเหตุ :<span t-esc="o.sale_id.note.replace('\n', ' ') if o.sale_id.note else ''"/>
                                             </font>
                                         </td>
+
                                         <td colspan="2"
                                             style="padding-left: 5px;padding-top: 5px; line-height: 10px; text-align: left; border-right: 1px solid black; border-top: 1px solid black;">
                                             <font style="font-size: 18px;">
@@ -607,7 +607,8 @@
                                         </td>
                                         <td style="padding-right: 5px; text-align: right; line-height: 10px;">
                                             <font style="font-size: 18px;">
-                                                <span t-esc="'{0:,.2f}'.format(float(sum(l.price_subtotal * (l.discount / 100) for l in o.sale_id.order_line)))"/>
+                                                <span t-esc="'{0:.2f}%'.format(l.discount)"/>
+<!--                                                <span t-esc="'{0:,.2f}'.format(float(sum(l.price_subtotal * (l.discount / 100) for l in o.sale_id.order_line)))"/>-->
                                             </font>
                                         </td>
                                     </tr>
@@ -633,7 +634,7 @@
                                         </td>
                                         <td style="padding-right: 5px; text-align: right; line-height: 10px;">
                                             <font style="font-size: 18px;">
-<!--                                                <span t-esc="'{0:,.2f}'.format(float(o.sale_id.amount_deposit or 0.0))"/>-->
+                                                <!--                                                <span t-esc="'{0:,.2f}'.format(float(o.sale_id.amount_deposit or 0.0))"/>-->
 
                                             </font>
                                         </td>
@@ -647,7 +648,7 @@
                                         </td>
                                         <td style="padding-right: 5px; text-align: right; line-height: 10px;">
                                             <font style="font-size: 18px;">
-<!--                                                <span t-esc="'{0:,.2f}'.format(float(sum(l.price_subtotal * (1 - (l.discount / 100)) for line in o.sale_id.order_line) - (o.sale_id.amount_deposit or 0.0)))"/>-->
+                                                <!--                                                <span t-esc="'{0:,.2f}'.format(float(sum(l.price_subtotal * (1 - (l.discount / 100)) for line in o.sale_id.order_line) - (o.sale_id.amount_deposit or 0.0)))"/>-->
                                             </font>
                                         </td>
                                     </tr>
@@ -671,7 +672,7 @@
                                             style="padding: 3px; padding-left: 5px; text-align: center; line-height: 20px; border-top: 1px solid black;border-right: 1px solid black;">
                                             <font style="font-size: 18px;">
                                                 (
-                                                <!--                                                <span t-esc="o.amount_total_text_th"/>บาทถ้วน)-->
+                                                <span t-esc="o.sale_id.amount_total_text_th"/>บาทถ้วน)
                                             </font>
                                         </td>
                                         <td colspan="2"

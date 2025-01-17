@@ -121,14 +121,14 @@
                     </tr>
                     <tr>
                         <td valign="top"
-                                rowspan="3"
+                            rowspan="3"
                             style="padding: 3px; padding-left: 10px; text-align: left; line-height: 20px;">
                             <font style="font-size: 18px;">
                                 ที่อยู่
                             </font>
                         </td>
-                        <td  valign="top"
-                                rowspan="3"
+                        <td valign="top"
+                            rowspan="3"
                             style="padding-left: 5px; line-height: 20px; padding: 3px;">
                             <font style="font-size: 18px;">
                                 <span class="custom-span" t-field="o.partner_id.street"/>
@@ -149,16 +149,16 @@
 
                             </font>
                         </td>
-                        <td  valign="top"
-                                style="padding: 3px; line-height: 20px; text-align: left;">
+                        <td valign="top"
+                            style="padding: 3px; line-height: 20px; text-align: left;">
                             <font style="font-size: 18px;">
                                 วันที่
                             </font>
                         </td>
-                        <td  valign="top"
-                                style=" padding: 3px; text-align: left; line-height: 20px;">
+                        <td valign="top"
+                            style=" padding: 3px; text-align: left; line-height: 20px;">
                             <font style="font-size: 18px;">
-                                <span t-field="o.invoice_date"/>
+                                <span t-field="o.date_billing"/>
                             </font>
                         </td>
                     </tr>
@@ -176,22 +176,22 @@
                             </font>
                         </td>
                         <td
-                            style="padding: 3px; line-height: 20px; text-align: left; ">
-                                <font style="font-size: 18px;">
-                                    <span class="custom-span" t-foreach="o.line_ids" t-as="line"/>
-                                        <span t-field="line.move_name"/>
-                                </font>
+                                style="padding: 3px; line-height: 20px; text-align: left; ">
+                            <font style="font-size: 18px;">
+                                <span t-field="o.name"/>
+                            </font>
                         </td>
                     </tr>
                     <tr>
                         <td
                                 style="padding: 3px; line-height: 20px; padding-left: 30px; text-align: left;">
                             <font style="font-size: 18px;">
-                                สาขา&amp;nbsp;สำนักงานใหญ่
+                                สาขา&amp;nbsp;
+                                <span class="custom-span" t-field="o.partner_id.branch_no"/>
                             </font>
                         </td>
                         <td colspan="2"
-                                style="padding: 3px; line-height: 20px; text-align: left;">
+                            style="padding: 3px; line-height: 20px; text-align: left;">
                             <font style="font-size: 18px;">
 
                             </font>
@@ -349,47 +349,41 @@
                                     <t t-set="i" t-value="1"/>
                                     <t t-set="line_count" t-value="0"/>
                                     <t t-set="count" t-value="0"/>
-                                    <!-- วนลูปรายการสินค้าใน invoice_line_ids -->
-                                    <t t-foreach="o.invoice_line_ids" t-as="l">
+                                    <t t-foreach="o.invoice_ids" t-as="l">
                                         <tr valign="top">
-                                            <!-- รหัสสินค้า -->
-                                            <td style="text-align: center; line-height: 20px; padding: 3px; border-right: 1px solid black;">
+                                            <td style=" padding: 3px;  border-right: 1px solid black; line-height: 20px; padding: 3px; text-align: center;">
                                                 <font style="font-size: 18px;">
                                                     <span t-esc="i"/>
                                                 </font>
                                             </td>
-                                            <!-- ชื่อสินค้า -->
                                             <t t-set="i" t-value="i+1"/>
-                                            <td style="text-align: center; line-height: 20px; padding: 3px; border-right: 1px solid black;">
+                                            <td style="line-height: 20px; text-align: center; padding: 3px; border-right: 1px solid black;">
                                                 <font style="font-size: 18px;">
-                                                    <span t-field="o.name"/>
+                                                    <span t-field="l.name"/>
                                                 </font>
                                             </td>
-                                            <!-- นับจำนวนบรรทัดของข้อความ -->
+
                                             <t t-set="line_count" t-value="l.get_line_count() if l.name else 1"/>
-                                            <!-- เพิ่มจำนวนบรรทัดลงในตัวแปร count -->
                                             <t t-set="count" t-value="count + line_count"/>
 
-                                            <!-- จำนวน -->
-                                            <td style="text-align: center; line-height: 20px; padding: 3px; border-right: 1px solid black;">
+                                            <td style="line-height: 20px; padding: 3px; text-align: center; border-right: 1px solid black;">
                                                 <font style="font-size: 18px;">
-                                                    <span t-field="o.invoice_date"/>
+                                                    <span t-esc="l.invoice_date.strftime('%d/%m/%Y') if l.invoice_date else ''"/>
                                                 </font>
                                             </td>
-                                            <!-- ราคาต่อหน่วย -->
-                                            <td style="text-align: center; line-height: 20px; padding: 3px; border-right: 1px solid black;">
+                                            <td style="line-height: 20px; padding: 3px; text-align: center; border-right: 1px solid black; ">
                                                 <font style="font-size: 18px;">
-                                                    <span t-field="o.invoice_date_due"/>
+                                                    <span t-esc="l.invoice_date_due.strftime('%d/%m/%Y') if l.invoice_date_due else ''"/>
                                                 </font>
                                             </td>
-                                            <!-- ยอดรวม (subtotal) -->
-                                            <td style="padding-right: 10px; text-align: right; line-height: 20px; padding: 3px; padding-right: 5px;">
+                                            <td style="text-align: right;padding-right: 5px; line-height: 20px; padding: 3px; border-right: 1px solid black;">
                                                 <font style="font-size: 18px;">
-                                                    <span t-esc="'{0:,.2f}'.format(float(o.amount_total))"/>
+                                                    <span t-esc="'{0:,.2f}'.format(float(l.amount_total_signed))"/>
                                                 </font>
                                             </td>
                                         </tr>
                                     </t>
+
                                     <!--            Loop สำหรับแสดงช่องว่าง หากไม่ถึงจำนวนบรรทัดที่กำหนด-->
                                     <t t-foreach="range(int(count), 20)" t-as="x">
                                         <tr>
@@ -457,7 +451,7 @@
                                             </font>
                                         </td>
                                         <td
-                                            style="padding: 10px; padding-left: 5px; text-align: center; line-height: 30px;border-top: 1px solid black;">
+                                                style="padding: 10px; padding-left: 5px; text-align: center; line-height: 30px;border-top: 1px solid black;">
                                             <font style="font-size: 18px;">
                                                 <span t-esc="'{0:,.2f}'.format(float(o.amount_total))"/>
                                             </font>
