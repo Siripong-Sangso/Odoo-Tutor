@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
-        <template id="report_billing_infp_header">
+        <template id="report_billing_infp_H_header">
             <div class="header" style="font-family: TH Krub; margin-bottom: 2px; padding-bottom: 0px; width:100%;
                                     font-family: TH Krub;
                                     position: relative;">
@@ -18,198 +18,227 @@
                     width: 100%;
                     cellpadding : 0;
                     }
+                    .rounded-box {
+                    width: 300px; /* กำหนดความกว้าง */
+                    height: 150px; /* กำหนดความสูง */
+                    border: 2px solid black; /* ขอบสีดำ */
+                    border-radius: 10px; /* ความโค้งของมุม */
+                    text-align: center; /* จัดข้อความให้อยู่กึ่งกลาง */
+                    line-height: 150px; /* จัดข้อความให้อยู่กลางแนวตั้ง */
+                    font-size: 20px; /* ขนาดตัวอักษร */
+                    margin: 20px auto; /* จัดให้อยู่ตรงกลางหน้าจอ */
+                    }
                 </style>
                 <t t-raw="0"/>
                 <table class="table_hd" style="width:100%;">
-                    <col width="10%"/>
-                    <col width="75%"/>
-                    <col width="15%"/>
+                    <col width="20%"/>
+                    <col width="55%"/>
+                    <col width="25%"/>
                     <tr valign="middle">
                         <td rowspan="2" valign="middle"
                             style="text-align:left; line-height: 20px; padding-bottom: 0px; padding-top: 70px;">
                             <font style="font-size: 24px;">
                                 <br/>
-                                <img t-att-src="image_data_uri(o.company_id.logo)" width="70" height="70"/>
+                                <img t-att-src="image_data_uri(o.company_id.logo)" width="120" height="130"/>
                             </font>
                         </td>
                         <td
                                 valign="top"
                                 style="text-align:left; line-height: 20px; padding-bottom: 0px; padding-top: 110px; margin-bottom: 0px;">
+                            <font style="font-size: 28px;">
+                                <b>
+                                    <span t-field="o.company_id.company_name_th"
+                                          style="margin: 0px; padding: 0px; line-height: 20px;"/>
+                                    <br/>
+                                </b>
+                            </font>
                             <font style="font-size: 26px;">
                                 <b>
                                     <span t-field="o.company_id.company_name_eng"
                                           style="margin: 0px; padding: 0px; line-height: 20px;padding-bottom: 0px;"/>
                                 </b>
                             </font>
-                            <font style="font-size: 26px;">
+                            <font style="font-size: 18px;">
                                 <br/>
-                                <b style="font-size: 26px;">
-                                    ศูนย์บริการลูกค้า(CALL CENTER) :
-                                    <span class="custom-span" t-field="o.company_id.phone" style="font-size: 26px;"/>&amp;nbsp;&amp;nbsp;
-                                </b>
-                                <t t-if="o.company_id.phone">
-                                    <b style="font-size: 26px;">
-                                        Line@:
-                                        <span class="custom-span" t-field="o.company_id.line" style="font-size: 26px;"/>
-                                    </b>
-                                </t>
+                                <span t-field="o.company_id.address_th"/>
+                                <br/>
+                                <span t-field="o.company_id.address_eng"/>
+                            </font>
+                            <font style="font-size: 18px;">
+                                <br/>
+                                Tel.&amp;nbsp;
+                                <font style="font-size: 18px;">
+                                    <span class="custom-span" t-field="o.company_id.phone"/>&amp;nbsp;&amp;nbsp;
+                                    <br/>
+                                    <t t-if="o.company_id.phone">
+                                        E-mail :
+                                        <span class="custom-span" t-field="o.company_id.email"/>
+                                    </t>
+                                </font>
                             </font>
                         </td>
                         <td
                                 valign="top">
                             <div style="width: 150px; height: 45px; border: 1px solid black; border-radius: 10px; text-align: center; line-height: 30px; margin-top: 110px; margin-left: 30px; padding-top: 13px;">
-                                <font style="font-size: 42px;">
+                                <font style="font-size: 28px;">
                                     <b>ใบวางบิล</b>
                                 </font>
                             </div>
-                        </td>
-                    </tr>
-                </table>
-                <table height="100" class="table_hd" cellspacing="0" border-collapse="collapse"
-                       style="border-spacing: 0; width: 100%;">
-                    <col width="10%"/>
-                    <col width="30%"/>
-                    <col width="40%"/>
-                    <col width="7%"/>
-                    <col width="13%"/>
-                    <tr valign="top">
-                        <td style="padding-left: 10px; line-height: 20px; text-align: left;">
-                            <span class="custom-span">
-                                <font style="font-size: 18px;">
-                                    รหัสลูกค้า
-                                </font>
-                            </span>
-
-                        </td>
-                        <td colspan="2"
-                            style="padding: 3px; line-height: 20px; padding-left: 5px;text-align: left;">
-                            <div>
-                                <font style="font-size: 18px;">
-                                    <span class="custom-span">
-                                        <t t-if="o.partner_id.id">
-                                            <t t-esc="o.partner_id.id"/>
-                                        </t>
-                                    </span>
+                            <div style="text-align: center;  line-height: 10px;">
+                                <font style="font-size: 28px;">
+                                    <br/>
+                                    <b>ต้นฉบับ</b>
                                 </font>
                             </div>
                         </td>
-                        <td colspan="3"
-                            style="padding: 3px; line-height: 20px; text-align: right;">
-                            <font style="font-size: 18px;">
-
-                            </font>
-                        </td>
-                    </tr>
-                    <tr valign="top">
-                        <td style="padding: 3px; line-height: 20px; padding-left: 10px; text-align: left;">
-                            <font style="font-size: 18px;">
-                                ชื่อลูกค้า
-                            </font>
-                        </td>
-                        <td
-                                style="padding: 3px; line-height: 20px; padding-left: 5px; text-align: left;">
-                            <font style="font-size: 18px;">
-                                <span class="custom-span" t-field="o.partner_id.name"/>
-                            </font>
-                        </td>
-                        <td colspan="3"
-                            style="padding: 3px; line-height: 20px; text-align: left;">
-                            <font style="font-size: 18px;">
-
-                            </font>
-                        </td>
                     </tr>
                     <tr>
-                        <td valign="top"
-                            rowspan="3"
-                            style="padding: 3px; padding-left: 10px; text-align: left; line-height: 20px;">
-                            <font style="font-size: 18px;">
-                                ที่อยู่
-                            </font>
-                        </td>
-                        <td valign="top"
-                            rowspan="3"
-                            style="padding-left: 5px; line-height: 20px; padding: 3px;">
-                            <font style="font-size: 18px;">
-                                <span class="custom-span" t-field="o.partner_id.street"/>
-                                <span class="custom-span">
-                                    <t t-esc="o.partner_id.city or ''"/>
-                                    <t t-if="o.partner_id.state_id">
-                                        <t t-esc="o.partner_id.state_id.name"/>
-                                    </t>
-                                    <t t-if="o.partner_id.zip">
-                                        <t t-esc="o.partner_id.zip"/>
-                                    </t>
-                                </span>
-                            </font>
-                        </td>
-                        <td
-                                style="padding: 3px; line-height: 20px; text-align: left;">
-                            <font style="font-size: 18px;">
-
-                            </font>
-                        </td>
-                        <td valign="top"
-                            style="padding: 3px; line-height: 20px; text-align: left;">
-                            <font style="font-size: 18px;">
-                                วันที่
-                            </font>
-                        </td>
-                        <td valign="top"
-                            style=" padding: 3px; text-align: left; line-height: 20px;">
-                            <font style="font-size: 18px;">
-                                <span t-field="o.date_billing"/>
-                            </font>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td
-                                style="padding: 3px; line-height: 20px; text-align: left;">
-                            <font style="font-size: 18px;">
-
-                            </font>
-                        </td>
-                        <td
-                                style="padding: 3px; line-height: 20px; text-align: left; ">
-                            <font style="font-size: 18px;">
-                                เลขที่
-                            </font>
-                        </td>
-                        <td
-                                style="padding: 3px; line-height: 20px; text-align: left; ">
-                            <font style="font-size: 18px;">
-                                <span t-field="o.name"/>
-                            </font>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td
-                                style="padding: 3px; line-height: 20px; padding-left: 30px; text-align: left;">
-                            <font style="font-size: 18px;">
-                                สาขา&amp;nbsp;
-                                <span class="custom-span" t-field="o.partner_id.branch_no"/>
-                            </font>
-                        </td>
                         <td colspan="2"
-                            style="padding: 3px; line-height: 20px; text-align: left;">
+                            valign="top" style="text-align: right; padding: 0px; line-height: 20px; padding-top: 0px;">
                             <font style="font-size: 18px;">
-
-                            </font>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="5"
-                            style="padding: 3px; padding-left: 10px; padding-bottom: 10px; line-height: 20px;">
-                            <font style="font-size: 18px;">
-                                บริษัทฯขอเรียนว่า ท่านได้ซื้อสินค้าจากบริษัทฯ ตามรายการในใบส่งสินค้าที่แนบมานี้
+                                เลขประจำตัวผู้เสียภาษีอากร/TAX ID No.&amp;nbsp;
+                                <span class="custom-span" t-field="o.company_id.vat"/>
                             </font>
                         </td>
                     </tr>
                 </table>
+                <div style="border: 1px solid black; border-top: 1px solid black;border-right: 1px solid black; border-radius: 10px 10px 0 0; ">
+                    <table height="100" class="table_hd" cellspacing="0" border-collapse="collapse"
+                           style="border-spacing: 0; width: 100%;">
+                        <col width="10%"/>
+                        <col width="30%"/>
+                        <col width="21%"/>
+                        <col width="6%"/>
+                        <col width="6%"/>
+                        <col width="27%"/>
+                        <tr valign="top">
+                            <td style="padding-left: 10px; padding-top: 15px; line-height: 20px; text-align: left;">
+                                <span class="custom-span">
+                                    <font style="font-size: 18px;">
+                                        รหัสลูกค้า
+                                    </font>
+                                </span>
+
+                            </td>
+                            <td colspan="2"
+                                style="padding: 3px; line-height: 20px; padding-left: 5px;padding-top: 15px; text-align: left;">
+                                <div>
+                                    <font style="font-size: 18px;">
+                                        <span class="custom-span">
+                                            <t t-if="o.partner_id.id">
+                                                <t t-esc="o.partner_id.id"/>
+                                            </t>
+                                        </span>
+                                    </font>
+                                </div>
+                            </td>
+                            <td
+                                    style="padding: 3px; line-height: 20px; padding-top: 15px; text-align: right; border-left: 1px solid black; ">
+                                <font style="font-size: 18px;">
+
+                                </font>
+                            </td>
+                            <td
+                                    style="padding: 3px;padding-top: 15px; line-height: 20px; text-align: left; ">
+                                <font style="font-size: 18px;">
+                                    เลขที่
+                                </font>
+                            </td>
+                            <td>
+                                <div style="padding: 3px; padding-top: 15px; padding-left: 5px; text-align: left; line-height: 20px;">
+                                    <font style="font-size: 18px;">
+                                        <span t-field="o.name"/>
+                                    </font>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr valign="top">
+                            <td style="padding: 3px; line-height: 20px; padding-left: 10px; text-align: left;">
+                                <font style="font-size: 18px;">
+                                    ชื่อลูกค้า
+                                </font>
+                            </td>
+                            <td colspan="2"
+                                style="padding: 3px; line-height: 20px; padding-left: 5px; text-align: left;">
+                                <font style="font-size: 18px;">
+                                    <span class="custom-span" t-field="o.partner_id.name"/>
+                                </font>
+                            </td>
+                            <td style="padding: 3px; line-height: 20px; text-align: left; border-left: 1px solid black;">
+                                <font style="font-size: 18px;">
+
+                                </font>
+                            </td>
+                            <td style="padding: 3px; line-height: 20px; text-align: left;">
+                                <font style="font-size: 18px;">
+                                    วันที่
+                                </font>
+                            </td>
+                            <td style="padding-left: 5px; text-align: left; line-height: 20px; padding: 3px;">
+                                <font style="font-size: 18px;">
+                                    <span t-field="o.date_billing"/>
+                                </font>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 3px; padding-left: 10px; text-align: left; line-height: 20px;">
+                                <font style="font-size: 18px;">
+                                    ที่อยู่
+                                </font>
+                            </td>
+                            <td
+                                    style="padding-left: 5px; line-height: 20px; padding: 3px;">
+                                <font style="font-size: 18px;">
+                                    <span class="custom-span" t-field="o.partner_id.street"/>
+                                    <span class="custom-span">
+                                        <t t-esc="o.partner_id.city or ''"/>
+                                        <t t-if="o.partner_id.state_id">
+                                            <t t-esc="o.partner_id.state_id.name"/>
+                                        </t>
+                                        <t t-if="o.partner_id.zip">
+                                            <t t-esc="o.partner_id.zip"/>
+                                        </t>
+                                    </span>
+                                </font>
+                            </td>
+                            <td
+                                    style="padding: 3px; line-height: 20px; text-align: left;">
+                                <font style="font-size: 18px;">
+
+                                </font>
+                            </td>
+                            <td colspan="3"
+                                style="padding: 3px; padding-left: 10px; text-align: left; border-left: 1px solid black;">
+                                <font style="font-size: 18px;line-height: 3px;">
+                                    หมายเหตุ&amp;nbsp;
+                                    <span t-esc="o.comment"/>
+                                </font>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"
+                                style="padding: 3px; padding-left: 10px; padding-bottom: 10px; line-height: 20px;">
+                                <font style="font-size: 18px;">
+                                    เลขประจำตัวผู้เสียภาษีอากร&amp;nbsp;
+                                    <span class="custom-span" t-field="o.partner_id.vat"/>
+                                </font>
+                            </td>
+                            <td
+                                    style="padding: 3px; padding-bottom: 10px; line-height: 20px; padding-left: 10px; text-align: left;">
+                                <font style="font-size: 18px;">
+                                    <span class="custom-span" t-field="o.partner_id.branch_no"/>
+                                </font>
+                            </td>
+                            <td colspan="3"
+                                style="padding-left: 5px; line-height: 20px; padding: 3px; border-left: 1px solid black;">
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </template>
 
-        <template id="report_billing_infp_footer">
+        <template id="report_billing_infp_H_footer">
             <div class="footer"
                  style="font-family: TH Krub;">
                 <style>
@@ -242,41 +271,54 @@
                             <td
                                     style="padding: 3px; line-height: 20px; padding-left: 30px; padding-top: 20px; text-align: left;">
                                 <font style="font-size: 20px;">
+                                    ชื่อผู้วางบิล..................................
+                                </font>
+                            </td>
+                            <td
+                                    style="padding: 3px; line-height: 20px;padding-top: 20px; text-align: left;">
+                                <font style="font-size: 20px;">
+                                    ชื่อผู้รับวางบิล..................................
+                                </font>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td
+                                    style="padding: 3px; line-height: 20px; text-align: left;">
+                                <font style="font-size: 20px;">
 
                                 </font>
                             </td>
                             <td
-                                    style="padding: 3px; line-height: 20px;padding-top: 20px; text-align: center;">
+                                    style="padding: 3px; line-height: 20px; text-align: left;">
                                 <font style="font-size: 20px;">
-                                    ขอแสดงความนับถือ
+                                    วันที่รับ......../........../..............
                                 </font>
                             </td>
                         </tr>
                         <tr>
                             <td
-                                    style="padding: 3px;padding-left: 15px; line-height: 20px; text-align: left;">
+                                    style="padding: 3px; line-height: 20px; text-align: left;">
                                 <font style="font-size: 20px;">
-                                    วันนัดชำระเงิน&amp;nbsp;&amp;nbsp;&amp;nbsp;___/___/___
+
                                 </font>
                             </td>
                             <td
-                                    style="padding: 3px; line-height: 20px; text-align: center;">
+                                    style="padding: 3px; line-height: 20px; text-align: left;">
                                 <font style="font-size: 20px;">
-                                    _____________________
+                                    วันที่นัดรับเช็ค......../........../..............
                                 </font>
                             </td>
                         </tr>
                         <tr>
-                            <td
-                                    style="padding: 3px;padding-left: 15px; padding-bottom: 15px; line-height: 20px; text-align: left;">
+                            <td colspan="2" rowspan="3"
+                                style="padding: 3px;padding-left: 30px; padding-bottom: 20px; line-height: 20px; text-align: left;">
                                 <font style="font-size: 20px;">
-                                    ผู้รับวางบิล..............&amp;nbsp;&amp;nbsp;วันที่&amp;nbsp;&amp;nbsp;&amp;nbsp;___/___/___
-                                </font>
-                            </td>
-                            <td
-                                    style="padding: 3px;padding-bottom: 15px; line-height: 20px; text-align: center;">
-                                <font style="font-size: 20px;">
-                                    เจ้าหน้าที่บัญชีและการเงิน
+                                    โปรดจ่ายเช็คในนาม บริษัท อินฟินิตี้ พลัส เทรดดิ้ง จำกัด
+                                    <br/>
+                                    หรือ โอนเข้าบัญชี บริษัท อินฟินิตี้ พลัส เทรดดิ้ง จำกัด ธ.กสิกรไทย เลขที่บัญชี :
+                                    739-2-31784-2
+                                    <br/>
+                                    หมายเหตุ กำหนดชำระเงินภายในวันที่ / / <span t-esc="o.comment"/>
                                 </font>
                             </td>
                         </tr>
@@ -285,10 +327,10 @@
             </div>
         </template>
 
-        <template id="report_billing_infp">
+        <template id="report_billing_infp_H">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
-                    <t t-call="Test_module_sale.report_billing_infp_header">
+                    <t t-call="Report_infp.report_billing_infp_H_header">
                     </t>
                     <div class="article" style="font-family: TH Krub; width:100%">
                         <style>
@@ -308,19 +350,20 @@
                             border-collapse: collapse;
                             }
                         </style>
-                        <div style="border: 1px solid black; border-radius: 10px 10px 10px 10px; ">
+                        <div style="border: 1px solid black; border-radius: 0 0 10px 10px; ">
                             <table class="table2" height="700" cellspacing="0" border-collapse="collapse"
                                    style="width:100%;">
-                                <col width="10%"/>
-                                <col width="30%"/>
+                                <col width="7%"/>
+                                <col width="21%"/>
+                                <col width="21%"/>
                                 <col width="17%"/>
-                                <col width="22%"/>
-                                <col width="20%"/>
+                                <col width="18%"/>
+                                <col width="16%"/>
                                 <thead>
                                     <tr valign="center">
                                         <th style="text-align: center; vertical-align: middle; line-height: 24px; padding: 5px; border-bottom: 1px solid black;">
                                             <font style="font-size: 18px; line-height: 24px;">
-                                                <b>ลำดับ</b>
+                                                <b>ลำดับที่</b>
                                             </font>
                                         </th>
                                         <th style="text-align: center; vertical-align: middle; line-height: 24px; border-left: 1px solid black; padding: 5px;  border-bottom: 1px solid black;">
@@ -338,9 +381,14 @@
                                                 <b>วันครบรอบกำหนด</b>
                                             </font>
                                         </th>
-                                        <th style="text-align: center; vertical-align: middle; line-height: 24px; border-left: 1px solid black; padding: 5px; border-bottom: 1px solid black;">
+                                        <th style="text-align: center; vertical-align: middle; line-height: 24px; border-left: 1px solid black; padding: 5px; border-bottom: 1px solid black;border-right: 1px solid black;">
                                             <font style="font-size: 18px;">
                                                 <b>จำนวนเงิน</b>
+                                            </font>
+                                        </th>
+                                        <th style="text-align: center; vertical-align: middle; line-height: 24px; border-left: 1px solid black; padding: 5px;border-bottom: 1px solid black;">
+                                            <font style="font-size: 18px;">
+                                                <b>หมายเหตุ</b>
                                             </font>
                                         </th>
                                     </tr>
@@ -381,6 +429,11 @@
                                                     <span t-esc="'{0:,.2f}'.format(float(l.amount_total_signed))"/>
                                                 </font>
                                             </td>
+                                            <td style="text-align: right; line-height: 20px; padding: 3px; padding-right: 5px;">
+                                                <font style="font-size: 18px;">
+                                                    <span t-esc="o.invoice_ids.narration"/>
+                                                </font>
+                                            </td>
                                         </tr>
                                     </t>
 
@@ -389,6 +442,11 @@
                                         <tr>
                                             <td style="padding-left: 5px; line-height: 20px; border-right: 1px solid black;">
                                                 <font style="font-size: 18px;">
+                                                </font>
+                                            </td>
+                                            <td style="padding-left: 5px; line-height: 20px; border-right: 1px solid black;">
+                                                <font style="font-size: 18px;">
+
                                                 </font>
                                             </td>
                                             <td style="padding-left: 5px; line-height: 20px; border-right: 1px solid black;">
@@ -434,6 +492,11 @@
 
                                             </font>
                                         </td>
+                                        <td style="padding-left: 5px; line-height: 20px; border-right: 1px solid black;">
+                                            <font style="font-size: 18px;">
+
+                                            </font>
+                                        </td>
                                         <td style="padding-left: 5px; line-height: 20px;">
                                             <font style="font-size: 18px;">
 
@@ -450,8 +513,8 @@
                                                 <span t-esc="o.amount_total_text_th"/>บาทถ้วน)
                                             </font>
                                         </td>
-                                        <td
-                                                style="padding: 10px; padding-left: 5px; text-align: center; line-height: 30px;border-top: 1px solid black;">
+                                        <td colspan="2"
+                                            style="padding: 10px; padding-left: 5px; text-align: center; line-height: 30px;border-top: 1px solid black;">
                                             <font style="font-size: 18px;">
                                                 <span t-esc="'{0:,.2f}'.format(float(o.amount_total))"/>
                                             </font>
@@ -461,7 +524,7 @@
                             </table>
                         </div>
                     </div>
-                    <t t-call="Test_module_sale.report_billing_infp_footer">
+                    <t t-call="Report_infp.report_billing_infp_H_footer">
                     </t>
                 </t>
             </t>

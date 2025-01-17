@@ -11,42 +11,6 @@
         </field>
     </record>
 
-    <record id="action_report_account_move_Test2" model="ir.actions.report">
-        <field name="model">account.move</field>
-        <field name="name">Credit Note Lifesmart</field>
-        <field name="report_type">qweb-pdf</field>
-        <field name="report_name">Test_module_sale.report_account_move_Test2</field>
-        <field name="binding_model_id" ref="model_account_move"/>
-        <field name="binding_type">action</field>
-    </record>
-
-    <record id="action_report_account_move_Test3" model="ir.actions.report">
-        <field name="model">account.move</field>
-        <field name="name">Credit Note Infinity</field>
-        <field name="report_type">qweb-pdf</field>
-        <field name="report_name">Test_module_sale.report_account_move_Test3</field>
-        <field name="binding_model_id" ref="model_account_move"/>
-        <field name="binding_type">action</field>
-    </record>
-
-    <record id="action_report_billing1" model="ir.actions.report">
-        <field name="model">customer.billing</field>
-        <field name="name">Billing Infinity</field>
-        <field name="report_type">qweb-pdf</field>
-        <field name="report_name">Test_module_sale.report_billing_infp_H</field>
-        <field name="binding_model_id" ref="model_customer_billing"/>
-        <field name="binding_type">action</field>
-    </record>
-
-    <record id="action_report_billing2" model="ir.actions.report">
-        <field name="model">customer.billing</field>
-        <field name="name">Billing Lifesmart</field>
-        <field name="report_type">qweb-pdf</field>
-        <field name="report_name">Test_module_sale.report_billing_infp</field>
-        <field name="binding_model_id" ref="model_customer_billing"/>
-        <field name="binding_type">action</field>
-    </record>
-
     <record id="action_report_account_move_invoice1" model="ir.actions.report">
         <field name="model">account.move</field>
         <field name="name">Invoice Infinity</field>

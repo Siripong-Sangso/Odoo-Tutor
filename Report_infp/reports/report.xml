@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="paperformat_A4_quotation_infp" model="report.paperformat">
+        <field name="name">A4 Quotation Lifesmart</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">100</field>
+        <field name="margin_bottom">35</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">2</field>
+        <field name="dpi">90</field>
+    </record>
+    <report
+            id="action_report_sale_quotation_infp"
+            model="sale.order"
+            report_type="qweb-pdf"
+            string="Quotation Report Lifesmart"
+            paperformat="paperformat_A4_quotation_infp"
+            name="Report_infp.report_sale_order_quotation_infp"
+            file="Report_infp.report_sale_order_quotation_infp"
+    />
+
+    <record id="paperformat_A4_billing_report_infp_H" model="report.paperformat">
+        <field name="name">A4 Billing 1</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">80</field>
+        <field name="margin_bottom">57</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+    <report
+            id="action_report_billing1"
+            model="customer.billing"
+            report_type="qweb-pdf"
+            string="Billing Infinity"
+            paperformat="paperformat_A4_billing_report_infp_H"
+            name="Report_infp.report_billing_infp_H"
+            file="Report_infp.report_billing_infp_H"
+    />
+
+    <record id="paperformat_A4_billing_report_infp" model="report.paperformat">
+        <field name="name">A4 Billing 2</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">80</field>
+        <field name="margin_bottom">57</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+    <report
+            id="action_report_billing2"
+            model="customer.billing"
+            report_type="qweb-pdf"
+            string="Billing Lifesmart"
+            paperformat="paperformat_A4_billing_report_infp"
+            name="Report_infp.report_billing_infp"
+            file="Report_infp.report_billing_infp"
+    />
+
+        <record id="paperformat_A4_account_move_Test2" model="report.paperformat">
+        <field name="name">A4 Credit Note 2</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">75</field>
+        <field name="margin_bottom">25</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+    <report
+            id="action_report_account_move_Test2"
+            model="account.move"
+            report_type="qweb-pdf"
+            string="Credit Notes Report Lifesmart"
+            paperformat="paperformat_A4_account_move_Test2"
+            name="Report_infp.report_account_move_Test2"
+            file="Report_infp.report_account_move_Test2"
+    />
+
+    <record id="paperformat_A4_account_move_Test3" model="report.paperformat">
+        <field name="name">A4 Credit Note 2</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">80</field>
+        <field name="margin_bottom">20</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+    <report
+            id="action_report_account_move_Test3"
+            model="account.move"
+            report_type="qweb-pdf"
+            string="Credit Notes Report Infinity"
+            paperformat="paperformat_A4_account_move_Test3"
+            name="Report_infp.report_account_move_Test3"
+            file="Report_infp.report_account_move_Test3"
+    />
+
+</odoo>

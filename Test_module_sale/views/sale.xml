@@ -37,15 +37,6 @@
         <field name="name">Sale</field>
         <field name="model">sale.order</field>
         <field name="report_type">qweb-pdf</field>
-        <field name="report_name">Test_module_sale.report_sale_order_quotation</field>
-        <field name="binding_model_id" ref="model_sale_order"/>
-        <field name="binding_type">action</field>
-    </record>
-
-    <record id="action_report_sale_quotation" model="ir.actions.report">
-        <field name="name">Sale</field>
-        <field name="model">sale.order</field>
-        <field name="report_type">qweb-pdf</field>
         <field name="report_name">Test_module_sale.report_sale_order_Test3</field>
         <field name="binding_model_id" ref="model_sale_order"/>
         <field name="binding_type">action</field>
