@@ -162,7 +162,7 @@
                         <td
                                 style="padding: 3px; line-height: 20px; padding-left: 20px; text-align: left;">
                             <font style="font-size: 18px;">
-                                <!--                                <b>สำนักงานใหญ่</b>-->
+                                <span class="custom-span" t-field="o.partner_id.branch_no"/>
                             </font>
                         </td>
                         <td colspan="2"
@@ -319,7 +319,7 @@
                                         <!-- ยอดรวม (subtotal) -->
                                         <td style="text-align: right; line-height: 20px; padding: 3px; padding-right: 5px; border-right: 1px solid black;">
                                             <font style="font-size: 18px;">
-                                                <span t-esc="'{0:,.2f}'.format(float(l.price_subtotal))"/>
+                                                <span t-esc="'{0:,.2f}'.format(float(l.price_unit * l.quantity))"/>
                                             </font>
                                         </td>
                                     </tr>
@@ -379,7 +379,7 @@
                                     <td
                                             style="padding-left: 5px; text-align: right; line-height: 20px; border-right: 1px solid black;">
                                         <font style="font-size: 18px;">
-                                            <span t-esc="'{0:,.2f}'.format(float(o.reversed_entry_id.amount_total - o.amount_total))"/>
+                                            <span t-esc="'{0:,.2f}'.format(float(o.reversed_entry_id.amount_total - l.price_subtotal))"/>
                                         </font>
                                     </td>
                                 </tr>
@@ -400,7 +400,7 @@
                                     <td
                                             style="padding-left: 5px; text-align: right; line-height: 20px; border-right: 1px solid black;">
                                         <font style="font-size: 18px;">
-                                            <span t-esc="'{0:,.2f}'.format(float(o.amount_total))"/>
+                                            <span t-esc="'{0:,.2f}'.format(float(l.price_subtotal))"/>
                                         </font>
                                     </td>
                                 </tr>
@@ -447,7 +447,7 @@
                                     <td
                                             style="padding-left: 5px; text-align: right; line-height: 20px; border-right: 1px solid black; border-bottom: 1px solid black;">
                                         <font style="font-size: 18px;">
-                                            <span t-esc="'{0:,.2f}'.format(float((o.reversed_entry_id.amount_total - o.amount_total) - o.amount_tax))"/>
+                                            <span t-esc="'{0:,.2f}'.format(float(o.amount_total))"/>
                                         </font>
                                     </td>
                                 </tr>
