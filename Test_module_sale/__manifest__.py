@@ -22,6 +22,7 @@
         'reports/billing_report_infp.xml',
         'reports/invoice_report_infp_H.xml',
         'reports/delivery_report_infp_H.xml',
+        'reports/receipt_report_infp_H.xml',
         'reports/Test3.xml',
     ],
     'demo': [
