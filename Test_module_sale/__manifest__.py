@@ -16,8 +16,6 @@
         'reports/report_cn.xml',
         'reports/sale_report_template.xml',
         'reports/invoice_report_infp_H.xml',
-        'reports/delivery_report_infp_H.xml',
-        'reports/receipt_report_infp_H.xml',
         'reports/Test3.xml',
     ],
     'demo': [

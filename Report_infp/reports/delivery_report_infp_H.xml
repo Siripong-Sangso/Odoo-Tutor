@@ -395,7 +395,7 @@
         <template id="report_delivery_infp_H">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="o">
-                    <t t-call="Test_module_sale.report_delivery_infp_H_header">
+                    <t t-call="Report_infp.report_delivery_infp_H_header">
                     </t>
                     <div class="article" style="font-family: TH Krub; width:100%">
                         <style>
@@ -692,7 +692,7 @@
                             </table>
                         </div>
                     </div>
-                    <t t-call="Test_module_sale.report_delivery_infp_H_footer">
+                    <t t-call="Report_infp.report_delivery_infp_H_footer">
                     </t>
                 </t>
             </t>

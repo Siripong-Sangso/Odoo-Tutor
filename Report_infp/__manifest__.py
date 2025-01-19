@@ -17,6 +17,8 @@
         'reports/billing_report_infp.xml',
         'reports/credit_notes_report_infp.xml',
         'reports/credit_notes_report_infp_H.xml',
+        'reports/delivery_report_infp_H.xml',
+        'reports/receipt_report_infp_H.xml',
     ],
     'demo': [
 
