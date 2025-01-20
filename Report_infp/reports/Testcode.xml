@@ -1,0 +1,650 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="report_payment_voucher_header">
+            <div class="header" style="font-family: TH Krub; margin-bottom: 20px; margin-top: 0px; padding-bottom: 10px; width:100%;
+                                    font-family: TH Krub;
+                                    position: relative;">
+                <style>
+                    .custom-span {
+                    font-size: 18px;
+                    margin: 0px;
+                    padding: 0px;
+                    line-height: 22px;
+                    }
+                    table.table_hd{
+                    border: 0px solid white;
+                    border-collapse: collapse;
+                    width: 100%;
+                    cellpadding : 0;
+                    }
+                </style>
+                <t t-raw="0"/>
+                <table class="table_hd" style="width:100%;">
+                    <tr>
+                        <td style="padding: 3px; line-height: 20px; text-align: center;">
+                            <font style="font-size: 18px;">
+                                <b>รายงานการประชุม</b>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr valign="middle">
+                        <td style="padding: 3px; line-height: 20px; text-align: center;">
+                            <font style="font-size: 18px;">
+                                <b>บริษัท สยาม แบรนด์เนม จำกัด</b>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr valign="middle">
+                        <td style="padding: 3px; line-height: 20px; text-align: center;">
+                            <font style="font-size: 18px;">
+                                รายงานการประชุม ครั้งที่ 3/2567 วันที่ 17 ธันวาคม 2567
+                            </font>
+                        </td>
+                    </tr>
+                    <tr valign="middle">
+                        <td style="padding: 3px; line-height: 20px; text-align: center;">
+                            <font style="font-size: 18px;">
+                                ประชุม ณ บริษัท รีเทลบิซิเนส เซอร์วิส จำกัด (สำนักงานใหญ่)
+                            </font>
+                        </td>
+                    </tr>
+                    <tr valign="middle">
+                        <td style="padding: 3px; line-height: 20px; text-align: center;">
+                            <font style="font-size: 18px;">
+                                เลขที่ 99/78 ซอยสุภาพงษ์ 1 แขวงหนองบอน เขตประเวศ กรุงเทพมหานคร
+                            </font>
+                        </td>
+                    </tr>
+                    <tr valign="middle">
+                        <td style="padding: 3px; line-height: 20px; text-align: center; border-top: 2px solid black">
+                            <font style="font-size: 18px;">
+                                <b>เอกสารแนบท้าย</b>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr valign="middle">
+                        <td style="padding: 3px; line-height: 20px; text-align: center;">
+                            <font style="font-size: 18px;">
+
+                            </font>
+                        </td>
+                    </tr>
+                    <tr valign="middle">
+                        <td style="padding: 3px; line-height: 20px; text-align: center;">
+                            <font style="font-size: 18px;">
+
+                            </font>
+                        </td>
+                    </tr>
+                    <tr valign="middle">
+                        <td style="padding: 3px; line-height: 20px; text-align: center;">
+                            <font style="font-size: 18px;">
+
+                            </font>
+                        </td>
+                    </tr>
+                    <tr valign="middle">
+                        <td style="padding: 3px; line-height: 20px; text-align: center;">
+                            <font style="font-size: 18px;">
+
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </template>
+        <template id="report_payment_voucher_footer">
+            <div class="footer" style="font-family: TH Krub;">
+                <style>
+                    .footer {
+                    margin-top: 0px;
+                    padding-top: 0px;
+                    position: relative;
+                    }
+                    table.table{
+                    border-collapse: collapse;
+                    width: 100%;
+                    cellpadding: 0;
+                    }
+                    table.table > tr > td{
+                    border-collapse: collapse;
+                    }
+                </style>
+            </div>
+        </template>
+        <template id="report_payment_voucher">
+            <t t-call="web.html_container">
+                <div class="container" style="width:100%;">
+                    <t t-foreach="docs" t-as="o">
+                        <t t-set="i" t-value="0"/>
+                        <t t-call="aaa_invoice_v12.report_payment_voucher_header">
+                        </t>
+                        <div class="article" style="font-family: TH Krub; width:100%">
+                            <style>
+                                table.table2{
+                                border-collapse: collapse;
+                                width: 100%;
+                                cellpadding : 0;
+                                }
+                                table.fixed &gt; thead > tr &gt; th{
+                                border-top: 1px solid black;
+                                border-left: 1px solid black;
+                                border-right: 1px solid black;
+                                border-bottom: 0px solid black;
+                                border-collapse: collapse;
+                                }
+                                table.fixed &gt; tbody > tr &gt; td{
+                                border-top: 0px solid grey;
+                                border-bottom: 0px solid grey;
+                                border-collapse: collapse;
+                                }
+                            </style>
+                            <div style="font-family: TH SarabunPSK; margin-left: 40px; margin-right: 40px; margin-top: 0px; border: 1px solid black; border-radius: 0px 0px 0px 0px; ">
+                                <table class="table2" height="191" border-collapse="collapse"
+                                       style="width:100%;">
+                                    <col width="5%"/>
+                                    <col width="5%"/>
+                                    <col width="38%"/>
+                                    <col width="11%"/>
+                                    <col width="36%"/>
+                                    <col width="5%"/>
+                                    <thead>
+                                        <t t-raw="0"/>
+                                        <tr valign="top">
+                                            <td colspan="6"
+                                                style="text-align: center; line-height: 20px; border-top: 1px solid black">
+                                                <font style="font-size: 18px;">
+                                                    <br/>
+                                                    <br/>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="6"
+                                                style="text-align: center; line-height: 20px;">
+                                                <font style="font-size: 18px;">
+                                                    <b>ใบสำคัญจ่าย</b>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="6"
+                                                style="text-align: center; line-height: 20px;">
+                                                <font style="font-size: 18px;">
+                                                    <br/>
+                                                    <br/>
+                                                    <br/>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5"
+                                                style="line-height: 20px; text-align: right;">
+                                                <font style="font-size: 18px;">
+                                                    เลขที่___________
+                                                </font>
+                                            </td>
+                                            <td
+                                                    style="text-align: center; line-height: 20px;">
+                                                <font style="font-size: 18px;">
+
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5"
+                                                style="line-height: 20px; text-align: right;">
+                                                <font style="font-size: 18px;">
+                                                    วันที่___________
+                                                </font>
+                                            </td>
+                                            <td
+                                                    style="text-align: center;line-height: 20px;">
+                                                <font style="font-size: 18px;">
+
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td
+                                                    style="text-align: left;line-height: 20px;">
+                                                <font style="font-size: 18px;">
+
+                                                </font>
+                                            </td>
+                                            <td
+                                                    style="text-align: left;line-height: 20px;">
+                                                <font style="font-size: 18px;">
+                                                    <b>ผู้จ่าย</b>
+                                                </font>
+                                            </td>
+                                            <td
+                                                    style="text-align: left;line-height: 20px;">
+                                                <font style="font-size: 18px;">
+                                                    <span class="custom-span" t-field="o.partner_id.name"/>
+                                                    <!--                                                    บริษัท สยามแบรนด์เนม จำกัด-->
+                                                </font>
+                                            </td>
+                                            <td
+                                                    style="text-align: left;line-height: 20px;">
+                                                <font style="font-size: 18px;">
+                                                    <b>เลขที่ผู้เสียภาษี:</b>
+                                                </font>
+                                            </td>
+                                            <td colspan="2"
+                                                style="text-align: left;line-height: 20px;">
+                                                <font style="font-size: 18px;">
+                                                    <span class="custom-span" t-field="o.partner_id.vat"/>
+                                                    0105564016750
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <table class="table2" border-collapse="collapse"
+                                               style="width:100%;">
+                                            <col width="5%"/>
+                                            <col width="5%"/>
+                                            <col width="10%"/>
+                                            <col width="63%"/>
+                                            <col width="12%"/>
+                                            <col width="5%"/>
+                                            <tr>
+                                                <td rowspan="3"
+                                                    style="text-align: center;line-height: 20px;">
+                                                    <font style="font-size: 18px;">
+
+                                                    </font>
+                                                </td>
+                                                <td rowspan="3"
+                                                    style="text-align: center;line-height: 20px;">
+                                                    <font style="font-size: 18px;">
+
+                                                    </font>
+                                                </td>
+                                                <td rowspan="3"
+                                                    style="text-align: left;line-height: 20px;">
+                                                    <font style="font-size: 18px;">
+                                                        <span class="custom-span" t-field="o.partner_id.branch_no"/>
+                                                        :
+                                                        <!--                                                        สำนักงานใหญ่:-->
+                                                    </font>
+                                                </td>
+                                                <td rowspan="3"
+                                                    style="text-align: left;line-height: 20px;">
+                                                    <font style="font-size: 18px;">
+                                                        <span class="custom-span" t-field="o.partner_id.street"/>
+                                                        <span class="custom-span">
+                                                            <t t-esc="o.partner_id.city or ''"/>
+                                                            <t t-if="o.partner_id.state_id">
+                                                                <t t-esc="o.partner_id.state_id.name"/>
+                                                            </t>
+                                                            <t t-if="o.partner_id.zip">
+                                                                <t t-esc="o.partner_id.zip"/>
+                                                            </t>
+                                                        </span>
+                                                        <!--                                                        เลขที่ 3/112 250ซอยศรีนครินทร์ 46/1 (ปราโมทย์) แขวงหนองบอน-->
+                                                        <!--                                                        เขตประเวศ กรุงเทพมหานคร 10250-->
+                                                    </font>
+                                                </td>
+                                                <td rowspan="3"
+                                                    style="text-align: center;line-height: 20px;">
+                                                    <font style="font-size: 18px;">
+
+                                                    </font>
+                                                </td>
+                                                <td rowspan="3"
+                                                    style="text-align: center;line-height: 20px;">
+                                                    <font style="font-size: 18px;">
+
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6"
+                                                    style="text-align: center;line-height: 20px;">
+                                                    <font style="font-size: 18px;">
+                                                        <br/>
+                                                        <br/>
+                                                        <br/>
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <table class="table2" border-collapse="collapse"
+                                               style="width:100%;">
+                                            <col width="5%"/>
+                                            <col width="55%"/>
+                                            <col width="35%"/>
+                                            <col width="5%"/>
+                                            <tr>
+                                                <td rowspan="2"
+                                                    style="text-align: center;line-height: 20px;">
+                                                    <font style="font-size: 18px;">
+
+                                                    </font>
+                                                </td>
+                                                <td rowspan="2"
+                                                    style="text-align: left;line-height: 20px;">
+                                                    <font style="font-size: 18px;">
+                                                        <b>จ่ายให้_______________________________________________</b>
+                                                        <br/>
+                                                    </font>
+                                                </td>
+                                                <td rowspan="2"
+                                                    style="text-align: left;line-height: 20px;">
+                                                    <font style="font-size: 18px;">
+                                                        <b>เลขที่ผู้เสียภาษี_________________________</b>
+                                                        <br/>
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4"
+                                                    style="text-align: center;line-height: 20px;">
+                                                    <font style="font-size: 18px;">
+                                                        <br/>
+                                                        <br/>
+                                                        <br/>
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <table height="350" cellspacing="0" border-collapse="collapse"
+                                               style="width:100%;">
+                                            <col width="5%"/>
+                                            <col width="15%"/>
+                                            <col width="40%"/>
+                                            <col width="35%"/>
+                                            <col width="5%"/>
+                                            <tr>
+                                                <td style="text-align: center; line-height: 20px; padding: 5px;">
+                                                    <font style="font-size: 18px;">
+
+                                                    </font>
+                                                </td>
+                                                <td colspan="2"
+                                                    style="text-align: center; vertical-align: middle; line-height: 20px; border-left: 1px solid black; padding: 5px;  border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                    <font style="font-size: 18px;">
+                                                        <b>รายการ</b>
+                                                    </font>
+                                                </td>
+                                                <td rowspan="2"
+                                                    style="text-align: center; vertical-align: middle; line-height: 20px; border-left: 1px solid black; padding: 5px;  border-bottom: 1px solid black; border-top: 1px solid black; border-right: 1px solid black;">
+                                                    <font style="font-size: 18px;">
+                                                        <b>จำนวนเงิน</b>
+                                                    </font>
+                                                </td>
+                                                <td style="text-align: center; line-height: 20px;">
+                                                    <font style="font-size: 18px;">
+
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align: center; line-height: 20px; padding: 5px;">
+                                                    <font style="font-size: 18px;">
+
+                                                    </font>
+                                                </td>
+                                                <td
+                                                        style="text-align: center; vertical-align: middle; line-height: 20px; border-left: 1px solid black; padding: 5px;  border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                    <font style="font-size: 18px;">
+                                                        <b>ลำดับ</b>
+                                                    </font>
+                                                </td>
+                                                <td
+                                                        style="text-align: center; vertical-align: middle; line-height: 20px; border-left: 1px solid black; padding: 5px;  border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                    <font style="font-size: 18px;">
+                                                        <b>รายละเอียด</b>
+                                                    </font>
+                                                </td>
+
+                                                <td style="text-align: center; line-height: 20px;">
+                                                    <font style="font-size: 18px;">
+
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <t t-set="count" t-value="0"/>
+                                            <t t-foreach="o.invoice_line_ids" t-as="l">
+                                                <tr>
+                                                    <td style="text-align: center; line-height: 20px;">
+                                                        <font style="font-size: 18px;">
+
+                                                        </font>
+                                                    </td>
+                                                    <td style="padding: 4px; border-left: 1px solid black; border-bottom: 1px solid black; text-align:center; line-height: 12px;">
+                                                        <t t-set="i" t-value="i+1"/>
+                                                        <font style="font-size: 20px;">
+                                                            <span t-esc="i"/>
+                                                        </font>
+                                                    </td>
+                                                    <td style="padding: 4px; border-left: 1px solid black; border-bottom: 1px solid black; text-align:center; line-height: 12px;">
+                                                        <font style="font-size: 20px;">
+                                                            <span t-field="l.product_id.name"/>
+                                                        </font>
+                                                    </td>
+                                                    <td style="padding: 4px; border-left: 1px solid black; border-right: 1px solid black;border-bottom: 1px solid black; text-align:center; line-height: 12px;">
+                                                        <font style="font-size: 20px;">
+                                                            <span t-esc="'{0:,.2f}'.format(float(l.price_unit))"/>
+                                                        </font>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                            <t t-foreach="range(int(count), 8)" t-as="x">
+                                                <tr>
+                                                    <td style="text-align: center; line-height: 20px; padding: 5px;">
+                                                        <font style="font-size: 18px;">
+
+                                                        </font>
+                                                    </td>
+                                                    <td
+                                                            style="text-align: center; vertical-align: middle; line-height: 20px; border-left: 1px solid black; padding: 5px;  border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                        <font style="font-size: 18px;">
+
+                                                        </font>
+                                                    </td>
+                                                    <td
+                                                            style="text-align: center; vertical-align: middle; line-height: 20px; border-left: 1px solid black; padding: 5px;  border-bottom: 1px solid black; border-top: 1px solid black;">
+                                                        <font style="font-size: 18px;">
+
+                                                        </font>
+                                                    </td>
+                                                    <td
+                                                            style="text-align: center; vertical-align: middle; line-height: 20px; border-left: 1px solid black; padding: 5px;  border-bottom: 1px solid black; border-top: 1px solid black;  border-right: 1px solid black;">
+                                                        <font style="font-size: 18px;">
+
+                                                        </font>
+                                                    </td>
+                                                    <td style="text-align: center; line-height: 20px;">
+                                                        <font style="font-size: 18px;">
+
+                                                        </font>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                            <tr>
+                                                <td style="text-align: center; line-height: 20px; padding: 5px;">
+                                                    <font style="font-size: 18px;">
+
+                                                    </font>
+                                                </td>
+                                                <td colspan="2"
+                                                    style="text-align: center; line-height: 20px; padding: 5px; border-bottom: 1px solid black; border-left: 1px solid black;">
+                                                    <font style="font-size: 18px;">
+                                                        รวม
+                                                    </font>
+                                                </td>
+                                                <td style="text-align: center; line-height: 20px; padding: 5px; border-bottom: 1px solid black; border-left: 1px solid; border-right: 1px solid black">
+                                                    <font style="font-size: 18px;">
+                                                        <span t-esc="'{0:,.2f}'.format(float(o.amount_total))"/>
+                                                    </font>
+                                                </td>
+                                                <td style="text-align: center; line-height: 20px; padding: 5px;">
+                                                    <font style="font-size: 18px;">
+
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </thead>
+                                    <tbody>
+                                        <table height="100" cellspacing="0" border-collapse="collapse"
+                                               style="width:100%;">
+                                            <col width="50%"/>
+                                            <col width="50%"/>
+                                            <tr>
+                                                <td colspan="2"
+                                                    style="text-align: center; line-height: 24px;">
+                                                    <font style="font-size: 18px;">
+                                                        <br/>
+                                                        <br/>
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"
+                                                    style="text-align: center; line-height: 24px;">
+                                                    <font style="font-size: 18px;">
+
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"
+                                                    style="text-align: center; line-height: 24px;">
+                                                    <font style="font-size: 18px;">
+
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td
+                                                        style="text-align: left; line-height: 24px;">
+                                                    <font style="font-size: 18px;">
+                                                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;................................
+                                                    </font>
+                                                </td>
+                                                <td
+                                                        style="text-align: right; line-height: 24px;">
+                                                    <font style="font-size: 18px;">
+                                                        ..................................&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td
+                                                        style="text-align: left; line-height: 24px;">
+                                                    <font style="font-size: 18px;">
+                                                        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                                        &amp;nbsp;&amp;nbsp;ผู้รับเงิน
+                                                    </font>
+                                                </td>
+                                                <td
+                                                        style="text-align: right; line-height: 24px;">
+                                                    <font style="font-size: 18px;">
+                                                        ผู้จ่ายเงิน&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                                        &amp;nbsp;&amp;nbsp; &amp;nbsp;
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"
+                                                    style="text-align: center; line-height: 24px;">
+                                                    <font style="font-size: 18px;">
+                                                        <br/>
+                                                        <br/>
+                                                        <br/>
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"
+                                                    style="text-align: right; line-height: 24px;">
+                                                    <font style="font-size: 18px;">
+                                                        ..................................&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"
+                                                    style="text-align: right; line-height: 24px;">
+                                                    <font style="font-size: 18px;">
+                                                        ผู้จ่ายเงิน&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                                                        &amp;nbsp;&amp;nbsp; &amp;nbsp;
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2"
+                                                    style="text-align: center; line-height: 24px;">
+                                                    <font style="font-size: 18px;">
+                                                        <br/>
+                                                        <br/>
+                                                        <br/>
+                                                    </font>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <tfoot>
+                                <table cellspacing="0" border-collapse="collapse"
+                                       style="width:100%;">
+                                    <col width="100%"/>
+                                    <!--            <span class="page"/>/-->
+                                    <!--            <span t-esc="i"/>-->
+                                    <div id="debug"></div>
+                                    <script>
+                                        function show_last_page(){
+                                        var vars = {};
+                                        // Query string
+                                        var x = document.location.search.substring(1).split('&amp;');
+                                        for (var i in x) {
+                                        var z = x[i].split('=', 2);
+                                        vars[z[0]] = unescape(z[1]);
+                                        }
+                                        //document.getElementById('debug').innerHTML += vars['sitepages'] + ", " +
+                                        vars['sitepage'];
+                                        // current_page to_page
+                                        if(vars['sitepage'] === vars['sitepages']){
+                                        var items = document.getElementsByClassName('show_only_last_page');
+                                        for(var i=0;i &lt; items.length;i++){
+                                        // document.getElementById('debug').innerHTML += ", " + i;
+                                        items[i].style.display = 'block';
+                                        }
+                                        }else{
+                                        var items = document.getElementsByClassName('show_only_last_page');
+                                        for(var i=0;i &lt; items.length;i++){
+                                        // document.getElementById('debug').innerHTML += ", " + i;
+                                        items[i].style.display = 'none';
+                                        }
+                                        }
+                                        }
+                                        show_last_page();
+                                    </script>
+                                    <tr>
+                                        <td style="text-align: right; line-height: 20px;">
+                                            <font style="font-size: 18px;">
+                                                <br/>
+<!--                                                หน้าที่ <span class="show_last_page"></span> จาก-->
+<!--                                                <span t-esc="i"></span>-->
+<!--                                                -->
+                                                หน้าที่ <span t-esc="o.current_page" /> จาก <span t-esc="o.total_pages" />
+                                            </font>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                            </tfoot>
+                        </div>
+                    </t>
+                </div>
+                <t t-call="aaa_invoice_v12.report_payment_voucher_footer">
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>
