@@ -24,28 +24,4 @@
             file="Test_module_sale.report_invoice_infp_H"
     />
 
-
-    <record id="paperformat_A4_receipt_report_infp_H" model="report.paperformat">
-        <field name="name">A4 Receipt_H</field>
-        <field name="default" eval="False"/>
-        <field name="format">A4</field>
-        <field name="orientation">Portrait</field>
-        <field name="margin_top">92</field>
-        <field name="margin_bottom">55</field>
-        <field name="margin_left">5</field>
-        <field name="margin_right">5</field>
-        <field name="header_line" eval="False"/>
-        <field name="header_spacing">3</field>
-        <field name="dpi">90</field>
-    </record>
-
-    <report
-            id="action_report_receipt_H"
-            model="stock.picking"
-            report_type="qweb-pdf"
-            string="Receipt Report Infinity"
-            paperformat="paperformat_A4_receipt_report_infp_H"
-            name="Test_module_sale.report_receipt_infp_H"
-            file="Test_module_sale.report_receipt_infp_H"
-    />
 </odoo>
