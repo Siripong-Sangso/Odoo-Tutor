@@ -21,6 +21,7 @@
             paperformat="paperformat_A4_quotation_infp"
             name="Report_infp.report_sale_order_quotation_infp"
             file="Report_infp.report_sale_order_quotation_infp"
+            menu="True"/>
     />
 
     <record id="paperformat_A4_billing_report_infp_H" model="report.paperformat">
@@ -44,6 +45,7 @@
             paperformat="paperformat_A4_billing_report_infp_H"
             name="Report_infp.report_billing_infp_H"
             file="Report_infp.report_billing_infp_H"
+            menu="True"
     />
 
     <record id="paperformat_A4_billing_report_infp" model="report.paperformat">
@@ -67,6 +69,7 @@
             paperformat="paperformat_A4_billing_report_infp"
             name="Report_infp.report_billing_infp"
             file="Report_infp.report_billing_infp"
+            menu="True"
     />
 
         <record id="paperformat_A4_account_move_Test2" model="report.paperformat">
@@ -90,6 +93,7 @@
             paperformat="paperformat_A4_account_move_Test2"
             name="Report_infp.report_account_move_Test2"
             file="Report_infp.report_account_move_Test2"
+            menu="True"
     />
 
     <record id="paperformat_A4_account_move_Test3" model="report.paperformat">
@@ -113,6 +117,7 @@
             paperformat="paperformat_A4_account_move_Test3"
             name="Report_infp.report_account_move_Test3"
             file="Report_infp.report_account_move_Test3"
+            menu="True"
     />
 
     <record id="paperformat_A4_delivery_report_infp_H" model="report.paperformat">
@@ -136,6 +141,7 @@
             paperformat="paperformat_A4_delivery_report_infp_H"
             name="Report_infp.report_delivery_infp_H"
             file="Report_infp.report_delivery_infp_H"
+            menu="True"
     />
 
     <record id="paperformat_A4_receipt_report_infp_H" model="report.paperformat">
@@ -143,10 +149,10 @@
         <field name="default" eval="False"/>
         <field name="format">A4</field>
         <field name="orientation">Portrait</field>
-        <field name="margin_top">92</field>
-        <field name="margin_bottom">55</field>
-        <field name="margin_left">5</field>
-        <field name="margin_right">5</field>
+        <field name="margin_top">65</field>
+        <field name="margin_bottom">47</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
         <field name="header_line" eval="False"/>
         <field name="header_spacing">3</field>
         <field name="dpi">90</field>
@@ -159,5 +165,30 @@
             paperformat="paperformat_A4_receipt_report_infp_H"
             name="Report_infp.report_receipt_infp_H"
             file="Report_infp.report_receipt_infp_H"
+            menu="True"
+    />
+
+    <record id="paperformat_A4_receipt_report_infp_KOL" model="report.paperformat">
+        <field name="name">A4 Receipt_H</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">65</field>
+        <field name="margin_bottom">47</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">3</field>
+        <field name="dpi">90</field>
+    </record>
+    <report
+            id="action_report_receipt_KOL"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            string="KOL Return Receipt"
+            paperformat="paperformat_A4_receipt_report_infp_KOL"
+            name="Report_infp.report_receipt_infp_KOL"
+            file="Report_infp.report_receipt_infp_KOL"
+            menu="True"
     />
 </odoo>
