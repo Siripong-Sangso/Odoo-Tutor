@@ -9,7 +9,6 @@
     'depends': ['base', 'sale'],
     'data': [
         'security/ir.model.access.csv',
-        'views/report_view.xml',
         'views/account.xml',
         'reports/report.xml',
         'reports/quotation_report_infp.xml',
@@ -19,6 +18,7 @@
         'reports/credit_notes_report_infp_H.xml',
         'reports/delivery_report_infp_H.xml',
         'reports/receipt_report_infp_H.xml',
+        'reports/kol_return_receipt.xml'
     ],
     'demo': [
 
