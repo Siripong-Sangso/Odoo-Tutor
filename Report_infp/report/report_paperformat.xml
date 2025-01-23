@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--    หมวดงานช่าง-->
+    <record id="paperformat_A4_mechanic" model="report.paperformat">
+        <field name="name">A4 Mechanic</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">65</field>
+        <field name="margin_bottom">47</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">3</field>
+        <field name="dpi">90</field>
+    </record>
+    <report
+            id="action_mechanic_report"
+            model="maintenance.request"
+            report_type="qweb-pdf"
+            string="เอกสารจ่ายงานช่าง"
+            paperformat="paperformat_A4_mechanic"
+            name="Report_infp.report_mechanic_report"
+            file="Report_infp.report_mechanic_report"
+            menu="True"
+    />
+
+<!--    หมวดรับสินค้าเข้า (นอกเหนือจากการ import)-->
+    <record id="paperformat_A4_receipt_order" model="report.paperformat">
+        <field name="name">A4 Receipt_order</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">65</field>
+        <field name="margin_bottom">47</field>
+        <field name="margin_left">15</field>
+        <field name="margin_right">15</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">3</field>
+        <field name="dpi">90</field>
+    </record>
+    <report
+            id="action_receipt_order"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            string="ใบรับสินค้า"
+            paperformat="paperformat_A4_receipt_order"
+            name="Report_infp.report_receipt_order"
+            file="Report_infp.report_receipt_order"
+            menu="True"
+    />
+    <record id="paperformat_A4_receipt_KOL" model="report.paperformat">
+        <field name="name">A4 Receipt_KOL</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">65</field>
+        <field name="margin_bottom">47</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">3</field>
+        <field name="dpi">90</field>
+    </record>
+    <report
+            id="action_receipt_KOL"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            string="ใบรับสินค้าคืน KOL"
+            paperformat="paperformat_A4_receipt_KOL"
+            name="Report_infp.report_receipt_KOL"
+            file="Report_infp.report_receipt_KOL"
+            menu="True"
+    />
+    <record id="paperformat_A4_claim_return_receipt" model="report.paperformat">
+        <field name="name">A4 Claim Return Receipt</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">65</field>
+        <field name="margin_bottom">47</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">3</field>
+        <field name="dpi">90</field>
+    </record>
+    <report
+            id="action_claim_return_receipt"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            string="ใบรับสินค้าเคลมคืนจากต่างประเทศ"
+            paperformat="paperformat_A4_claim_return_receipt"
+            name="Report_infp.report_claim_return_receipt"
+            file="Report_infp.report_claim_return_receipt"
+            menu="True"
+    />
+</odoo>

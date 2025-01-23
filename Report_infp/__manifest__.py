@@ -10,15 +10,8 @@
     'data': [
         'security/ir.model.access.csv',
         'views/account.xml',
-        'reports/report.xml',
-        'reports/quotation_report_infp.xml',
-        'reports/billing_report_infp_H.xml',
-        'reports/billing_report_infp.xml',
-        'reports/credit_notes_report_infp.xml',
-        'reports/credit_notes_report_infp_H.xml',
-        'reports/delivery_report_infp_H.xml',
-        'reports/receipt_report_infp_H.xml',
-        'reports/kol_return_receipt.xml'
+        'report/report_paperformat.xml',
+        'report/mechanic_report.xml',
     ],
     'demo': [
 
