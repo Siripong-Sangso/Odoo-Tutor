@@ -48,7 +48,7 @@
                             <font style="font-size: 28px;">
                                 <b>
                                     <span t-field="o.company_id.company_name_th"
-                                          style="margin: 0px; padding: 0px; line-height: 20px;"/>
+                                          style="margin: 0px; padding: 0px; line-height: 20px;"/>(<span t-field="o.company_id.branch_name"/>)
                                     <br/>
                                 </b>
                             </font>
