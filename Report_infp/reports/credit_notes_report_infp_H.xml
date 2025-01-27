@@ -50,12 +50,6 @@
                             </font>
                             <font style="font-size: 18px;">
                                 <br/>
-                                <span t-field="o.company_id.address_th"/>
-                                <br/>
-                                <span t-field="o.company_id.address_eng"/>
-                            </font>
-                            <font style="font-size: 18px;">
-                                <br/>
                                 Tel.&amp;nbsp;
                                 <font style="font-size: 18px;">
                                     <span class="custom-span" t-field="o.company_id.phone"/>&amp;nbsp;&amp;nbsp;
