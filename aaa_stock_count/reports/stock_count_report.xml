@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Define report action -->
+        <report
+            id="action_report_stock_count"
+            model="stock.count"
+            string="Stock Count Report"
+            report_type="qweb-pdf"
+            name="aaa_stock_count.report_stock_count_document"
+            file="aaa_stock_count.report_stock_count_document"
+            print_report_name="'Stock Count - %s' % (object.name)"
+        />
+
+    <template id="report_stock_count_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Stock Count Report</h2>
+                        <p>
+                            <strong>Date:</strong>
+                            <t t-esc="o.date"/>
+                        </p>
+                        <p>
+                            <strong>Responsible User:</strong>
+                            <t t-esc="o.user_id.name"/>
+                        </p>
+                        <p>
+                            <strong>Count Type:</strong>
+                            <t t-esc="o.count_type"/>
+                        </p>
+
+                        <table class="table table-sm table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Product Code</th>
+                                    <th>Product Name</th>
+                                    <th>Counted Quantity</th>
+                                    <th>System Quantity</th>
+                                    <th>Discrepancy</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.line_ids" t-as="line">
+                                    <tr>
+                                        <td>
+                                            <t t-esc="line.product_id.default_code"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="line.product_id.name"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="line.counted_quantity"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="line.system_quantity"/>
+                                        </td>
+                                        <td>
+                                            <t t-if="line.discrepancy">Yes</t>
+                                            <t t-else="">No</t>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
