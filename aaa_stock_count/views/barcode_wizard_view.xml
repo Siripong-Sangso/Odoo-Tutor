@@ -1,0 +1,46 @@
+<odoo>
+    <record id="view_barcode_wizard_form" model="ir.ui.view">
+        <field name="name">barcode.wizard.form</field>
+        <field name="model">barcode.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Scan Barcode">
+                <group>
+                    <field name="barcode" placeholder="Scan or Enter Barcode"/>
+                    <field name="product_not_found" invisible="1"/>
+                    <field name="is_serial" invisible="1"/>
+                </group>
+                <group attrs="{'invisible': [('product_not_found', '=', True)]}">
+                    <field name="product_show"/>
+                    <field name="product_id" invisible="0"/>
+                    <field name="counted_quantity"
+                           attrs="{'readonly': [('is_serial','=', True)]}"
+                           placeholder="Enter Counted Quantity"/>
+                    <field name="lot_id"/>
+                </group>
+                <div class="text-danger" attrs="{'invisible': [('product_not_found', '=', False)]}">
+                    Product not found
+                </div>
+                <footer>
+                    <button string="Add Product" type="object" name="action_add_product" class="oe_highlight"
+                            attrs="{'invisible': [('product_not_found', '=', True)]}"/>
+                    <button string="Add Stock None"
+                            type="object"
+                            name="action_add_stock_none"
+                            class="btn-secondary"
+                            attrs="{'invisible': [('product_not_found','=', False)]}"/>
+                    <!--                    <button string="Add and Scan" type="object" name="action_add_and_scan" class="oe_highlight" attrs="{'invisible': [('product_not_found', '=', True)]}"/>-->
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_barcode_wizard" model="ir.actions.act_window">
+        <field name="name">Scan Barcode</field>
+        <field name="res_model">barcode.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_barcode_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>
