@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_count_user,access_stock_count_user,model_stock_count,,1,1,1,1
+access_stock_count_line_user,access_stock_count_line_user,model_stock_count_line,,1,1,1,1
+access_stock_scan_line_user,access_stock_scan_line_user,model_stock_scan_line,,1,1,1,1
+access_stock_none_line_user,access_stock_none_line_user,model_stock_none_line,,1,1,1,1
+access_barcode_wizard_user,access_barcode_wizard_user,model_barcode_wizard,,1,1,1,1
