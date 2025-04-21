@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_stock_count_tree" model="ir.ui.view">
+        <field name="name">stock.count.tree</field>
+        <field name="model">stock.count</field>
+        <field name="arch" type="xml">
+            <tree string="Stock Count">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="count_type"/>
+                <field name="state"/>
+                <field name="user_id"/>
+                <field name="discrepancy_found"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_stock_count_form" model="ir.ui.view">
+        <field name="name">stock.count.form</field>
+        <field name="model">stock.count</field>
+        <field name="arch" type="xml">
+            <form string="Stock Count">
+                <header>
+                    <button string="Validate" type="object" name="action_validate" states="draft" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="date" attrs="{'readonly': [('state', 'in', ('done'))]}"/>
+                            <field name="user_id" attrs="{'readonly': [('state', 'in', ('done'))]}"/>
+
+                        </group>
+                        <group>
+                            <field name="count_type" required="1"/>
+                            <!--                            <field name="warehouse_id"/>-->
+                            <!--                            <field name="location_id"/>-->
+                            <field name="warehouse_id"
+                                   attrs="{'invisible': [('count_type', '!=', 'warehouse')], 'readonly': [('state', 'in', ('done'))]}"/>
+                            <field name="location_id"
+                                   attrs="{'invisible': [('count_type', '!=', 'location')], 'readonly': [('state', 'in', ('done'))]}"
+                                   domain="[('usage','=','internal')]"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <field name="lot_ids" invisible="1"/>
+                        <page string="Stock Scan">
+                            <button string="Add" type="action" attrs="{'invisible': [('state', '=', 'done')]}"
+                                    name="%(action_barcode_wizard)d" class="oe_highlight"/>
+                            <field name="scan_line_ids" attrs="{'readonly': [('state', 'in', ('done'))]}">
+                                <tree editable="bottom">
+                                    <field name="is_serial" invisible="1"/>
+                                    <field name="product_id"/>
+                                    <field name="counted_quantity"
+                                           attrs="{'readonly': [('lot_id','!=',False)]}"/>
+                                    <field name="lot_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Stock Lines">
+                            <!--                            <button string="Add" type="action" attrs="{'invisible': [('state', '=', 'done')]}"-->
+                            <!--                                    name="%(action_barcode_wizard)d" class="oe_highlight"/>-->
+                            <field name="line_ids" attrs="{'readonly': [('state', 'in', ('done'))]}">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="system_quantity"/>
+                                    <field name="counted_quantity"/>
+                                    <field name="new_quantity" invisible="1"/>
+                                    <field name="discrepancy"/>
+                                    <field name="lot_ids" widget="many2many_tags"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Stock None">
+                            <field name="none_line_ids">
+                                <tree editable="bottom">
+                                    <field name="barcode"/>
+                                    <field name="counted_quantity"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_stock_count" model="ir.actions.act_window">
+        <field name="name">Stock Counts</field>
+        <field name="res_model">stock.count</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_stock_count" name="Stock Counts" parent="menu_stock_count_root" action="action_stock_count"/>
+
+
+</odoo>
