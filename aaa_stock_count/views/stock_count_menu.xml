@@ -1,0 +1,3 @@
+<odoo>
+    <menuitem id="menu_stock_count_root" name="Stock Count" parent="stock.menu_stock_warehouse_mgmt" sequence="10"/>
+</odoo>
