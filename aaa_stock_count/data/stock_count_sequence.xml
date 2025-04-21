@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="seq_stock_count" model="ir.sequence">
+        <field name="name">Stock Count Sequence</field>
+        <field name="code">stock.count</field>
+        <field name="prefix">STC/</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+    </record>
+</odoo>
