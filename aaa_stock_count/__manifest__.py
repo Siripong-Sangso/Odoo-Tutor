@@ -1,12 +1,15 @@
 {
     'name': 'Stock Count',
-    'version': '1.0',
+    'version': '1.1',
     'category': 'Inventory',
     'summary': 'Module for counting stock and updating inventory in Odoo',
-    'description': 'This module allows users to count stock, scan barcodes, and update the inventory records accordingly.',
+    'description': 'This module allows users to count stock, scan barcodes,'
+                   'scan lot/serial numbers, and update inventory records accordingly.'
+                   'It is fully compatible with the Smart Stock application.',
     'website': 'https://www.anyworkanywhereanytime.com',
     'author': 'AAA',
     'maintainer': 'AAA',
+    'sequence': 1,
     'depends': ['base', 'stock'],
     'data': [
         'security/ir.model.access.csv',
