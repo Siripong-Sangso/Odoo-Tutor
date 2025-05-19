@@ -45,20 +45,21 @@
                     </group>
                     <notebook>
                         <field name="lot_ids" invisible="1"/>
-                        <page string="Stock Scan">
+                        <page string="Counted Items">
                             <button string="Add" type="action" attrs="{'invisible': [('state', '=', 'done')]}"
                                     name="%(action_barcode_wizard)d" class="oe_highlight"/>
-                            <field name="scan_line_ids" attrs="{'readonly': [('state', 'in', ('done'))]}">
+                            <field name="scan_line_ids" attrs="{'readonly': [('state', 'in', ('done'))]}"
+                                   options="{'no_create': True, 'no_delete': False}">
                                 <tree editable="bottom">
                                     <field name="is_serial" invisible="1"/>
                                     <field name="product_id"/>
-                                    <field name="counted_quantity"
-                                           attrs="{'readonly': [('lot_id','!=',False)]}"/>
+                                    <field name="counted_quantity" attrs="{'readonly': [('lot_id','!=',False)]}"/>
                                     <field name="lot_id"/>
                                 </tree>
                             </field>
                         </page>
-                        <page string="Stock Lines">
+                        <page string="Product List"
+                              attrs="{'invisible': [('state', '!=', 'done')]}">
                             <!--                            <button string="Add" type="action" attrs="{'invisible': [('state', '=', 'done')]}"-->
                             <!--                                    name="%(action_barcode_wizard)d" class="oe_highlight"/>-->
                             <field name="line_ids" attrs="{'readonly': [('state', 'in', ('done'))]}">
@@ -72,7 +73,7 @@
                                 </tree>
                             </field>
                         </page>
-                        <page string="Stock None">
+                        <page string="Not Found">
                             <field name="none_line_ids">
                                 <tree editable="bottom">
                                     <field name="barcode"/>
@@ -94,5 +95,78 @@
 
     <menuitem id="menu_stock_count" name="Stock Counts" parent="menu_stock_count_root" action="action_stock_count"/>
 
+    <record id="stock_count_form_disable_inline_create" model="ir.ui.view">
+        <field name="name">stock.count.form.disable.inline.create</field>
+        <field name="model">stock.count</field>
+        <field name="inherit_id" ref="aaa_stock_count.view_stock_count_form"/>
+        <field name="arch" type="xml">
+            <!-- หา tree view ของ scan_line_ids โดยตรง -->
+            <xpath expr="//field[@name='scan_line_ids']/tree" position="attributes">
+                <attribute name="create">false</attribute>
+                <attribute name="delete">false</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="stock_count_form_add_detail_button" model="ir.ui.view">
+        <field name="name">stock.count.form.add.detail.button</field>
+        <field name="model">stock.count</field>
+        <field name="inherit_id" ref="aaa_stock_count.view_stock_count_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='line_ids']/tree/field[@name='lot_ids']" position="after">
+                <button name="action_show_details"
+                        type="object"
+                        icon="fa-list"
+                        string=""/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_stock_scan_line_tree" model="ir.ui.view">
+        <field name="name">stock.scan.line.tree</field>
+        <field name="model">stock.scan.line</field>
+        <field name="arch" type="xml">
+            <tree string="Scanned Serials"
+                  create="false" delete="true">
+                <field name="lot_id"/>
+                <field name="product_id"/>
+                <field name="counted_quantity"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="stock_count_form_allow_delete_scan" model="ir.ui.view">
+        <field name="name">stock.count.form.allow.delete.scan</field>
+        <field name="model">stock.count</field>
+        <field name="inherit_id" ref="aaa_stock_count.view_stock_count_form"/>
+        <field name="arch" type="xml">
+            <!-- 1) เปิดให้ลบได้บน tree ของ scan_line_ids -->
+            <xpath expr="//field[@name='scan_line_ids']/tree" position="attributes">
+                <!-- ปิดปุ่มสร้าง (เพราะเพิ่มผ่าน wizard) -->
+                <attribute name="create">false</attribute>
+                <!-- เปิดปุ่มลบ -->
+                <attribute name="delete">true</attribute>
+            </xpath>
+            <!-- 2) บอกให้ Odoo แสดงปุ่มถังขยะไม่ซ่อนจาก field options -->
+            <xpath expr="//field[@name='scan_line_ids']" position="attributes">
+                <attribute name="options">{'no_create': True, 'no_delete': False}</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="stock_count_form_add_note_tab" model="ir.ui.view">
+        <field name="name">stock.count.form.add.note</field>
+        <field name="model">stock.count</field>
+        <!-- เปลี่ยนเป็น ref ของ view หลักคุณ -->
+        <field name="inherit_id" ref="aaa_stock_count.view_stock_count_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Note">
+                    <field name="note"
+                           placeholder="Add an internal note that will be printed on the Picking Operations sheet"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
 
 </odoo>
