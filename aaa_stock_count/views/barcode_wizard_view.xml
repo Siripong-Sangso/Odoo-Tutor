@@ -11,7 +11,7 @@
                 </group>
                 <group attrs="{'invisible': [('product_not_found', '=', True)]}">
                     <field name="product_show"/>
-                    <field name="product_id" invisible="0"/>
+                    <field name="product_id" invisible="1"/>
                     <field name="counted_quantity"
                            attrs="{'readonly': [('is_serial','=', True)]}"
                            placeholder="Enter Counted Quantity"/>
