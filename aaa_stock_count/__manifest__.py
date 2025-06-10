@@ -17,6 +17,7 @@
         'views/stock_count_menu.xml',
         'views/barcode_wizard_view.xml',
         'views/stock_count_view.xml',
+        'reports/stock_count_report_template.xml',
         'reports/stock_count_report.xml',
     ],
     'installable': True,
