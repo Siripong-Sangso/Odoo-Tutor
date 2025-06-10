@@ -1,2 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <data>
+        <record id="paperformat_A4_stock_count" model="report.paperformat">
+            <field name="name">A4 Sale order 2</field>
+            <field name="default" eval="False"/>
+            <field name="format">A4</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">60</field>
+            <field name="margin_bottom">30</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report
+                id="action_stock_count_report_pdf"
+                model="stock.count"
+                report_type="qweb-pdf"
+                string="Stock Count Report"
+                paperformat="paperformat_A4_stock_count"
+                name="aaa_stock_count.stock_count_report"
+                file="aaa_stock_count.stock_count_report"
+                menu="True"/>
+    </data>
 </odoo>
