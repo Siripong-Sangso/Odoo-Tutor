@@ -19,6 +19,7 @@ class StockCount(models.Model):
     none_line_ids = fields.One2many('stock.none.line','stock_count_id',string='Not Found Scans',)
     lot_ids = fields.Many2one('stock.lot', string='Lot/Serial Number', help='เก็บค่า Lot หรือ Serial ที่สแกนมา')
     note = fields.Text(string='Note',help='Add an internal note that will be printed on the Picking Operations sheet')
+    company_id = fields.Many2one('res.company',string='Company',default=lambda self: self.env.company,required=True,)
 
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -83,6 +84,19 @@ class StockCountLine(models.Model):
     discrepancy = fields.Boolean(string='Discrepancy', default=False)
     lot_ids = fields.Many2many('stock.lot', 'stock_count_line_lot_rel', 'line_id', 'lot_id', string = 'Lot/Serial Numbers', help = 'เก็บทุก Lot/Serial ที่สแกนมา')
 
+    @api.model
+    def _calculate_line_count(self, text):
+        """Helper: นับบรรทัดจากข้อความ (แบ่งที่ '\n')"""
+        return len(str(text or '').split('\n'))
+
+    @api.model
+    def get_line_count(self):
+        """คืนจำนวนบรรทัดที่จะใช้ใน report (โดยนับจากชื่อสินค้า)"""
+        self.ensure_one()
+        # ใช้ชื่อสินค้าเป็นข้อความนับบรรทัด
+        product_name = self.product_id.name or ''
+        return self._calculate_line_count(product_name)
+
     def action_show_details(self):
         self.ensure_one()
         scan_lines = self.env['stock.scan.line'].search([
@@ -139,6 +153,7 @@ class StockScanLine(models.Model):
     is_serial = fields.Boolean(string = 'Is Serial',compute = '_compute_is_serial',store = True,)
     warehouse_id = fields.Many2one('stock.warehouse',related='stock_count_id.warehouse_id',store=True,string='Warehouse',)
     location_id = fields.Many2one('stock.location',related='stock_count_id.location_id',store=True,string='Location',)
+    tracking = fields.Selection(related='product_id.tracking',string='Tracking',store=True,readonly=True,)
 
     def unlink(self):
         for scan in self:
